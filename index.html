@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Full Stack Interview Prep — Badal Sharma</title>
+<style>
+:root{--bg:#f5f7fb;--panel:#fff;--text:#172033;--muted:#68738a;--line:#e3e8f1;--accent:#3559e0;--accent2:#eaf0ff;--good:#16845b;--shadow:0 10px 30px rgba(28,42,80,.07)}
+[data-theme="dark"]{--bg:#101522;--panel:#171f30;--text:#eef2ff;--muted:#a5afc4;--line:#2a354a;--accent:#9cb0ff;--accent2:#263253;--good:#64d6a4;--shadow:0 10px 30px rgba(0,0,0,.2)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:linear-gradient(125deg,#172554,#3559e0 65%,#7088ff);color:white;padding:42px 22px 32px}
+.hero,.layout{max-width:1180px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:12px;font-weight:800;opacity:.8}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.08;margin:10px 0}header p{max-width:760px;color:#e3e9ff;margin:12px 0 22px}
+.stats{display:flex;flex-wrap:wrap;gap:10px}.stat{padding:8px 12px;background:#ffffff1c;border:1px solid #ffffff35;border-radius:12px;font-size:13px}
+.layout{padding:24px 18px 60px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:22px}
+aside{position:sticky;top:14px;align-self:start;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+aside h2{font-size:15px;margin:0 0 12px}.nav{display:grid;gap:5px}.nav button{border:0;text-align:left;background:transparent;color:var(--muted);padding:9px 10px;border-radius:9px;cursor:pointer;font:inherit;font-size:13px}.nav button.active,.nav button:hover{background:var(--accent2);color:var(--accent);font-weight:700}
+.progress-wrap{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}.progress-line{height:7px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}.progress-line span{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+main{min-width:0}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}.search{flex:1;min-width:190px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);font:inherit}.toolbtn{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:10px 13px;border-radius:11px;cursor:pointer;font-weight:650}
+.notice{background:var(--accent2);border:1px solid var(--line);padding:14px 16px;border-radius:13px;margin-bottom:20px;font-size:13px;color:var(--text)}
+.section{margin:25px 0 12px;scroll-margin-top:20px}.section h2{font-size:22px;margin:0}.section p{margin:4px 0;color:var(--muted);font-size:13px}
+.cards{display:grid;gap:10px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(25,35,65,.025)}.qrow{display:flex;gap:12px;align-items:flex-start;padding:15px 16px;cursor:pointer}.qrow:hover{background:color-mix(in srgb,var(--accent2) 35%,var(--panel))}.check{margin-top:4px;accent-color:var(--good);width:16px;height:16px;flex-shrink:0}.qtext{font-weight:750;flex:1}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);white-space:nowrap;border:1px solid var(--line);padding:3px 7px;border-radius:99px}.chevron{color:var(--muted);font-size:18px;transition:transform .2s}.answer{display:none;border-top:1px solid var(--line);padding:14px 20px 18px 45px;color:var(--text)}.card.open .answer{display:block}.card.open .chevron{transform:rotate(180deg)}.answer p{margin:0 0 8px}.answer ul{margin:7px 0 0;padding-left:20px}.answer li{margin:4px 0}.answer strong{color:var(--accent)}.template{font-size:12px;color:var(--muted);margin-top:10px;padding:8px 10px;border-left:3px solid var(--accent);background:var(--accent2);border-radius:0 8px 8px 0}
+.empty{display:none;padding:25px;text-align:center;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:12px;padding:25px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}aside{position:static}.nav{grid-template-columns:repeat(2,minmax(0,1fr))}.progress-wrap{margin-top:12px}header{padding-top:30px}.tag{display:none}.answer{padding-left:20px}}
+@media print{body{background:#fff;color:#111;font-size:11pt}header{background:#fff;color:#111;padding:15px 0;border-bottom:2px solid #333}header p{color:#333}.layout{display:block;padding:10px 0}aside,.toolbar,.toolbtn,.check,.chevron{display:none!important}.card{break-inside:avoid;box-shadow:none;border:1px solid #bbb}.answer{display:block!important;border-top:1px solid #ddd}.qrow{padding:8px}.section{break-after:avoid}.section h2{font-size:16pt}.notice{background:#fff}.tag{display:none}footer{display:none}}
+</style>
+</head>
+<body>
+<header><div class="hero">
+<div class="eyebrow">Interview workbook · Resume-based</div>
+<h1>Full Stack Developer<br>Interview Prep</h1>
+<p>A practical question bank with short sample answers, project follow-ups, and a progress tracker. Tailored to your resume: MERN, TypeScript, PHP, Shopify, WordPress, databases, payments, and AI integrations.</p>
+<div class="stats"><span class="stat" id="totalStat">Questions</span><span class="stat">Short answers included</span><span class="stat">Search + topic filters</span><span class="stat">Print-friendly</span></div>
+</div></header>
+<div class="layout">
+<aside><h2>Topics</h2><nav class="nav" id="nav"></nav>
+<div class="progress-wrap"><strong>Preparation progress</strong><div class="progress-line"><span id="progressBar"></span></div><small id="progressText">0 of 0 reviewed</small><div style="display:flex;gap:7px;margin-top:12px"><button class="toolbtn" id="resetChecks">Reset checks</button></div></div></aside>
+<main>
+<div class="toolbar"><input class="search" id="search" placeholder="Search questions or answers…"><button class="toolbtn" id="expand">Expand all</button><button class="toolbtn" id="collapse">Collapse all</button><button class="toolbtn" id="theme">Dark mode</button><button class="toolbtn" onclick="window.print()">Print / Save PDF</button></div>
+<div class="notice"><strong>Use this wisely:</strong> answers are concise starting points, not scripts to memorize. For project-specific questions, replace generic wording with what you personally implemented. Do not claim a tool, metric, or architecture you cannot explain.</div>
+<div id="content"></div><div class="empty" id="empty">No questions match your search. Try another keyword or topic.</div>
+</main></div><footer>Built for interview practice · Check a question after you can answer it confidently without reading.</footer>
+<script>
+const sections = [
+{title:"JavaScript & TypeScript",desc:"Core language concepts and common coding-round discussion points.",items:[
+["What is the difference between var, let, and const?","var is function-scoped and can be redeclared; let and const are block-scoped. let can be reassigned, while const cannot be reassigned. A const object’s contents can still be changed."],
+["What is a closure?","A closure is a function bundled with access to variables from its lexical scope, even after the outer function has finished. It is useful for private state, callbacks, and function factories."],
+["What is the difference between == and ===?","== allows type coercion before comparison; === compares both type and value. Prefer === unless coercion is intentional."],
+["Explain promises, async, and await.","A Promise represents a future success or failure. async makes a function return a Promise; await pauses that async function until the Promise settles, making asynchronous code easier to read. Handle failures with try/catch."],
+["What is the event loop?","JavaScript runs synchronous work on the call stack. The event loop coordinates queued callbacks after the stack is clear; Promise callbacks run as microtasks, generally before timer/task callbacks."],
+["map vs filter vs reduce?","map transforms every item; filter keeps items that pass a condition; reduce combines items into one result, such as a sum or grouped object."],
+["What is callback hell?","It is deeply nested callbacks that make asynchronous code difficult to read and maintain. Named functions, Promises, async/await, and clear error handling help avoid it."],
+["Shallow copy vs deep copy?","A shallow copy duplicates only the top level, so nested objects remain shared references. A deep copy duplicates nested structures too; choose a method appropriate for the data, such as structuredClone for supported values."],
+["What are debouncing and throttling?","Debouncing waits until events stop for a period, useful for search input. Throttling limits how often a function runs, useful for scroll or resize handlers."],
+["What is the difference between interface and type in TypeScript?","Both describe types. Interfaces are commonly used for object shapes and can be declaration-merged; type aliases can express unions, intersections, primitives, and other type compositions."],
+["What are generics?","Generics let code work with different types while preserving type information, for example a reusable function that accepts and returns a value of type T."],
+["any vs unknown?","any disables most type checking. unknown accepts any value but requires type narrowing before it can safely be used. Prefer unknown when the type is not yet known."],
+["What is type narrowing?","TypeScript narrows a broad type to a more specific type using checks such as typeof, instanceof, discriminant properties, or custom type guards."],
+["How do you reverse a string in JavaScript?","A simple approach is [...str].reverse().join(''). In an interview, discuss Unicode caveats: code points and grapheme clusters are not always the same."],
+["How would you remove duplicates from an array?","For primitive values, [...new Set(items)] is concise. For objects, define what makes two objects duplicates, such as a shared id, and use a Map or Set keyed by that property."],
+["What is the difference between null and undefined?","undefined often means a value has not been assigned or is absent; null is an explicitly assigned empty value. Check both deliberately when designing APIs."],
+["What is destructuring?","Destructuring extracts values from arrays or properties from objects into variables, improving readability and supporting defaults."],
+["What is the spread operator used for?","Spread expands iterable elements or object properties. It is commonly used for shallow copies and immutable state updates, but it does not deep-copy nested objects."]
+]},
+{title:"React",desc:"Hooks, component design, state, and frontend performance.",items:[
+["What is React?","React is a JavaScript library for building user interfaces from reusable components. It updates the UI based on state and props."],
+["What is the Virtual DOM?","It is a representation of the UI that React uses to calculate changes between renders. React reconciles those changes with the real DOM; it is not automatically faster in every situation."],
+["Props vs state?","Props are inputs passed from a parent and should be treated as read-only. State is data managed by a component or state system that can trigger a re-render when updated."],
+["What are React Hooks?","Hooks let function components use React features such as state, effects, refs, and context. They must be called at the top level of React components or custom Hooks."],
+["Explain useState.","useState adds component state. Its setter schedules an update; reading the variable immediately after calling the setter still returns the value from the current render."],
+["Explain useEffect and its dependency array.","useEffect synchronizes a component with an external system. No dependency array runs after every render; [] runs after mount (with development Strict Mode behavior to consider); a dependency list reruns when listed values change. Clean up subscriptions or timers."],
+["Why might useEffect run twice in development?","React Strict Mode may perform an extra setup-and-cleanup cycle in development to reveal effects that are not correctly cleaned up. It does not mean every production effect always runs twice."],
+["useMemo vs useCallback?","useMemo caches a calculated value; useCallback caches a function reference. Use them when there is a measured or clear reason, not automatically everywhere."],
+["What is React.memo?","It can skip re-rendering a component when its props compare equal. It is an optimization, not a guarantee, and new object/function references can defeat the default comparison."],
+["Controlled vs uncontrolled inputs?","A controlled input gets its value from React state and updates through handlers. An uncontrolled input keeps its value in the DOM and is often accessed through a ref."],
+["Why are keys important in lists?","Keys help React identify items between renders so it can preserve the correct component state and update the list efficiently. Use stable unique IDs rather than array indexes when items can move or be removed."],
+["What is prop drilling?","Prop drilling passes data through intermediate components that do not need it. Context, composition, or a state-management library can help when appropriate."],
+["Context API vs Redux?","Context makes values available through a component tree. Redux provides a structured centralized state model, tooling, and predictable updates. Choose based on complexity rather than assuming one is always better."],
+["How do you handle loading and error states for API calls?","Track loading, data, and error state; show clear UI for each; handle rejected requests; and consider cancellation or stale-response protection when components or query parameters change."],
+["How do you prevent unnecessary re-renders?","Keep state close to where it is needed, avoid needless state, use stable keys, split components sensibly, and profile first. Memoization can help when it addresses a measured bottleneck."],
+["What is code splitting?","It divides JavaScript into smaller chunks loaded when needed, often using dynamic imports and React.lazy with Suspense. It can reduce the initial bundle but may add later network requests."],
+["How would you build protected routes?","Check authentication state and, where relevant, user permissions before rendering protected UI. The backend must independently enforce authorization; frontend route guards alone do not secure data."],
+["How do you handle forms?","Use controlled state or a form library, validate inputs on client and server, provide accessible error messages, and prevent duplicate submissions where appropriate."],
+["What causes a stale closure in React?","A callback can capture values from an earlier render. Use correct effect dependencies, functional state updates, or refs when appropriate rather than suppressing dependency warnings blindly."]
+]},
+{title:"Node.js, Express & APIs",desc:"Backend fundamentals, architecture, reliability, and HTTP.",items:[
+["What is Node.js?","Node.js is a JavaScript runtime built on the V8 engine. It is well suited to I/O-heavy applications because asynchronous I/O lets it handle many concurrent connections without a thread per request."],
+["Is Node.js single-threaded?","JavaScript execution in a typical Node process runs on one main thread, but Node also uses operating-system facilities and a libuv thread pool for some work. Worker threads can run CPU-intensive JavaScript."],
+["What is Express middleware?","Middleware is a function that can inspect or modify the request and response, end the request, or call next(). Middleware order matters; error-handling middleware has a special signature."],
+["What is REST?","REST is an architectural style for resource-oriented APIs. Common conventions use HTTP methods and status codes consistently, with stateless requests and clear resource URLs."],
+["PUT vs PATCH?","PUT generally replaces a resource representation and is intended to be idempotent. PATCH applies a partial modification; its idempotency depends on the operation."],
+["What are req, res, and next in Express?","req contains request information, res is used to send a response, and next passes control to the next middleware or error handler."],
+["How do you handle errors in Express?","Use centralized error-handling middleware, pass errors to it, log useful diagnostic context without leaking secrets, and return safe, consistent status codes and messages."],
+["What is CORS?","Cross-Origin Resource Sharing is a browser mechanism controlled by response headers that determines whether frontend code from another origin can read a response. It is not a replacement for authentication."],
+["How do you validate API requests?","Validate parameters, query strings, and bodies against a schema; reject invalid input early; normalize expected formats; and never rely solely on client-side validation."],
+["How would you structure a backend application?","A common structure separates routes, controllers, business/service logic, data-access models, validation, middleware, and configuration. Keep boundaries understandable rather than adding layers without a reason."],
+["How do you implement pagination?","For small datasets, limit/offset pagination is simple. For large or frequently changing datasets, cursor pagination can be more efficient and stable. Always validate limits and sort deterministically."],
+["What is idempotency?","An operation is idempotent when repeating the same request has the same intended effect as performing it once. Idempotency keys and unique constraints can protect order or payment creation from retries."],
+["How would you debug a slow API?","Measure first: inspect request timings, logs, database query plans, external API latency, CPU and memory. Reproduce the issue, isolate the bottleneck, fix it, and compare measurements afterward."],
+["How do you handle a slow third-party API?","Set timeouts, handle errors and retries carefully, use exponential backoff for transient failures, limit concurrency, and consider caching or queues where appropriate. Avoid retrying non-idempotent operations blindly."],
+["What is API versioning?","Versioning lets an API evolve without unexpectedly breaking clients, often through a URL prefix or headers. Keep changes backward-compatible where practical and document deprecations."],
+["What is the difference between 401 and 403?","401 means valid authentication credentials are missing or unacceptable; 403 means the server understood the request but refuses authorization. Exact API conventions should be consistent."],
+["How do you secure an API?","Use authentication and server-side authorization, validate input, parameterize database queries, enforce HTTPS, rate-limit sensitive endpoints, protect secrets, configure CORS carefully, and log security-relevant events safely."]
+]},
+{title:"MongoDB & MySQL",desc:"Data modelling, query performance, transactions, and SQL.",items:[
+["SQL vs NoSQL?","Relational SQL databases use structured tables and relationships with powerful joins and constraints. MongoDB stores document-oriented data. Choose based on data shape, consistency needs, queries, and operational requirements."],
+["What are MongoDB documents and collections?","A document is a BSON record of fields and values; a collection groups documents, similar in broad purpose to a table but with a flexible document structure."],
+["What is Mongoose?","Mongoose is an ODM for MongoDB in Node.js. It provides schemas, models, validation, middleware, and convenient querying, though database-level constraints and behavior still matter."],
+["Embedding vs referencing in MongoDB?","Embedding stores related data together for convenient reads when size and update patterns fit. Referencing stores IDs separately and can reduce duplication for shared or large related records."],
+["What is a database index?","An index helps the database locate records without scanning every row or document, but it costs storage and can slow writes. Index fields should follow real query patterns."],
+["What is an aggregation pipeline?","It processes documents through stages such as match, group, project, sort, and lookup to filter, transform, and summarize data on the database server."],
+["What are primary and foreign keys?","A primary key uniquely identifies a row. A foreign key references a key in another table and can enforce referential integrity."],
+["Explain INNER JOIN and LEFT JOIN.","INNER JOIN returns matching rows from both sides. LEFT JOIN returns every left-side row plus matching right-side data, with NULL values where no match exists."],
+["What is normalization?","Normalization structures relational data to reduce unnecessary duplication and update anomalies. Denormalization can still be appropriate for measured performance or reporting needs."],
+["WHERE vs HAVING?","WHERE filters rows before grouping; HAVING filters grouped results, often using aggregate conditions."],
+["What does ACID mean?","Atomicity, Consistency, Isolation, and Durability describe key transaction properties. They help ensure operations behave reliably, subject to the database's configured guarantees."],
+["How do you prevent SQL injection in PHP?","Use parameterized prepared statements with PDO or MySQLi. Do not concatenate untrusted values into SQL; validate input and use least-privilege database credentials."],
+["How would you model restaurant orders?","Use customers, menu_items, orders, and order_items. Each order_item references an order and item but should usually store the price and item description at purchase time so historical receipts do not change when the menu changes."],
+["How would you find the second-highest salary in SQL?","One approach is SELECT MAX(salary) FROM employees WHERE salary < (SELECT MAX(salary) FROM employees). Clarify whether the question asks for the second distinct salary or the second row."],
+["How do transactions help in checkout?","A transaction can ensure related database changes commit together or roll back together. External payment calls cannot usually be part of the same database transaction, so order states and reconciliation are also needed."]
+]},
+{title:"Authentication, Security & Payments",desc:"JWT, common web risks, payment lifecycle, and safe retries.",items:[
+["Authentication vs authorization?","Authentication establishes who the user is; authorization decides what that user is allowed to do."],
+["What is JWT?","A JSON Web Token carries claims in a signed token. The server verifies its signature and relevant claims such as expiry. A signed JWT is not automatically encrypted."],
+["Where should tokens be stored?","There is no universal answer. HttpOnly, Secure, appropriately configured SameSite cookies reduce JavaScript access but require CSRF considerations. Browser storage is accessible to injected scripts, so XSS risk matters. Follow the application's threat model."],
+["What is XSS?","Cross-site scripting occurs when untrusted content is executed as script in a user's browser. Use context-appropriate output encoding, safe rendering, careful HTML sanitization, and a suitable Content Security Policy."],
+["What is CSRF?","Cross-site request forgery tricks a browser into sending an authenticated request. Defenses can include SameSite cookies, anti-CSRF tokens, origin checks, and avoiding state changes via GET."],
+["What is password hashing?","Hash passwords with a password-specific algorithm such as Argon2id or bcrypt using appropriate settings and salts. Do not store plaintext passwords or use a fast general-purpose hash alone."],
+["How do you manage secrets?","Keep API keys and database credentials out of source control and frontend bundles. Use environment configuration or a secret manager, restrict access, rotate exposed secrets, and avoid logging them."],
+["Why verify payments on the server?","Browser redirects can be forged or interrupted. The backend should verify payment status through trusted provider APIs or validated webhooks before marking an order paid."],
+["What is a payment webhook?","A provider sends a server-to-server event about a payment or refund. Verify its signature, handle retries idempotently, and update order state safely."],
+["What if a webhook arrives twice?","Persist provider event IDs or use unique constraints and idempotent state transitions so the same event does not create duplicate fulfillment or charges."],
+["What if payment succeeds but the server fails before updating the order?","Use durable order/payment states, provider webhooks, safe retries, and reconciliation. A pending order can be updated after independently verifying the provider's payment status."],
+["How do you avoid charging twice?","Use provider-supported idempotency keys where available, maintain a unique payment/order reference, and make retry behavior explicit. Do not blindly create a new payment on every retry."],
+["How should card details be handled?","Prefer provider-hosted checkout or tokenized payment components so the application does not handle raw card data. Follow the provider's security requirements and applicable PCI obligations."],
+["How do you handle refunds?","Request the refund through the provider, record its identifier and status, process webhook updates idempotently, and keep order and accounting records consistent."]
+]},
+{title:"PHP, WordPress & Shopify",desc:"Resume-specific questions for your PHP, plugin, and Liquid experience.",items:[
+["Why choose PHP/MySQL instead of MERN for a project?","The choice depends on existing hosting, team skills, project requirements, integrations, and maintenance costs. PHP/MySQL can be a practical fit for shared hosting and established PHP websites; MERN can suit JavaScript-heavy applications."],
+["What is the difference between include and require in PHP?","Both include another file. If an included file is missing, include typically raises a warning and continues; require raises an error that stops normal execution."],
+["What are sessions and cookies?","Cookies are stored by the browser and sent with matching requests. Sessions store server-side state, usually linked to a session identifier held by a cookie."],
+["What are prepared statements?","They separate SQL structure from parameter values, reducing SQL injection risk when used correctly."],
+["What are WordPress actions and filters?","Actions let code run at particular points; filters let code modify and return a value. Both are part of WordPress's hook system."],
+["What is a WordPress nonce?","A nonce helps protect against certain CSRF-style request attacks. It is not authentication or authorization; capability checks are still required."],
+["How do you secure a WordPress plugin?","Check user capabilities, verify nonces where appropriate, sanitize input, validate data, escape output for its context, use prepared SQL, and protect REST endpoints with permission callbacks."],
+["What is a custom post type?","It defines a content type beyond standard posts and pages, useful for structured content such as locations or events. Register it with suitable labels, capabilities, and visibility settings."],
+["What is Shopify Liquid?","Liquid is Shopify's template language for rendering store data and theme markup. It includes objects, tags, and filters."],
+["What are Liquid objects, tags, and filters?","Objects output data, tags control logic or template flow, and filters transform values before output."],
+["What are Shopify sections and blocks?","Sections are reusable theme components that merchants can often configure in the theme editor. Blocks are configurable subcomponents inside sections, depending on the section's schema."],
+["What are Shopify metafields?","Metafields store additional structured data on supported Shopify resources, allowing a theme or app to expose custom attributes beyond standard fields."],
+["How would you improve a Shopify storefront?","Measure first, optimize image size and formats, reduce unnecessary scripts and app overhead, limit render-blocking assets, lazy-load below-the-fold media, and test the result on representative devices."],
+["How do you debug a WordPress plugin conflict?","Reproduce the issue, check logs and browser/network errors, test in staging, disable plugins or switch themes systematically, inspect hooks and dependency versions, then verify the fix without exposing production data."]
+]},
+{title:"Project Deep-Dives: Kristoper",desc:"Use these to explain the import-export platform and AI chatbot from your resume.",items:[
+["Walk me through the Kristoper architecture.","Template answer: Explain the frontend, backend/API, database, authentication, CMS, external integrations, and deployment. Describe the actual request flow for one important feature, and identify which parts you personally built.","template"],
+["Why did you choose MERN and TypeScript?","A defensible answer might mention shared JavaScript skills across frontend and backend, React's component model, MongoDB's document model where it fits the data, and TypeScript's static checks. Tie each reason to the actual project constraints.","template"],
+["How did the Gemini chatbot work?","Explain how the frontend sent a question to your backend, how the backend called the Gemini API, how responses and failures were handled, and what data the model was allowed to access. Only describe the flow you implemented.","template"],
+["How would you prevent hallucinated shipment status?","The model should not invent authoritative tracking facts. The backend should fetch the real shipment/order data, enforce that the user is authorized to see it, and supply the relevant result to the model. State clearly what safeguards your implementation actually had.","template"],
+["How did you implement item tracking?","Describe the source of tracking data, its schema, update mechanism, authorization rules, and how the UI shows current status. If tracking was manual or mocked, be transparent about that limitation.","template"],
+["How did you integrate payment gateways?","Explain the provider, checkout/session creation, server-side verification, order states, failure handling, and webhook/idempotency approach that you actually used. Do not claim a webhook or safeguard you did not implement.","template"],
+["What was the hardest technical issue in Kristoper?","Use STAR: situation, task, action, result. Pick a real issue, explain the diagnosis and trade-offs, and include measurable impact only if you have evidence.","template"],
+["What would you improve if rebuilding it?","Choose a real improvement such as stronger automated tests, observability, clearer service boundaries, more robust retries, or improved accessibility. Explain the trade-off and why it matters."]
+]},
+{title:"Project Deep-Dives: Restaurant Ordering",desc:"PHP/MySQL, custom CMS, menus, checkout, bookings, and multi-location considerations.",items:[
+["Explain the restaurant ordering system end to end.","Walk through menu browsing, item selection, cart, checkout, payment verification, order confirmation, and admin order/menu management. Describe the actual implementation and data flow.","template"],
+["How did you design the menu database?","A typical design separates menu categories and items, with fields for names, descriptions, prices, availability, and location where needed. Explain your real schema and how relationships were enforced.","template"],
+["How did the custom CMS work?","Explain admin authentication and permissions, CRUD operations, input validation, image handling, database writes, and how menu changes appear on the public site.","template"],
+["How do you preserve historical order prices?","Store the purchased unit price and a useful item-name snapshot in each order item. Otherwise, changing the menu price could alter old order totals or receipts."],
+["How would you support multiple locations?","Model locations explicitly and associate menus, availability, operating hours, taxes, and orders with a location where requirements demand it. Confirm the selected location server-side throughout checkout."],
+["How would the AI booking chatbot work?","Describe the intent flow, availability source, required booking fields, confirmation step, and backend validation. The chatbot should not claim a booking is confirmed until the booking system confirms it.","template"],
+["What if payment succeeds but order creation fails?","Use durable order/payment records, provider verification, webhook-driven recovery, idempotent processing, and reconciliation. Explain which of these mechanisms your actual system used.","template"],
+["How would you test checkout?","Test successful, declined, cancelled, delayed, duplicated, and interrupted payments; invalid cart prices; unavailable items; webhook retries; and order confirmation. Use provider test mode rather than real payments."]
+]},
+{title:"Performance, Git & Deployment",desc:"Your resume includes FCP/storefront improvements and multiple concurrent projects.",items:[
+["What are FCP, LCP, and TTFB?","FCP measures when the first content is rendered; LCP measures when the largest relevant content element is rendered; TTFB measures the time until the first byte of a response. They diagnose different parts of perceived performance."],
+["How does code splitting improve performance?","It can reduce the JavaScript loaded for the initial route by splitting bundles and loading some chunks on demand. Measure the trade-off because extra chunks can add requests and delays."],
+["How would you investigate a slow page?","Use browser performance tools and real-user or lab metrics, inspect network waterfalls, bundle sizes, images, render-blocking resources, server timing, and third-party scripts. Change one bottleneck at a time and measure again."],
+["How did you measure a 40% FCP reduction?","Explain the tool, baseline and after values, test conditions, sample size if available, and changes made. If you cannot verify the exact figure, clarify how it was estimated rather than inventing evidence.","template"],
+["How did you achieve a 35% storefront speed improvement?","Describe the actual before/after metric, test conditions, and specific changes. Be clear whether it was page load time, a performance score, or another metric; these are not interchangeable.","template"],
+["How do you handle Git merge conflicts?","Fetch and inspect the latest changes, understand both edits, resolve conflicts deliberately, run tests and review the diff, then commit and communicate any behavior changes."],
+["What is CI/CD?","Continuous integration automatically builds and tests changes. Continuous delivery/deployment automates the path to release, with deployment automation depending on the team's approval and risk model."],
+["How would you roll back a failed deployment?","Use a known-good release or commit, restore service safely, verify health and data integrity, communicate impact, and investigate the cause. Database migrations need a compatible rollback or forward-fix strategy."],
+["How do you manage many concurrent projects?","Explain your real prioritization method: agreed scope, task tracking, milestones, risk/dependency visibility, regular client updates, and realistic estimates. Support claims such as on-time delivery with concrete examples.","template"],
+["How do you keep secrets out of Git?","Use environment variables or a secret manager, keep local secret files out of version control, restrict permissions, and rotate any key that was accidentally committed."]
+]},
+{title:"Coding & SQL Practice",desc:"Practice explaining the approach, complexity, edge cases, and tests.",items:[
+["Find the largest and second-largest number in an array.","Track the largest and second-largest distinct values in one pass, updating them as each value is examined. Clarify behavior for duplicates, empty arrays, and arrays with fewer than two distinct values."],
+["Count character frequency in a string.","Iterate through the string and increment a Map/object count for each character. Clarify whether spaces, case, and Unicode grapheme clusters should be treated specially."],
+["Flatten a nested array.","For arbitrary nesting, recursion or flat(Infinity) can work in JavaScript. Discuss whether the interviewer permits built-ins and how you would handle deeply nested input."],
+["Sort objects by a property.","Use array.sort with a comparator based on the property. Handle missing values and strings/numbers explicitly; sort mutates the array, so copy first if immutability matters."],
+["Implement debounce.","Return a wrapper that clears the previous timer and schedules the function after the wait interval. Preserve arguments and `this` if the use case requires it."],
+["Print numbers 1 to 10 one second apart.","Use a timer or an async loop that awaits a Promise-based delay. Avoid using a synchronous busy-wait, which blocks the event loop."],
+["How do you explain time complexity?","Describe how runtime grows with input size: O(1), O(log n), O(n), O(n log n), or O(n²). State assumptions and distinguish time from space complexity."],
+["How do you test a function?","Cover normal cases, edge cases, invalid inputs, and relevant boundaries. Keep tests deterministic and make assertions about behavior rather than implementation details."]
+]},
+{title:"Behavioral & HR",desc:"Short answers should sound natural and be supported by real examples.",items:[
+["Tell me about yourself.","Sample: “I’m a full-stack developer with over two years of experience building web applications using React, TypeScript, Node.js, and PHP. My work has included e-commerce platforms, custom CMS solutions, Shopify themes, WordPress plugins, and API integrations. I enjoy solving practical business problems through software and want to contribute to reliable production systems.” Adapt this to the role and your actual contribution."],
+["Why are you looking for a new opportunity?","Focus on what you want to grow toward—such as deeper engineering ownership, stronger collaboration, or more challenging projects. Stay factual and avoid criticizing former colleagues or clients."],
+["What is your strongest technical skill?","Choose a skill you can demonstrate under follow-up questions. Give a concrete example, your contribution, and the result; avoid claiming expert-level ability across every listed technology."],
+["What is one area you are improving?","Choose a genuine, manageable development area and explain the action you are taking—for example, deeper automated testing, system design, or performance profiling. Avoid a fake weakness."],
+["Tell me about a difficult bug you fixed.","Use STAR: situation, task, action, result. Explain how you reproduced it, found the root cause, evaluated options, verified the fix, and prevented recurrence if applicable."],
+["How do you handle a tight deadline?","Clarify scope and must-haves, break work into small deliverables, surface risks early, communicate trade-offs, and protect critical testing. Do not promise a deadline you know is unrealistic."],
+["How do you handle disagreement with another developer?","Discuss evidence and requirements, compare trade-offs, use code review or a small experiment where useful, and align on the team's decision rather than making it personal."],
+["Why should we hire you?","Connect your relevant stack and practical delivery experience to the role's needs. Support your value with one or two real examples instead of broad claims."],
+["What are your salary expectations?","Give a researched range appropriate to the role, location, and total compensation when you have enough information. You can ask about the budgeted range first and consider responsibilities, benefits, and growth as well."],
+["Do you have questions for us?","Ask what success looks like in the first 90 days, how the team reviews and deploys code, what the current technical challenges are, and how responsibilities are divided."]
+]}
+];
+const nav=document.getElementById('nav'), content=document.getElementById('content');
+let total=0;
+sections.forEach((s,si)=>{total+=s.items.length;const b=document.createElement('button');b.textContent=s.title;b.onclick=()=>{document.getElementById('sec-'+si).scrollIntoView({behavior:'smooth'});document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active')};nav.appendChild(b);
+const section=document.createElement('section');section.className='section';section.id='sec-'+si;section.innerHTML=`<h2>${s.title}</h2><p>${s.desc}</p><div class="cards"></div>`;const cards=section.querySelector('.cards');
+s.items.forEach((it,ii)=>{const card=document.createElement('article');card.className='card';card.dataset.search=(it[0]+' '+it[1]+' '+s.title).toLowerCase();const tag=it[2]==='template'?'Personalize this answer':s.title;card.innerHTML=`<div class="qrow" role="button" tabindex="0" aria-expanded="false"><input class="check" type="checkbox" aria-label="Mark reviewed"><span class="qtext">${it[0]}</span><span class="tag">${tag}</span><span class="chevron">⌄</span></div><div class="answer"><p>${it[1]}</p>${it[2]==='template'?'<div class="template">Resume-specific prompt: use your actual project details. This sample is guidance, not a claim about what you implemented.</div>':''}</div>`;
+const row=card.querySelector('.qrow');const toggle=(e)=>{if(e.target.classList.contains('check'))return;card.classList.toggle('open');row.setAttribute('aria-expanded',card.classList.contains('open'))};row.addEventListener('click',toggle);row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(e)}});card.querySelector('.check').addEventListener('change',updateProgress);cards.appendChild(card)});content.appendChild(section)});
+document.getElementById('totalStat').textContent=total+' questions · '+sections.length+' topics';
+function updateProgress(){const checks=[...document.querySelectorAll('.check')],done=checks.filter(c=>c.checked).length;document.getElementById('progressBar').style.width=(done/checks.length*100)+'%';document.getElementById('progressText').textContent=`${done} of ${checks.length} reviewed`}
+document.getElementById('search').addEventListener('input',function(){const q=this.value.toLowerCase().trim();let shown=0;document.querySelectorAll('.card').forEach(c=>{const match=c.dataset.search.includes(q);c.style.display=match?'':'none';if(match)shown++});document.querySelectorAll('.section').forEach(s=>{s.style.display=[...s.querySelectorAll('.card')].some(c=>c.style.display!=='none')?'':'none'});document.getElementById('empty').style.display=shown?'none':'block'});
+document.getElementById('expand').onclick=()=>document.querySelectorAll('.card').forEach(c=>{if(c.style.display!=='none'){c.classList.add('open');c.querySelector('.qrow').setAttribute('aria-expanded','true')}});
+document.getElementById('collapse').onclick=()=>document.querySelectorAll('.card').forEach(c=>{c.classList.remove('open');c.querySelector('.qrow').setAttribute('aria-expanded','false')});
+document.getElementById('resetChecks').onclick=()=>{document.querySelectorAll('.check').forEach(c=>c.checked=false);updateProgress()};
+document.getElementById('theme').onclick=()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';document.getElementById('theme').textContent=dark?'Light mode':'Dark mode'};
+updateProgress();
+</script></body></html>

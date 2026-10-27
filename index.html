@@ -2,119 +2,99 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SDE-1 Android Interview Master Portal · Bhavuk Rajput</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>SDE-1 Android Interview Prep · Bhavuk Rajput</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================================
-   APPLE DESIGN SYSTEM VARIABLES & FOUNDATIONS (WWDC HIG + EMIL DESIGN ENG)
+   NATIVE iOS 17/18 DESIGN SYSTEM (APPLE HIG STANDARD)
    ========================================================================== */
 :root {
-  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", -apple-system-subheading, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+  --ios-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", system-ui, sans-serif;
+  --ios-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
 
-  /* Apple Light Palette */
-  --bg-primary: #f5f5f7;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #fbfbfd;
-  --panel: #ffffff;
-  --panel-glass: rgba(255, 255, 255, 0.76);
-  --panel-glass-border: rgba(0, 0, 0, 0.08);
+  /* iOS System Colors (Light) */
+  --ios-bg: #f2f2f7;
+  --ios-grouped-bg: #f2f2f7;
+  --ios-cell-bg: #ffffff;
+  --ios-cell-bg-active: #e5e5ea;
+  --ios-bar-bg: rgba(249, 249, 249, 0.82);
+  --ios-bar-border: rgba(60, 60, 67, 0.22);
+  --ios-separator: rgba(60, 60, 67, 0.18);
   
-  --text-primary: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --text-tertiary: #86868b;
-  --text-quaternary: #aeaeb2;
+  --ios-label: #000000;
+  --ios-secondary-label: #8e8e93;
+  --ios-tertiary-label: #c7c7cc;
+  --ios-quaternary-label: #d1d1d6;
 
-  --separator: rgba(0, 0, 0, 0.08);
-  --separator-strong: rgba(0, 0, 0, 0.14);
+  --ios-blue: #007aff;
+  --ios-blue-tint: rgba(0, 122, 255, 0.12);
+  --ios-green: #34c759;
+  --ios-green-tint: rgba(52, 199, 89, 0.14);
+  --ios-indigo: #5856d6;
+  --ios-indigo-tint: rgba(88, 86, 214, 0.12);
+  --ios-orange: #ff9500;
+  --ios-orange-tint: rgba(255, 149, 0, 0.12);
+  --ios-red: #ff3b30;
+  --ios-red-tint: rgba(255, 59, 48, 0.12);
+  --ios-purple: #af52de;
+  --ios-purple-tint: rgba(175, 82, 222, 0.12);
+  --ios-teal: #30b0c7;
 
-  /* Apple Accent Colors */
-  --apple-blue: #0071e3;
-  --apple-blue-hover: #0077ed;
-  --apple-blue-tint: rgba(0, 113, 227, 0.08);
-  --apple-green: #34c759;
-  --apple-green-tint: rgba(52, 199, 89, 0.12);
-  --apple-indigo: #5856d6;
-  --apple-indigo-tint: rgba(88, 86, 214, 0.1);
-  --apple-orange: #ff9500;
-  --apple-orange-tint: rgba(255, 149, 0, 0.1);
-  --apple-red: #ff3b30;
-  --apple-red-tint: rgba(255, 59, 48, 0.1);
-  --apple-purple: #af52de;
-  --apple-purple-tint: rgba(175, 82, 222, 0.1);
+  --ios-search-bg: rgba(118, 118, 128, 0.12);
+  --ios-segmented-bg: rgba(118, 118, 128, 0.12);
+  --ios-segmented-pill: #ffffff;
+  --ios-segmented-shadow: 0 3px 8px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.06);
 
-  /* Segmented control background */
-  --segmented-bg: rgba(118, 118, 128, 0.12);
-  --segmented-pill: #ffffff;
-  --segmented-pill-shadow: 0 2px 8px rgba(0, 0, 0, 0.12), 0 0.5px 1px rgba(0, 0, 0, 0.08);
+  --ios-shadow-card: 0 1px 3px rgba(0,0,0,0.04);
+  --ios-radius-cell: 14px;
+  --ios-radius-group: 16px;
 
-  /* Shadows (Apple diffuse, multi-layered) */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
-  --shadow-floating: 0 20px 48px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05);
-
-  /* Apple Physics Easings & Springs */
-  --ease-apple-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  --duration-fast: 140ms;
-  --duration-base: 240ms;
-  --duration-smooth: 360ms;
-
-  --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 18px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
+  /* Fluid iOS Spring Curves */
+  --ios-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ios-touch-spring: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 [data-theme="dark"] {
-  --bg-primary: #000000;
-  --bg-secondary: #161617;
-  --bg-tertiary: #1c1c1e;
-  --panel: #1c1c1e;
-  --panel-glass: rgba(28, 28, 30, 0.78);
-  --panel-glass-border: rgba(255, 255, 255, 0.12);
+  --ios-bg: #000000;
+  --ios-grouped-bg: #000000;
+  --ios-cell-bg: #1c1c1e;
+  --ios-cell-bg-active: #2c2c2e;
+  --ios-bar-bg: rgba(28, 28, 30, 0.82);
+  --ios-bar-border: rgba(84, 84, 88, 0.36);
+  --ios-separator: rgba(84, 84, 88, 0.3);
 
-  --text-primary: #f5f5f7;
-  --text-secondary: #a1a1a6;
-  --text-tertiary: #86868b;
-  --text-quaternary: #48484a;
+  --ios-label: #ffffff;
+  --ios-secondary-label: #8e8e93;
+  --ios-tertiary-label: #48484a;
+  --ios-quaternary-label: #3a3a3c;
 
-  --separator: rgba(255, 255, 255, 0.1);
-  --separator-strong: rgba(255, 255, 255, 0.18);
+  --ios-blue: #0a84ff;
+  --ios-blue-tint: rgba(10, 132, 255, 0.2);
+  --ios-green: #30d158;
+  --ios-green-tint: rgba(48, 209, 88, 0.2);
+  --ios-indigo: #5e5ce6;
+  --ios-indigo-tint: rgba(94, 92, 230, 0.2);
+  --ios-orange: #ff9f0a;
+  --ios-orange-tint: rgba(255, 159, 10, 0.2);
+  --ios-red: #ff453a;
+  --ios-red-tint: rgba(255, 69, 58, 0.2);
+  --ios-purple: #bf5af2;
+  --ios-purple-tint: rgba(191, 90, 242, 0.2);
+  --ios-teal: #40c8e0;
 
-  --apple-blue: #2997ff;
-  --apple-blue-hover: #47a6ff;
-  --apple-blue-tint: rgba(41, 151, 255, 0.15);
-  --apple-green: #30d158;
-  --apple-green-tint: rgba(48, 209, 88, 0.15);
-  --apple-indigo: #5e5ce6;
-  --apple-indigo-tint: rgba(94, 92, 230, 0.15);
-  --apple-orange: #ff9f0a;
-  --apple-orange-tint: rgba(255, 159, 10, 0.15);
-  --apple-red: #ff453a;
-  --apple-red-tint: rgba(255, 69, 58, 0.15);
-  --apple-purple: #bf5af2;
-  --apple-purple-tint: rgba(191, 90, 242, 0.15);
-
-  --segmented-bg: rgba(118, 118, 128, 0.24);
-  --segmented-pill: #636366;
-  --segmented-pill-shadow: 0 3px 8px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
-
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.6);
-  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.65);
-  --shadow-floating: 0 20px 48px rgba(0, 0, 0, 0.75);
+  --ios-search-bg: rgba(118, 118, 128, 0.24);
+  --ios-segmented-bg: rgba(118, 118, 128, 0.24);
+  --ios-segmented-pill: #636366;
+  --ios-segmented-shadow: 0 3px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.2);
 }
 
 /* ==========================================================================
-   RESET & GLOBAL TYPOGRAPHY
+   RESET & MOBILE-FIRST LAYOUT
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -122,997 +102,793 @@
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  font-family: var(--font-system);
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-  overflow-x: hidden;
-  transition: background var(--duration-smooth) var(--ease-apple-out), color var(--duration-smooth) var(--ease-apple-out);
+  font-family: var(--ios-font);
+  background: var(--ios-bg);
+  color: var(--ios-label);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  padding-bottom: calc(76px + env(safe-area-inset-bottom, 20px));
+  min-height: 100vh;
 }
 
-/* Apple Buttons & Interactive Direct Touch Feel */
-button, input {
-  font-family: inherit;
-  border: none;
-  background: none;
-  outline: none;
-}
-
-button {
+/* iOS Touch Response */
+button, .ios-cell, .tab-item {
   cursor: pointer;
   user-select: none;
 }
 
-button:active {
-  transform: scale(0.975);
-  transition: transform var(--duration-fast) var(--ease-apple-out);
+button:active, .tab-item:active {
+  transform: scale(0.96);
+  transition: transform 90ms var(--ios-touch-spring);
 }
 
 /* ==========================================================================
-   APPLE TRANSLUCENT NAVIGATION BAR
+   NATIVE iOS STATUS BAR & COMPACT TOP NAVIGATION BAR
    ========================================================================== */
-.nav-header {
+.ios-nav-bar {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: var(--panel-glass);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border-bottom: 1px solid var(--panel-glass-border);
-  transition: background var(--duration-base) var(--ease-apple-out);
+  z-index: 1000;
+  background: var(--ios-bar-bg);
+  backdrop-filter: blur(25px) saturate(190%);
+  -webkit-backdrop-filter: blur(25px) saturate(190%);
+  border-bottom: 0.5px solid var(--ios-bar-border);
+  transition: all 0.2s ease;
 }
 
-.nav-container {
-  max-width: 1280px;
+.ios-nav-content {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 12px 24px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
 }
 
-.nav-brand {
+.nav-left-profile {
   display: flex;
   align-items: center;
   gap: 10px;
-  text-decoration: none;
-  color: var(--text-primary);
 }
 
-.apple-logo-badge {
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
-  background: linear-gradient(135deg, #1d1d1f 0%, #434346 100%);
+.ios-avatar-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--ios-blue) 0%, var(--ios-indigo) 100%);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 122, 255, 0.3);
+}
+
+.nav-title-compact {
   font-size: 16px;
-  font-weight: 700;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
-[data-theme="dark"] .apple-logo-badge {
-  background: linear-gradient(135deg, #2c2c2e 0%, #3a3a3c 100%);
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.brand-text h1 {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-}
-
-.brand-text span {
+.nav-subtitle-compact {
   font-size: 11.5px;
-  color: var(--text-tertiary);
+  color: var(--ios-secondary-label);
   font-weight: 500;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-.icon-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  background: var(--segmented-bg);
-  transition: all var(--duration-fast) var(--ease-apple-out);
-  font-size: 15px;
-}
-
-.icon-btn:hover {
-  color: var(--text-primary);
-  background: rgba(120, 120, 128, 0.2);
-}
-
-.btn-primary {
-  padding: 7px 15px;
-  background: var(--apple-blue);
-  color: white;
-  border-radius: var(--radius-full);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  transition: all var(--duration-fast) var(--ease-apple-out);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.btn-primary:hover {
-  background: var(--apple-blue-hover);
-  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
-}
-
-/* ==========================================================================
-   HERO DISPLAY SECTION (APPLE KEYNOTE STYLE)
-   ========================================================================== */
-.hero-section {
-  padding: 56px 24px 32px;
-  max-width: 1280px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.eyebrow-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 14px;
-  border-radius: var(--radius-full);
-  background: var(--apple-blue-tint);
-  color: var(--apple-blue);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  border: 1px solid rgba(0, 113, 227, 0.15);
-}
-
-.hero-title {
-  font-size: clamp(34px, 5.5vw, 56px);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-  color: var(--text-primary);
-  margin-bottom: 16px;
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero-subtitle {
-  font-size: clamp(16px, 2.2vw, 19px);
-  color: var(--text-secondary);
-  max-width: 780px;
-  margin: 0 auto 32px;
-  line-height: 1.5;
-  font-weight: 400;
-}
-
-/* Liquid Progress Bar Widget */
-.progress-widget {
-  max-width: 680px;
-  margin: 0 auto 28px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--separator);
-  border-radius: var(--radius-lg);
-  padding: 16px 22px;
-  box-shadow: var(--shadow-card);
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.progress-track {
-  flex: 1;
-  height: 8px;
-  background: var(--segmented-bg);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-  position: relative;
-}
-
-.progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--apple-blue) 0%, var(--apple-green) 100%);
-  border-radius: var(--radius-full);
-  transition: width var(--duration-smooth) var(--ease-apple-out);
-}
-
-.progress-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  white-space: nowrap;
-}
-
-.progress-badge {
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-  background: var(--apple-green-tint);
-  color: var(--apple-green);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/* ==========================================================================
-   BENTO FEATURE GRID (COMPANY DOSSIERS & STRATEGY)
-   ========================================================================== */
-.bento-grid {
-  max-width: 1280px;
-  margin: 0 auto 40px;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.bento-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--separator);
-  border-radius: var(--radius-xl);
-  padding: 26px;
-  box-shadow: var(--shadow-card);
-  transition: all var(--duration-base) var(--ease-apple-out);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-}
-
-.bento-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--separator-strong);
-}
-
-.bento-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  opacity: 0.9;
-}
-
-.card-enil::before { background: linear-gradient(90deg, #ff3b30, #ff9500); }
-.card-sew::before { background: linear-gradient(90deg, #0071e3, #34c759); }
-.card-rubric::before { background: linear-gradient(90deg, #af52de, #5856d6); }
-
-.bento-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 3px 9px;
-  border-radius: var(--radius-xs);
-  width: fit-content;
-  margin-bottom: 14px;
-}
-
-.tag-enil { background: var(--apple-red-tint); color: var(--apple-red); }
-.tag-sew { background: var(--apple-blue-tint); color: var(--apple-blue); }
-.tag-rubric { background: var(--apple-purple-tint); color: var(--apple-purple); }
-
-.bento-card h3 {
-  font-size: 19px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  margin-bottom: 6px;
-}
-
-.bento-card .location-sub {
-  font-size: 12.5px;
-  color: var(--text-tertiary);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.bento-card ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 13.5px;
-  color: var(--text-secondary);
-}
-
-.bento-card li {
-  position: relative;
-  padding-left: 20px;
-  line-height: 1.45;
-}
-
-.bento-card li::before {
-  content: "•";
-  position: absolute;
-  left: 6px;
-  color: var(--apple-blue);
-  font-weight: 800;
-}
-
-.card-enil li::before { color: var(--apple-red); }
-.card-rubric li::before { color: var(--apple-purple); }
-
-.bento-card strong {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-/* ==========================================================================
-   STICKY COMMAND BAR & APPLE SEGMENTED FILTER
-   ========================================================================== */
-.controls-wrapper {
-  position: sticky;
-  top: 57px;
-  z-index: 90;
-  background: var(--panel-glass);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border-bottom: 1px solid var(--separator);
-  padding: 14px 24px;
-  transition: all var(--duration-base) var(--ease-apple-out);
-}
-
-.controls-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.controls-row-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-/* Apple Search Input with Command-K indicator */
-.search-box {
-  position: relative;
-  flex: 1;
-  min-width: 280px;
-  max-width: 520px;
-}
-
-.search-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-tertiary);
-  font-size: 14px;
-  pointer-events: none;
-}
-
-.search-input {
-  width: 100%;
-  padding: 10px 42px 10px 38px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--separator);
-  border-radius: var(--radius-sm);
-  color: var(--text-primary);
-  font-size: 13.5px;
-  transition: all var(--duration-fast) var(--ease-apple-out);
-  box-shadow: var(--shadow-sm);
-}
-
-.search-input:focus {
-  border-color: var(--apple-blue);
-  box-shadow: 0 0 0 3px var(--apple-blue-tint);
-}
-
-.search-kbd {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--segmented-bg);
-  color: var(--text-tertiary);
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 4px;
-  pointer-events: none;
-}
-
-.action-buttons-group {
-  display: flex;
-  align-items: center;
   gap: 8px;
 }
 
-.segmented-btn {
-  padding: 7px 13px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-secondary);
-  border: 1px solid var(--separator);
-  color: var(--text-secondary);
-  font-size: 12.5px;
+.ios-nav-btn {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background: var(--ios-search-bg);
+  color: var(--ios-blue);
+  font-size: 13px;
   font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all var(--duration-fast) var(--ease-apple-out);
-}
-
-.segmented-btn:hover {
-  color: var(--text-primary);
-  background: var(--panel);
-  border-color: var(--separator-strong);
-}
-
-/* Apple Segmented Bar for Categories */
-.segmented-track {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 3px;
-  background: var(--segmented-bg);
-  border-radius: var(--radius-md);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.segmented-track::-webkit-scrollbar { display: none; }
-
-.seg-item {
-  padding: 7px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  white-space: nowrap;
-  transition: all var(--duration-fast) var(--ease-apple-out);
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  gap: 5px;
+  border: none;
 }
 
-.seg-item:hover {
-  color: var(--text-primary);
-}
-
-.seg-item.active {
-  background: var(--segmented-pill);
-  color: var(--text-primary);
-  box-shadow: var(--segmented-pill-shadow);
-}
-
-.seg-count {
-  font-size: 10.5px;
-  opacity: 0.7;
-}
-
-/* ==========================================================================
-   MAIN CONTENT & QUESTION CARDS
-   ========================================================================== */
-.main-wrapper {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 32px 24px 100px;
-}
-
-.section-group {
-  margin-bottom: 40px;
-}
-
-.section-title-wrap {
-  margin-bottom: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-bottom: 1px solid var(--separator);
-  padding-bottom: 10px;
-}
-
-.section-title {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  color: var(--text-primary);
-}
-
-.section-desc {
-  font-size: 13.5px;
-  color: var(--text-secondary);
-  margin-top: 3px;
-}
-
-.cards-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Apple Card Item */
-.q-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--separator);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  transition: border-color var(--duration-fast) var(--ease-apple-out), box-shadow var(--duration-fast) var(--ease-apple-out), transform var(--duration-fast) var(--ease-apple-out);
-  overflow: hidden;
-}
-
-.q-card:hover {
-  border-color: var(--separator-strong);
-  box-shadow: var(--shadow-card-hover);
-}
-
-.q-card.mastered {
-  border-color: rgba(52, 199, 89, 0.4);
-  background: rgba(52, 199, 89, 0.02);
-}
-
-[data-theme="dark"] .q-card.mastered {
-  border-color: rgba(48, 209, 88, 0.3);
-  background: rgba(48, 209, 88, 0.04);
-}
-
-/* Card Header */
-.card-header-tap {
-  padding: 18px 22px;
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  cursor: pointer;
-  user-select: none;
-}
-
-/* Apple Circular Checkbox */
-.apple-checkbox {
-  width: 22px;
-  height: 22px;
-  border-radius: var(--radius-full);
-  border: 2px solid var(--text-quaternary);
-  background: transparent;
+.ios-theme-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 15px;
+  background: var(--ios-search-bg);
+  border: none;
+}
+
+/* ==========================================================================
+   iOS LARGE TITLE & HEADER SECTION
+   ========================================================================== */
+.ios-large-header {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 16px 12px;
+}
+
+.ios-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ios-blue);
+  margin-bottom: 4px;
+}
+
+.ios-large-title {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  color: var(--ios-label);
+  margin-bottom: 6px;
+}
+
+.ios-header-desc {
+  font-size: 14.5px;
+  color: var(--ios-secondary-label);
+  line-height: 1.45;
+  margin-bottom: 16px;
+}
+
+/* ==========================================================================
+   NATIVE iOS SEARCH BAR (UISearchController Look)
+   ========================================================================== */
+.ios-search-container {
+  max-width: 900px;
+  margin: 0 auto 16px;
+  padding: 0 16px;
+}
+
+.ios-search-bar {
+  display: flex;
+  align-items: center;
+  background: var(--ios-search-bg);
+  border-radius: 12px;
+  padding: 8px 12px;
+  gap: 8px;
+  transition: background 0.15s ease;
+}
+
+.ios-search-bar:focus-within {
+  background: var(--ios-cell-bg);
+  box-shadow: 0 0 0 1px var(--ios-blue), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.search-icon-svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--ios-secondary-label);
+  flex-shrink: 0;
+}
+
+.ios-search-input {
+  flex: 1;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--ios-label);
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.ios-search-input::placeholder {
+  color: var(--ios-secondary-label);
+}
+
+.search-clear-btn {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ios-secondary-label);
+  color: var(--ios-cell-bg);
+  font-size: 11px;
+  font-weight: 800;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  border: none;
+}
+
+/* ==========================================================================
+   iOS NATIVE PROGRESS CAPSULE & ACTIVITY STATS
+   ========================================================================== */
+.ios-stats-card {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  padding: 0 16px;
+}
+
+.activity-capsule {
+  background: var(--ios-cell-bg);
+  border-radius: var(--ios-radius-group);
+  padding: 14px 18px;
+  box-shadow: var(--ios-shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.activity-progress-col {
+  flex: 1;
+}
+
+.activity-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.activity-title { color: var(--ios-label); }
+.activity-count { color: var(--ios-secondary-label); }
+
+.activity-track {
+  height: 8px;
+  background: var(--ios-search-bg);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.activity-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--ios-blue) 0%, var(--ios-green) 100%);
+  border-radius: 999px;
+  transition: width 0.35s var(--ios-spring);
+}
+
+.activity-reset-btn {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ios-blue);
+  background: var(--ios-blue-tint);
+  border: none;
+  border-radius: 12px;
+  padding: 6px 12px;
+}
+
+/* ==========================================================================
+   NATIVE iOS INSET GROUPED SECTIONS (UITableViewStyleInsetGrouped)
+   ========================================================================== */
+.ios-viewport {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.ios-section-header {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ios-secondary-label);
+  text-transform: uppercase;
+  letter-spacing: -0.08px;
+  padding: 0 14px 7px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ios-grouped-container {
+  background: var(--ios-cell-bg);
+  border-radius: var(--ios-radius-group);
+  box-shadow: var(--ios-shadow-card);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+/* COMPANY INTEL BENCH CELLS */
+.company-card-cell {
+  padding: 16px;
+  border-bottom: 0.5px solid var(--ios-separator);
+}
+.company-card-cell:last-child {
+  border-bottom: none;
+}
+
+.comp-header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.comp-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.badge-enil { background: var(--ios-red-tint); color: var(--ios-red); }
+.badge-sew { background: var(--ios-blue-tint); color: var(--ios-blue); }
+
+.comp-name {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--ios-label);
+  letter-spacing: -0.02em;
+}
+
+.comp-location {
+  font-size: 12.5px;
+  color: var(--ios-secondary-label);
+  margin-bottom: 10px;
+}
+
+.comp-bullets {
+  padding-left: 18px;
+  font-size: 13.5px;
+  color: var(--ios-secondary-label);
+  line-height: 1.5;
+}
+
+.comp-bullets li { margin-bottom: 4px; }
+.comp-bullets strong { color: var(--ios-label); }
+
+/* QUESTION ITEM CELL */
+.ios-question-cell {
+  border-bottom: 0.5px solid var(--ios-separator);
+  transition: background 0.15s ease;
+}
+
+.ios-question-cell:last-child {
+  border-bottom: none;
+}
+
+.ios-cell-main {
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+}
+
+.ios-cell-main:active {
+  background: var(--ios-cell-bg-active);
+}
+
+/* Circular SF Symbol Checkmark */
+.sf-checkmark {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.8px solid var(--ios-quaternary-label);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
   flex-shrink: 0;
   margin-top: 1px;
-  transition: all var(--duration-fast) var(--ease-spring);
-  color: white;
-  font-size: 12px;
-  font-weight: 800;
+  transition: all 0.18s var(--ios-touch-spring);
 }
 
-.apple-checkbox:hover {
-  border-color: var(--apple-green);
-  transform: scale(1.08);
+.sf-checkmark:active {
+  transform: scale(1.15);
 }
 
-.q-card.mastered .apple-checkbox {
-  background: var(--apple-green);
-  border-color: var(--apple-green);
-  transform: scale(1.05);
+.ios-question-cell.mastered .sf-checkmark {
+  background: var(--ios-green);
+  border-color: var(--ios-green);
 }
 
-.card-title-content {
+.ios-cell-content {
   flex: 1;
   min-width: 0;
 }
 
-.card-question {
+.ios-cell-title {
   font-size: 15.5px;
-  font-weight: 700;
+  font-weight: 600;
+  color: var(--ios-label);
+  line-height: 1.35;
   letter-spacing: -0.015em;
-  color: var(--text-primary);
-  line-height: 1.4;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-.pill-tags-list {
+.ios-tag-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
 }
 
-.pill-tag {
-  font-size: 11px;
+.ios-tag {
+  font-size: 10.5px;
   font-weight: 600;
-  padding: 2px 8px;
-  border-radius: var(--radius-xs);
-  background: var(--segmented-bg);
-  color: var(--text-secondary);
-  letter-spacing: 0.02em;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--ios-search-bg);
+  color: var(--ios-secondary-label);
 }
 
-.pill-tag.star { background: var(--apple-orange-tint); color: var(--apple-orange); }
-.pill-tag.enil { background: var(--apple-red-tint); color: var(--apple-red); }
-.pill-tag.sew { background: var(--apple-blue-tint); color: var(--apple-blue); }
+.ios-tag.star { background: var(--ios-orange-tint); color: var(--ios-orange); }
+.ios-tag.enil { background: var(--ios-red-tint); color: var(--ios-red); }
+.ios-tag.sew { background: var(--ios-blue-tint); color: var(--ios-blue); }
 
-.card-chevron-indicator {
-  width: 28px;
-  height: 28px;
-  border-radius: var(--radius-full);
-  background: var(--segmented-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-tertiary);
-  font-size: 13px;
+.sf-chevron {
+  width: 18px;
+  height: 18px;
+  fill: var(--ios-tertiary-label);
   flex-shrink: 0;
-  transition: transform var(--duration-base) var(--ease-apple-out), background var(--duration-fast) var(--ease-apple-out);
+  margin-top: 3px;
+  transition: transform 0.22s var(--ios-spring);
 }
 
-.q-card.open .card-chevron-indicator {
-  transform: rotate(180deg);
-  background: var(--separator-strong);
-  color: var(--text-primary);
+.ios-question-cell.open .sf-chevron {
+  transform: rotate(90deg);
+  fill: var(--ios-blue);
 }
 
-/* Card Expandable Body */
-.card-content-body {
+/* CELL EXPANDABLE DETAIL DRAWER */
+.ios-cell-detail {
   display: none;
-  padding: 22px 24px 26px 60px;
-  border-top: 1px solid var(--separator);
-  background: var(--bg-tertiary);
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: var(--text-primary);
+  padding: 16px 20px 20px 54px;
+  background: var(--ios-grouped-bg);
+  border-top: 0.5px solid var(--ios-separator);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ios-label);
 }
 
-.q-card.open .card-content-body {
+.ios-question-cell.open .ios-cell-detail {
   display: block;
-  animation: slideDown var(--duration-base) var(--ease-apple-out);
+  animation: iosExpand 0.25s var(--ios-spring);
 }
 
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-6px); }
+@keyframes iosExpand {
+  from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.card-content-body p { margin-bottom: 12px; }
-.card-content-body ul, .card-content-body ol {
-  padding-left: 20px;
-  margin-bottom: 14px;
+.ios-cell-detail p { margin-bottom: 10px; }
+.ios-cell-detail ul, .ios-cell-detail ol {
+  padding-left: 18px;
+  margin-bottom: 12px;
 }
-.card-content-body li { margin-bottom: 6px; }
+.ios-cell-detail li { margin-bottom: 5px; }
+.ios-cell-detail strong { color: var(--ios-blue); }
 
-/* macOS Terminal Window Code Blocks */
-.mac-terminal {
-  border-radius: var(--radius-md);
-  background: #0f1117;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* APPLE NOTES STYLE CALLOUT CARDS */
+.ios-note-box {
+  background: var(--ios-cell-bg);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  border-left: 4px solid var(--ios-orange);
+  box-shadow: var(--ios-shadow-card);
+}
+
+.note-box-star { border-left-color: var(--ios-orange); }
+.note-box-star h5 {
+  color: var(--ios-orange);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.note-box-defense { border-left-color: var(--ios-purple); }
+.note-box-defense h5 {
+  color: var(--ios-purple);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+/* NATIVE macOS / iOS CODE TERMINAL PREVIEW */
+.ios-code-snippet {
+  background: #141416;
+  border-radius: 12px;
   overflow: hidden;
-  margin: 16px 0;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  margin: 12px 0;
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
 }
 
-.mac-terminal-bar {
-  background: #1a1c23;
-  padding: 8px 14px;
+.code-header-bar {
+  background: #1f1f23;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
 }
 
-.mac-dots {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.mac-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: var(--radius-full);
-}
-.dot-red { background: #ff5f56; }
-.dot-yellow { background: #ffbd2e; }
-.dot-green { background: #27c93f; }
-
-.mac-title {
-  font-family: var(--font-mono);
+.code-filename {
+  font-family: var(--ios-mono);
   font-size: 11px;
-  color: #8b949e;
-  font-weight: 500;
+  color: #8e8e93;
 }
 
-.mac-copy-btn {
-  font-family: var(--font-system);
+.code-copy-btn {
+  font-family: var(--ios-font);
   font-size: 11px;
   font-weight: 600;
-  color: #c9d1d9;
-  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
   padding: 3px 8px;
-  border-radius: 4px;
-  transition: all var(--duration-fast);
+  border-radius: 6px;
 }
 
-.mac-copy-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.mac-terminal pre {
-  padding: 14px 18px;
+.ios-code-snippet pre {
+  padding: 12px 14px;
   overflow-x: auto;
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  line-height: 1.55;
-  color: #e6edf3;
+  font-family: var(--ios-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: #f2f2f7;
 }
 
 code {
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  padding: 2px 6px;
-  border-radius: 5px;
-  background: var(--segmented-bg);
-  color: var(--apple-blue);
-}
-
-[data-theme="dark"] code {
-  color: #79c0ff;
-}
-
-/* Apple Callout Boxes (STAR & Pro Tips) */
-.apple-callout {
-  border-radius: var(--radius-md);
-  padding: 16px 18px;
-  margin: 14px 0;
-  font-size: 13.5px;
-  position: relative;
-  border: 1px solid transparent;
-}
-
-.callout-star {
-  background: var(--apple-orange-tint);
-  border-color: rgba(255, 149, 0, 0.2);
-}
-
-.callout-star h4 {
-  color: var(--apple-orange);
+  font-family: var(--ios-mono);
   font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: var(--ios-search-bg);
+  color: var(--ios-blue);
 }
 
-.callout-tip {
-  background: var(--apple-purple-tint);
-  border-color: rgba(175, 82, 222, 0.2);
-}
-
-.callout-tip h4 {
-  color: var(--apple-purple);
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 6px;
-}
-
-/* Empty State */
-.empty-container {
+/* EMPTY STATE */
+.ios-empty-state {
   display: none;
   text-align: center;
-  padding: 80px 20px;
-  color: var(--text-tertiary);
+  padding: 60px 20px;
+  color: var(--ios-secondary-label);
 }
 
-.empty-icon {
-  font-size: 48px;
-  margin-bottom: 12px;
-  opacity: 0.8;
-}
-
-.empty-container h3 {
-  font-size: 18px;
-  color: var(--text-primary);
-  margin-bottom: 6px;
-  font-weight: 700;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 48px 24px 60px;
-  color: var(--text-tertiary);
-  font-size: 13px;
-  border-top: 1px solid var(--separator);
-  background: var(--bg-primary);
+.empty-state-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
 }
 
 /* ==========================================================================
-   RESPONSIVE LAYOUTS & PRINT STYLES
+   NATIVE iOS TRANSLUCENT BOTTOM TAB BAR (UITabBarController)
    ========================================================================== */
-@media (max-width: 980px) {
-  .bento-grid { grid-template-columns: 1fr; }
-  .card-content-body { padding-left: 20px; }
-  .hero-section { padding-top: 36px; }
-  .controls-wrapper { top: 54px; }
+.ios-tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--ios-bar-bg);
+  backdrop-filter: blur(25px) saturate(190%);
+  -webkit-backdrop-filter: blur(25px) saturate(190%);
+  border-top: 0.5px solid var(--ios-bar-border);
+  padding: 6px 12px calc(6px + env(safe-area-inset-bottom, 14px));
 }
 
+.ios-tab-container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: var(--ios-secondary-label);
+  font-size: 10px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 8px;
+  transition: color 0.15s ease;
+}
+
+.tab-item.active {
+  color: var(--ios-blue);
+  font-weight: 700;
+}
+
+.tab-icon {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
 @media print {
-  .nav-header, .controls-wrapper, .progress-widget, footer, .bento-grid, .apple-checkbox, .card-chevron-indicator {
+  .ios-nav-bar, .ios-tab-bar, .ios-search-container, .activity-reset-btn, .sf-chevron, .sf-checkmark {
     display: none !important;
   }
-  body { background: #fff !important; color: #000 !important; }
-  .main-wrapper { padding: 0 !important; }
-  .q-card { border: 1px solid #ccc !important; box-shadow: none !important; break-inside: avoid; margin-bottom: 16px; }
-  .card-content-body { display: block !important; background: #fff !important; padding: 12px !important; }
+  body { background: #fff !important; color: #000 !important; padding: 0 !important; }
+  .ios-viewport { max-width: 100% !important; padding: 0 !important; }
+  .ios-grouped-container { box-shadow: none !important; border: 1px solid #ccc !important; margin-bottom: 16px !important; }
+  .ios-cell-detail { display: block !important; padding-left: 20px !important; background: #fff !important; }
 }
 </style>
 </head>
 <body>
 
-<!-- APPLE TRANSLUCENT TOP NAVIGATION BAR -->
-<header class="nav-header">
-  <div class="nav-container">
-    <a href="#" class="nav-brand">
-      <div class="apple-logo-badge"></div>
-      <div class="brand-text">
-        <h1>Bhavuk Rajput · SDE-1 Android</h1>
-        <span>Interview Preparation Dossier & Master Portal</span>
+<!-- NATIVE iOS STATUS / TOP BAR -->
+<header class="ios-nav-bar">
+  <div class="ios-nav-content">
+    <div class="nav-left-profile">
+      <div class="ios-avatar-badge">BR</div>
+      <div>
+        <div class="nav-title-compact">Bhavuk Rajput</div>
+        <div class="nav-subtitle-compact">SDE-1 Android Master Prep</div>
       </div>
-    </a>
+    </div>
     <div class="nav-actions">
-      <button class="icon-btn" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">🌙</button>
-      <button class="btn-primary" onclick="window.print()">
-        <span>Print Master PDF</span>
+      <button class="ios-theme-btn" id="themeBtn" title="Toggle Theme" aria-label="Toggle Theme">🌙</button>
+      <button class="ios-nav-btn" onclick="window.print()">
+        <span>Print PDF</span>
       </button>
     </div>
   </div>
 </header>
 
-<!-- HERO KEYNOTE SECTION -->
-<section class="hero-section">
-  <div class="eyebrow-pill">High-Impact Technical Readiness</div>
-  <h2 class="hero-title">Engineering Interview Guide</h2>
-  <p class="hero-subtitle">
-    Tailored specifically for upcoming technical evaluations at <strong>Entertainment Network India Limited (Mirchi)</strong> and <strong>Smart Energy Water (SEW.AI)</strong>. Covers candidate resume signatures, audio architecture, offline-first systems, and SE1 evaluation standards.
+<!-- iOS LARGE TITLE -->
+<div class="ios-large-header">
+  <div class="ios-eyebrow">Technical Evaluation System</div>
+  <h1 class="ios-large-title">Interview Prep</h1>
+  <p class="ios-header-desc">
+    Targeted preparation for <strong>Entertainment Network India Limited (Mirchi)</strong> and <strong>Smart Energy Water (SEW.AI)</strong>. Focuses on candidate resume signatures, background media streaming, offline-first architectures, and SE1 evaluation rubrics.
   </p>
+</div>
 
-  <!-- LIQUID PROGRESS WIDGET -->
-  <div class="progress-widget">
-    <div class="progress-track">
-      <div class="progress-fill" id="progressBar"></div>
-    </div>
-    <div class="progress-meta">
-      <span id="progressText">0 of 0 Mastered</span>
-      <span class="progress-badge" id="progressPct">0%</span>
-    </div>
-    <button class="segmented-btn" id="resetChecksBtn" style="padding:4px 10px; font-size:11px;">Reset</button>
-  </div>
-</section>
-
-<!-- BENTO FEATURE GRID (COMPANIES & EVALUATION) -->
-<section class="bento-grid">
-  <!-- ENIL Card -->
-  <div class="bento-card card-enil">
-    <span class="bento-tag tag-enil">Target 1 · Audio Streaming & Media</span>
-    <h3>Entertainment Network India Ltd</h3>
-    <div class="location-sub">📍 Film City, Sector 16A, Noida · Radio Mirchi, Mirchi Plus, Podcasts</div>
-    <ul>
-      <li><strong>ExoPlayer & Media3 Architecture:</strong> Player state machine, continuous stream buffering over unstable cellular networks.</li>
-      <li><strong>Background Playback:</strong> Android 14/15/16 <code>foregroundServiceType="mediaPlayback"</code> and persistent media notification handlers.</li>
-      <li><strong>Audio Focus Management:</strong> Transient transitions (phone calls) vs. ducking (GPS navigation voice prompts).</li>
-      <li><strong>Offline & DRM:</strong> Chunked caching (<code>CacheDataSource</code>) and Widevine DRM license acquisition.</li>
-    </ul>
-  </div>
-
-  <!-- SEW.AI Card -->
-  <div class="bento-card card-sew">
-    <span class="bento-tag tag-sew">Target 2 · Utility Cloud & AI Platform</span>
-    <h3>Smart Energy Water (SEW.AI)</h3>
-    <div class="location-sub">📍 NSL TechZone, Sector 144, Noida · Smart Customer & Workforce Mobile</div>
-    <ul>
-      <li><strong>Offline-First Architecture:</strong> Field worker forms, local Room SSOT, and background sync queues.</li>
-      <li><strong>WorkManager Guarantees:</strong> SQLite persistence, OS JobScheduler delegation, network constraints & backoff policies.</li>
-      <li><strong>Device Optimization:</strong> Low-battery GPS tracking via Fused Location Provider and geofencing.</li>
-      <li><strong>OOM Prevention:</strong> Two-pass bitmap downsampling and streaming file uploads straight from disk.</li>
-    </ul>
-  </div>
-
-  <!-- SE1 Guide Card -->
-  <div class="bento-card card-rubric">
-    <span class="bento-tag tag-rubric">Official Evaluation Standard</span>
-    <h3>SE1 Interview Rubric</h3>
-    <div class="location-sub">📋 SDE-1 Preparation Guide (13).pdf Standard</div>
-    <ul>
-      <li><strong>Think Out Loud:</strong> Clarify constraints and explain reasoning before writing any code.</li>
-      <li><strong>Defend Edge Cases:</strong> Process death, nullability, configuration changes, and thread confinement.</li>
-      <li><strong>Deep Fundamentals:</strong> Coroutines continuation state machines, memory leak GC roots, bytecode inlining.</li>
-      <li><strong>Code Review Mindset:</strong> Spot race conditions, memory leaks, and lifecycle anti-patterns instantly.</li>
-    </ul>
-  </div>
-</section>
-
-<!-- STICKY COMMAND BAR & SEGMENTED FILTER -->
-<div class="controls-wrapper">
-  <div class="controls-container">
-    <div class="controls-row-top">
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" class="search-input" id="search" placeholder="Search questions, STAR answers, code, or keywords…">
-        <span class="search-kbd">⌘K</span>
-      </div>
-      <div class="action-buttons-group">
-        <button class="segmented-btn" id="expandAllBtn">Expand All</button>
-        <button class="segmented-btn" id="collapseAllBtn">Collapse All</button>
-      </div>
-    </div>
-
-    <!-- Apple Segmented Track -->
-    <div class="segmented-track" id="categoryNav"></div>
+<!-- iOS SEARCH CONTROLLER BAR -->
+<div class="ios-search-container">
+  <div class="ios-search-bar">
+    <svg class="search-icon-svg" viewBox="0 0 24 24">
+      <path d="M10 2a8 8 0 015.293 14l4.707 4.707a1 1 0 01-1.414 1.414L13.88 17.414A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+    </svg>
+    <input type="text" class="ios-search-input" id="searchInput" placeholder="Search questions, STAR answers, code…">
+    <button class="search-clear-btn" id="clearSearchBtn">✕</button>
   </div>
 </div>
 
-<!-- MAIN CONTENT WRAPPER -->
-<main class="main-wrapper">
-  <div id="contentStream"></div>
-  <div class="empty-container" id="emptyContainer">
-    <div class="empty-icon">🔍</div>
-    <h3>No matching interview topics found</h3>
-    <p>Try searching for terms like "Hilt", "R8", "Media3", "Offline", "Flow", "Compose", or "KYC".</p>
+<!-- NATIVE ACTIVITY TRACKER CAPSULE -->
+<div class="ios-stats-card">
+  <div class="activity-capsule">
+    <div class="activity-progress-col">
+      <div class="activity-label-row">
+        <span class="activity-title">Mastered Questions</span>
+        <span class="activity-count" id="progressCountLabel">0 / 0 (0%)</span>
+      </div>
+      <div class="activity-track">
+        <div class="activity-fill" id="progressFill"></div>
+      </div>
+    </div>
+    <button class="activity-reset-btn" id="resetProgressBtn">Reset</button>
+  </div>
+</div>
+
+<!-- INSET GROUPED SECTIONS VIEWPORT -->
+<main class="ios-viewport">
+  <div id="sectionsRoot"></div>
+  <div class="ios-empty-state" id="emptyState">
+    <div class="empty-state-icon">🔍</div>
+    <h3>No Matching Questions</h3>
+    <p>Try searching for "Hilt", "R8", "Media3", "Offline", "Flow", "Compose", or "KYC".</p>
   </div>
 </main>
 
-<footer>
-  Crafted for Bhavuk Rajput's SDE-1 Android Interviews · Designed with Apple Human Interface Guidelines & Emil Design Engineering Principles.
-</footer>
+<!-- NATIVE iOS TRANSLUCENT BOTTOM TAB BAR -->
+<nav class="ios-tab-bar">
+  <div class="ios-tab-container">
+    <button class="tab-item active" data-tab="all">
+      <svg class="tab-icon" viewBox="0 0 24 24">
+        <path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v2H4V6zm0 5a2 2 0 012-2h12a2 2 0 012 2v2H4v-2zm0 5a2 2 0 012-2h12a2 2 0 012 2v2H4v-2z"/>
+      </svg>
+      <span>All Prep</span>
+    </button>
+    <button class="tab-item" data-tab="enil">
+      <svg class="tab-icon" viewBox="0 0 24 24">
+        <path d="M12 3a9 9 0 00-9 9v7a2 2 0 002 2h4v-7H5v-2a7 7 0 1114 0v2h-4v7h4a2 2 0 002-2v-7a9 9 0 00-9-9z"/>
+      </svg>
+      <span>Mirchi</span>
+    </button>
+    <button class="tab-item" data-tab="sew">
+      <svg class="tab-icon" viewBox="0 0 24 24">
+        <path d="M13 2L3 14h8v8l10-12h-8V2z"/>
+      </svg>
+      <span>SEW.AI</span>
+    </button>
+    <button class="tab-item" data-tab="resume">
+      <svg class="tab-icon" viewBox="0 0 24 24">
+        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+      </svg>
+      <span>Resume</span>
+    </button>
+    <button class="tab-item" data-tab="tech">
+      <svg class="tab-icon" viewBox="0 0 24 24">
+        <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+      </svg>
+      <span>Tech Core</span>
+    </button>
+  </div>
+</nav>
 
-<!-- APPLICATION LOGIC & INTERVIEW QUESTION BANK -->
+<!-- CORE DATASET & NATIVE INTERACTION SCRIPT -->
 <script>
-const interviewData = [
+const sectionsData = [
   {
-    id: "resume-rapipay",
-    title: "Candidate Signatures · RapiPay NYE Fintech App",
-    desc: "Rigorous interrogation of Bhavuk's production achievements, R8 optimizations, and SDK architecture.",
+    id: "companies",
+    category: "all",
+    title: "Company Intelligence & Evaluation Rubrics",
+    type: "companies",
+    items: [
+      {
+        name: "Entertainment Network India Ltd (ENIL / Radio Mirchi)",
+        badge: "Target 1 · Audio Streaming",
+        badgeClass: "badge-enil",
+        location: "📍 Film City, Sector 16A, Noida",
+        bullets: [
+          "<strong>ExoPlayer & Media3 Architecture:</strong> Player state machine, continuous stream buffering over fluctuating cellular networks.",
+          "<strong>Background Playback:</strong> Android 14/15/16 <code>foregroundServiceType=\"mediaPlayback\"</code> with media notification handlers.",
+          "<strong>Audio Focus Transitions:</strong> Transient focus loss on incoming phone calls vs. ducking on GPS navigation voice prompts.",
+          "<strong>Offline Caching & DRM:</strong> Chunked caching (<code>CacheDataSource</code>) and Widevine DRM license acquisition."
+        ]
+      },
+      {
+        name: "Smart Energy Water (SEW.AI)",
+        badge: "Target 2 · Utility Cloud & AI",
+        badgeClass: "badge-sew",
+        location: "📍 NSL TechZone, Sector 144, Noida (Nr. Sector 143 Metro)",
+        bullets: [
+          "<strong>Offline-First Architecture:</strong> Field worker forms, local Room SSOT, and background sync queues.",
+          "<strong>WorkManager Guarantees:</strong> SQLite persistence, OS JobScheduler delegation, network constraints & backoff policies.",
+          "<strong>Device Optimization:</strong> Low-battery GPS tracking via Fused Location Provider and geofencing.",
+          "<strong>OOM Prevention:</strong> Two-pass bitmap downsampling and streaming file uploads straight from disk."
+        ]
+      }
+    ]
+  },
+  {
+    id: "resume",
+    category: "resume",
+    title: "Bhavuk Resume · RapiPay NYE Production Achievements",
+    type: "questions",
     items: [
       {
         q: "Walk me through the architecture of the EPA Employee-Assisted Full-KYC SDK you owned.",
         tags: ["Resume", "RapiPay", "Fintech", "STAR"],
         a: `<p><strong>Overview:</strong> Employee-Assisted Full-KYC (EPA) is an agent-assisted onboarding journey requiring multi-stage document scanning, CAF processing, biometric verification, OTP validation, and wallet activation, with high resilience against network drops.</p>
-        <div class="apple-callout callout-star">
-          <h4>⭐ STAR Project Framing</h4>
+        <div class="ios-note-box note-box-star">
+          <h5>⭐ STAR Project Narrative</h5>
           <p><strong>Situation:</strong> Users and field agents in tier-2/3 cities suffered severe drop-offs when unstable network connections dropped mid-way through multi-step KYC verification, forcing them to restart and re-enter data.</p>
           <p><strong>Task:</strong> Design and own the client Android SDK integration for the EPA Full-KYC journey, providing deterministic state progression, journey resumption across app restarts, and automatic validation fallbacks.</p>
           <p><strong>Action:</strong> Implemented a unidirectional MVI state machine using Kotlin <code>StateFlow</code> and sealed interfaces representing KYC stages (<code>DocumentCaptured</code>, <code>BiometricPending</code>, <code>OtpVerifying</code>, <code>FallbackRequired</code>). Each step emitted an immutable state snapshot persisted into <code>DataStore</code> with a unique <code>journeyId</code>. If an OCR or biometric API timed out, the state machine transitioned cleanly to a secondary document upload fallback without resetting validated fields. Upon app restart, the SDK called the resumption endpoint, reconciled local state with server state, and restored the user directly to the incomplete step.</p>
           <p><strong>Result:</strong> Drastically lowered onboarding drop-offs, eliminated redundant user data entry, and ensured 100% RBI compliance on wallet activation.</p>
         </div>
-        <div class="apple-callout callout-tip">
-          <h4>💡 Follow-Up Defense</h4>
+        <div class="ios-note-box note-box-defense">
+          <h5>💡 Interviewer Follow-Up Defense</h5>
           <strong>Question:</strong> <em>"How did you prevent duplicate submissions if a user clicked Submit twice during poor network connectivity?"</em><br>
           <strong>Answer:</strong> Used an idempotency token generated per KYC stage combined with coroutine debounce and disabling the UI submit button immediately upon invocation via state hoisting (<code>isSubmitting = true</code>).
         </div>`
@@ -1127,15 +903,10 @@ const interviewData = [
           <li><strong>Hilt EntryPoint Mechanics:</strong> In a multi-module architecture, dynamic sub-modules or standalone SDKs often cannot use standard <code>@AndroidEntryPoint</code> activity injection. Instead, they access dependencies using Hilt EntryPoints: <code>EntryPoints.get(applicationContext, LendingEntryPoint::class.java)</code>.</li>
           <li>Because <code>LendingEntryPoint</code> was only referenced dynamically through Hilt's entry point reflection and had a single generated component implementer, R8 Full Mode merged or stripped the interface from the generated Dagger component class hierarchy. At runtime, when casting the generated application component to <code>LendingEntryPoint</code>, a <code>ClassCastException</code> occurred.</li>
         </ul>
-        <div class="mac-terminal">
-          <div class="mac-terminal-bar">
-            <div class="mac-dots">
-              <span class="mac-dot dot-red"></span>
-              <span class="mac-dot dot-yellow"></span>
-              <span class="mac-dot dot-green"></span>
-            </div>
-            <span class="mac-title">proguard-rules.pro — Exact Resolution</span>
-            <button class="mac-copy-btn" onclick="copyCode(this)">Copy</button>
+        <div class="ios-code-snippet">
+          <div class="code-header-bar">
+            <span class="code-filename">proguard-rules.pro — Exact Rules</span>
+            <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
           </div>
           <pre><code># Keep generic signatures and annotations required by Dagger/Hilt
 -keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod
@@ -1167,11 +938,10 @@ const interviewData = [
         a: `<p><strong>Core Remediations:</strong></p>
         <ol>
           <li><strong>SSL Pinning with Public Key Hashes:</strong> Used OkHttp <code>CertificatePinner</code> with SHA-256 hashes of the Subject Public Key Info (SPKI). Pinned both primary and backup CA certificates to allow seamless certificate rotation without bricking app networking:
-            <div class="mac-terminal">
-              <div class="mac-terminal-bar">
-                <div class="mac-dots"><span class="mac-dot dot-red"></span><span class="mac-dot dot-yellow"></span><span class="mac-dot dot-green"></span></div>
-                <span class="mac-title">NetworkModule.kt</span>
-                <button class="mac-copy-btn" onclick="copyCode(this)">Copy</button>
+            <div class="ios-code-snippet">
+              <div class="code-header-bar">
+                <span class="code-filename">NetworkSecurityModule.kt</span>
+                <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
               </div>
               <pre><code>val certPinner = CertificatePinner.Builder()
     .add("api.rapipay.com", "sha256/WoiWRyIOVNa9ihaBciRSCNSJCT+LVfAjTScmrkqYio0=")
@@ -1198,9 +968,10 @@ const interviewData = [
     ]
   },
   {
-    id: "company-enil",
-    title: "Company 1 · Entertainment Network India Ltd (ENIL / Mirchi)",
-    desc: "Domain-specific questions on audio streaming, Media3/ExoPlayer, background services, audio focus, and low-latency buffering.",
+    id: "enil",
+    category: "enil",
+    title: "Entertainment Network India Ltd · Audio & Media3",
+    type: "questions",
     items: [
       {
         q: "How do you build a resilient background audio player in Android 14/15/16 that survives OS background kills?",
@@ -1210,11 +981,10 @@ const interviewData = [
         <ol>
           <li><strong>Manifest Declaration:</strong> Declare the service with <code>android:foregroundServiceType="mediaPlayback"</code> and request <code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code> and <code>POST_NOTIFICATIONS</code> permissions.</li>
           <li><strong>MediaSession Integration:</strong> Instantiate an <code>ExoPlayer</code> instance and wrap it with a <code>MediaSession</code> inside <code>onCreate()</code> of the <code>MediaSessionService</code>:
-            <div class="mac-terminal">
-              <div class="mac-terminal-bar">
-                <div class="mac-dots"><span class="mac-dot dot-red"></span><span class="mac-dot dot-yellow"></span><span class="mac-dot dot-green"></span></div>
-                <span class="mac-title">AudioPlaybackService.kt</span>
-                <button class="mac-copy-btn" onclick="copyCode(this)">Copy</button>
+            <div class="ios-code-snippet">
+              <div class="code-header-bar">
+                <span class="code-filename">AudioPlaybackService.kt</span>
+                <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
               </div>
               <pre><code>class AudioPlaybackService : MediaSessionService() {
     private var mediaSession: MediaSession? = null
@@ -1259,11 +1029,10 @@ const interviewData = [
         a: `<p><strong>Implementation Strategy:</strong></p>
         <ul>
           <li><strong>ExoPlayer SimpleCache:</strong> Create a singleton <code>SimpleCache</code> backed by <code>LeastRecentlyUsedCacheEvictor</code> with a bounded disk quota (e.g. 500 MB):
-            <div class="mac-terminal">
-              <div class="mac-terminal-bar">
-                <div class="mac-dots"><span class="mac-dot dot-red"></span><span class="mac-dot dot-yellow"></span><span class="mac-dot dot-green"></span></div>
-                <span class="mac-title">MediaCacheModule.kt</span>
-                <button class="mac-copy-btn" onclick="copyCode(this)">Copy</button>
+            <div class="ios-code-snippet">
+              <div class="code-header-bar">
+                <span class="code-filename">MediaCacheModule.kt</span>
+                <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
               </div>
               <pre><code>val cacheEvictor = LeastRecentlyUsedCacheEvictor(500 * 1024 * 1024)
 val databaseProvider = StandaloneDatabaseProvider(context)
@@ -1288,9 +1057,10 @@ val simpleCache = SimpleCache(File(context.cacheDir, "media_cache"), cacheEvicto
     ]
   },
   {
-    id: "company-sew",
-    title: "Company 2 · Smart Energy Water (SEW.AI)",
-    desc: "Domain-specific questions on offline-first mobile architecture, field-service work orders, Room sync, WorkManager, and battery-efficient GPS.",
+    id: "sew",
+    category: "sew",
+    title: "Smart Energy Water · Offline-First & Enterprise Cloud",
+    type: "questions",
     items: [
       {
         q: "How do you architect an Offline-First Android application for field technicians operating in zero-network areas?",
@@ -1299,11 +1069,10 @@ val simpleCache = SimpleCache(File(context.cacheDir, "media_cache"), cacheEvicto
         <ul>
           <li><strong>Principle:</strong> The UI never communicates directly with network APIs. The UI observes local database tables (via Room <code>Flow&lt;List&lt;WorkOrder&gt;&gt;</code>). All user actions (filling inspection forms, updating meter status) write synchronously to Room.</li>
           <li><strong>Data Schema:</strong> Each entity contains sync metadata columns:
-            <div class="mac-terminal">
-              <div class="mac-terminal-bar">
-                <div class="mac-dots"><span class="mac-dot dot-red"></span><span class="mac-dot dot-yellow"></span><span class="mac-dot dot-green"></span></div>
-                <span class="mac-title">WorkOrderEntity.kt</span>
-                <button class="mac-copy-btn" onclick="copyCode(this)">Copy</button>
+            <div class="ios-code-snippet">
+              <div class="code-header-bar">
+                <span class="code-filename">WorkOrderEntity.kt</span>
+                <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
               </div>
               <pre><code>@Entity(tableName = "work_orders")
 data class WorkOrderEntity(
@@ -1349,11 +1118,10 @@ data class WorkOrderEntity(
         <ul>
           <li><strong>Never decode full-res bitmaps directly into memory:</strong> A 12MP camera photo decoded as <code>ARGB_8888</code> requires $4000 \\times 3000 \\times 4 = 48\\text{ MB}$ of contiguous heap memory, quickly triggering OOM on low-end devices.</li>
           <li><strong>Two-Pass Downsampling with inSampleSize:</strong>
-            <div class="mac-terminal">
-              <div class="mac-terminal-bar">
-                <div class="mac-dots"><span class="mac-dot dot-red"></span><span class="mac-dot dot-yellow"></span><span class="mac-dot dot-green"></span></div>
-                <span class="mac-title">BitmapUtils.kt</span>
-                <button class="mac-copy-btn" onclick="copyCode(this)">Copy</button>
+            <div class="ios-code-snippet">
+              <div class="code-header-bar">
+                <span class="code-filename">BitmapUtils.kt</span>
+                <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
               </div>
               <pre><code>val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }
 BitmapFactory.decodeFile(photoPath, options) // Reads dimensions without allocating pixels
@@ -1381,9 +1149,10 @@ val downsampledBitmap = BitmapFactory.decodeFile(photoPath, options)</code></pre
     ]
   },
   {
-    id: "core-kotlin",
-    title: "Kotlin & Coroutines/Flow Deep Dive",
-    desc: "Low-level language mechanics, structured concurrency, dispatchers, flow operators, and language internals.",
+    id: "tech-core",
+    category: "tech",
+    title: "Core Android & Kotlin Engineering Fundamentals",
+    type: "questions",
     items: [
       {
         q: "What happens under the hood when a function is marked suspend in Kotlin?",
@@ -1420,24 +1189,6 @@ val downsampledBitmap = BitmapFactory.decodeFile(photoPath, options)</code></pre
         </ul>`
       },
       {
-        q: "What are inline, noinline, crossinline, and reified in Kotlin?",
-        tags: ["Kotlin", "Language", "Internals"],
-        a: `<p><strong>Deep Explanations:</strong></p>
-        <ul>
-          <li><strong><code>inline</code>:</strong> Instructs the compiler to inline the function body and lambda code directly into the caller's call site. Eliminates function object allocation and invocation overhead for high-frequency operations.</li>
-          <li><strong><code>noinline</code>:</strong> When an inline function takes multiple lambdas, annotating a lambda with <code>noinline</code> tells the compiler not to inline that specific lambda, allowing it to be stored in a variable or passed to a non-inlined function.</li>
-          <li><strong><code>crossinline</code>:</strong> Inline lambdas normally permit non-local returns (e.g. <code>return</code> exiting the outer enclosing function). Annotating with <code>crossinline</code> forbids non-local returns, which is necessary when the lambda is executed inside an asynchronous context, runnable, or nested lambda.</li>
-          <li><strong><code>reified</code>:</strong> Due to JVM type erasure, generic type <code>T</code> is erased at runtime. With <code>inline fun &lt;reified T&gt;</code>, the compiler substitutes the actual concrete type into the inlined bytecode, enabling runtime type checks like <code>if (item is T)</code> or <code>T::class.java</code>.</li>
-        </ul>`
-      }
-    ]
-  },
-  {
-    id: "compose-arch",
-    title: "Jetpack Compose & Modern Architecture",
-    desc: "Recomposition, phases of Compose, stability, side effects, and MVI vs MVVM.",
-    items: [
-      {
         q: "Explain the 3 phases of Jetpack Compose and how deferring state reads optimizes performance.",
         tags: ["Compose", "Phases", "Performance"],
         a: `<p><strong>The 3 Phases:</strong></p>
@@ -1447,11 +1198,10 @@ val downsampledBitmap = BitmapFactory.decodeFile(photoPath, options)</code></pre
           <li><strong>3. Draw (How to render):</strong> Renders nodes to the screen canvas (pixels).</li>
         </ol>
         <p><strong>Optimization Rule:</strong> Defer reading state to the latest possible phase! If an animated scroll offset is read directly during Composition, the composable must recompose on every frame ($60-120\\text{ times/sec}$). Instead, pass a lambda to the layout or draw modifier:</p>
-        <div class="mac-terminal">
-          <div class="mac-terminal-bar">
-            <div class="mac-dots"><span class="mac-dot dot-red"></span><span class="mac-dot dot-yellow"></span><span class="mac-dot dot-green"></span></div>
-            <span class="mac-title">DeferringStateReads.kt</span>
-            <button class="mac-copy-btn" onclick="copyCode(this)">Copy</button>
+        <div class="ios-code-snippet">
+          <div class="code-header-bar">
+            <span class="code-filename">DeferringStateReads.kt</span>
+            <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
           </div>
           <pre><code>// ❌ BAD: Triggers full recomposition on every pixel scroll
 Box(modifier = Modifier.offset(x = scrollOffset.value.dp, y = 0.dp))
@@ -1477,39 +1227,6 @@ Box(modifier = Modifier.offset { IntOffset(scrollOffset.value, 0) })</code></pre
         </ul>`
       },
       {
-        q: "Explain Compose Side Effects: LaunchedEffect, rememberCoroutineScope, DisposableEffect, and SideEffect.",
-        tags: ["Compose", "Side Effects", "Lifecycle"],
-        a: `<p><strong>The 4 Key Side-Effect APIs:</strong></p>
-        <ul>
-          <li><strong><code>LaunchedEffect(key1, key2)</code>:</strong> Launches a coroutine in the composition scope. Useful for triggering suspend operations (e.g. fetching API data on first load or when a search query changes). If a key changes, the running coroutine is cancelled and restarted; cancelled when leaving composition.</li>
-          <li><strong><code>rememberCoroutineScope()</code>:</strong> Returns a <code>CoroutineScope</code> bound to the composable's lifecycle. Used to launch coroutines in response to user callbacks (e.g. inside an <code>onClick = { scope.launch { ... } }</code>).</li>
-          <li><strong><code>DisposableEffect(key)</code>:</strong> Used for side effects that require cleanup (registering/unregistering listeners, observers, or sensors). Must contain an <code>onDispose { ... }</code> block that runs when the key changes or the composable leaves the tree.</li>
-          <li><strong><code>SideEffect</code>:</strong> Runs on every successful recomposition. Used to publish Compose state to external non-Compose objects (e.g. updating an external analytics tracker or system view).</li>
-        </ul>`
-      },
-      {
-        q: "MVVM vs MVI in Android — How do you handle UI events cleanly without duplicate triggers?",
-        tags: ["Architecture", "MVI", "MVVM", "State"],
-        a: `<p><strong>Architectural Comparison:</strong></p>
-        <ul>
-          <li><strong>MVVM:</strong> Exposes multiple state holders (LiveData/StateFlow) from ViewModel to View. Can lead to fragmented state where properties mutate out of sync.</li>
-          <li><strong>MVI (Model-View-Intent):</strong> Enforces Unidirectional Data Flow (UDF). The UI emits an <code>Intent</code> (User Action); the ViewModel processes it and emits a single, immutable <code>UiState</code> data class.</li>
-          <li><strong>Handling One-Off UI Side Effects (Navigation, Toast, Snackbar):</strong>
-            <ul>
-              <li><em>Anti-Pattern:</em> Placing events inside <code>UiState</code> (e.g. <code>isError = true</code>). When the screen rotates, the state is re-collected and the error snackbar shows a second time!</li>
-              <li><em>Best Practice:</em> Use a dedicated <code>Channel&lt;UiEffect&gt;</code> in ViewModel exposed as a <code>SharedFlow</code> (via <code>channel.receiveAsFlow()</code>). Channels guarantee that each event is delivered exactly once to one collector.</li>
-            </ul>
-          </li>
-        </ul>`
-      }
-    ]
-  },
-  {
-    id: "system-lifecycle",
-    title: "System Runtime, Memory & Lifecycle",
-    desc: "ViewModel survival mechanics, Process Death vs Configuration changes, and Memory Leak hunting.",
-    items: [
-      {
         q: "How does a ViewModel survive configuration changes under the hood in Android?",
         tags: ["Lifecycle", "ViewModel", "System"],
         a: `<p><strong>Under the Hood Mechanics:</strong></p>
@@ -1528,11 +1245,10 @@ Box(modifier = Modifier.offset { IntOffset(scrollOffset.value, 0) })</code></pre
           <li><strong>Configuration Change:</strong> Process memory stays alive. ViewModels remain in RAM.</li>
           <li><strong>System Process Death:</strong> Occurs when the app is in the background and Android terminates the entire process (Linux PID killed) to reclaim RAM for foreground apps. Process memory is wiped; all ViewModels, Singletons, and static variables are completely destroyed.</li>
           <li><strong>Defending with SavedStateHandle:</strong> Inject <code>SavedStateHandle</code> into your ViewModel. Android automatically saves values put into <code>SavedStateHandle</code> into the system's serialized bundle:
-            <div class="mac-terminal">
-              <div class="mac-terminal-bar">
-                <div class="mac-dots"><span class="mac-dot dot-red"></span><span class="mac-dot dot-yellow"></span><span class="mac-dot dot-green"></span></div>
-                <span class="mac-title">OrderDetailViewModel.kt</span>
-                <button class="mac-copy-btn" onclick="copyCode(this)">Copy</button>
+            <div class="ios-code-snippet">
+              <div class="code-header-bar">
+                <span class="code-filename">OrderDetailViewModel.kt</span>
+                <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
               </div>
               <pre><code>@HiltViewModel
 class OrderDetailViewModel @Inject constructor(
@@ -1563,23 +1279,15 @@ class OrderDetailViewModel @Inject constructor(
           </li>
           <li><strong>Resolution:</strong> LeakCanary monitors weak references to destroyed Activities and Fragments. If they aren't cleared within 5 seconds, it dumps the heap (Hprof), traverses the reference graph, and outputs the exact leak trace chain showing the offending GC root.</li>
         </ol>`
-      }
-    ]
-  },
-  {
-    id: "coding-scenarios",
-    title: "Problem Solving & Practical Coding Scenarios",
-    desc: "Direct implementations of live coding and architectural tasks evaluated in the SE1 round.",
-    items: [
+      },
       {
         q: "Write a debounced search bar implementation using Kotlin Flow with cancellation of in-flight requests.",
         tags: ["Coding", "Coroutines", "Flow", "Live Coding"],
         a: `<p><strong>Production Implementation:</strong></p>
-        <div class="mac-terminal">
-          <div class="mac-terminal-bar">
-            <div class="mac-dots"><span class="mac-dot dot-red"></span><span class="mac-dot dot-yellow"></span><span class="mac-dot dot-green"></span></div>
-            <span class="mac-title">SearchViewModel.kt</span>
-            <button class="mac-copy-btn" onclick="copyCode(this)">Copy</button>
+        <div class="ios-code-snippet">
+          <div class="code-header-bar">
+            <span class="code-filename">SearchViewModel.kt</span>
+            <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
           </div>
           <pre><code>class SearchViewModel(
     private val repository: MediaSearchRepository
@@ -1620,140 +1328,129 @@ sealed interface SearchUiState {
     data class Success(val items: List&lt;MediaItem&gt;) : SearchUiState
     data class Error(val message: String) : SearchUiState
 }</code></pre>
-        </div>
-        <div class="apple-callout callout-tip">
-          <h4>💡 Why flatMapLatest?</h4>
-          If the user types "radio" (dispatches request 1) and then immediately types "radio mirchi" (dispatches request 2), <code>flatMapLatest</code> automatically cancels request 1's ongoing coroutine and collects only request 2, preventing out-of-order race conditions!
-        </div>`
-      },
-      {
-        q: "Execute two parallel network requests in Kotlin Coroutines and combine results safely.",
-        tags: ["Coding", "Coroutines", "Concurrency"],
-        a: `<p><strong>Safe Parallel Execution Pattern:</strong></p>
-        <div class="mac-terminal">
-          <div class="mac-terminal-bar">
-            <div class="mac-dots"><span class="mac-dot dot-red"></span><span class="mac-dot dot-yellow"></span><span class="mac-dot dot-green"></span></div>
-            <span class="mac-title">ParallelRequests.kt</span>
-            <button class="mac-copy-btn" onclick="copyCode(this)">Copy</button>
-          </div>
-          <pre><code>suspend fun loadUserProfileAndTransactions(userId: String): Result&lt;DashboardData&gt; = 
-    withContext(Dispatchers.IO) {
-        // Use supervisorScope so if one request fails, you can handle it or return partial data
-        supervisorScope {
-            val profileDeferred = async { apiService.getUserProfile(userId) }
-            val transactionsDeferred = async { apiService.getUserTransactions(userId) }
-
-            try {
-                val profile = profileDeferred.await()
-                val transactions = transactionsDeferred.await()
-                Result.success(DashboardData(profile, transactions))
-            } catch (e: Exception) {
-                Result.failure(e)
-            }
-        }
-    }</code></pre>
         </div>`
       }
     ]
   }
 ];
 
-// STATE MANAGEMENT
-let activeCategory = 'all';
-let masteredChecks = new Set(JSON.parse(localStorage.getItem('bhavuk_mastered_checks_v2') || '[]'));
-let isDarkMode = localStorage.getItem('bhavuk_theme') === 'dark' || 
+// STATE & STORAGE
+let currentTab = 'all';
+let masteredSet = new Set(JSON.parse(localStorage.getItem('bhavuk_ios_checks') || '[]'));
+let isDarkTheme = localStorage.getItem('bhavuk_theme') === 'dark' || 
   (!localStorage.getItem('bhavuk_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-// DOM REFERENCES
-const contentStream = document.getElementById('contentStream');
-const categoryNav = document.getElementById('categoryNav');
-const searchInput = document.getElementById('search');
-const progressBar = document.getElementById('progressBar');
-const progressText = document.getElementById('progressText');
-const progressPct = document.getElementById('progressPct');
-const emptyContainer = document.getElementById('emptyContainer');
-const themeToggle = document.getElementById('themeToggle');
+// DOM HOOKS
+const sectionsRoot = document.getElementById('sectionsRoot');
+const searchInput = document.getElementById('searchInput');
+const clearSearchBtn = document.getElementById('clearSearchBtn');
+const progressFill = document.getElementById('progressFill');
+const progressCountLabel = document.getElementById('progressCountLabel');
+const emptyState = document.getElementById('emptyState');
+const themeBtn = document.getElementById('themeBtn');
+const tabButtons = document.querySelectorAll('.tab-item');
 
-// APPLY THEME
+// THEME APPLY
 function applyTheme() {
-  if (isDarkMode) {
+  if (isDarkTheme) {
     document.documentElement.setAttribute('data-theme', 'dark');
-    themeToggle.textContent = '☀️';
+    themeBtn.textContent = '☀️';
   } else {
     document.documentElement.removeAttribute('data-theme');
-    themeToggle.textContent = '🌙';
+    themeBtn.textContent = '🌙';
   }
 }
 applyTheme();
 
-themeToggle.addEventListener('click', () => {
-  isDarkMode = !isDarkMode;
-  localStorage.setItem('bhavuk_theme', isDarkMode ? 'dark' : 'light');
+themeBtn.addEventListener('click', () => {
+  isDarkTheme = !isDarkTheme;
+  localStorage.setItem('bhavuk_theme', isDarkTheme ? 'dark' : 'light');
   applyTheme();
 });
 
-// TOTAL QUESTION COUNT
-let totalQCount = 0;
-interviewData.forEach(sec => totalQCount += sec.items.length);
+// CALC TOTAL QUESTIONS
+let totalQuestions = 0;
+sectionsData.forEach(sec => {
+  if (sec.type === 'questions') totalQuestions += sec.items.length;
+});
 
-// BUILD CATEGORY NAV (APPLE SEGMENTED STYLE)
-function renderCategoryNav() {
-  categoryNav.innerHTML = '';
-
-  const allItem = document.createElement('button');
-  allItem.className = `seg-item ${activeCategory === 'all' ? 'active' : ''}`;
-  allItem.innerHTML = `<span>All Questions</span> <span class="seg-count">${totalQCount}</span>`;
-  allItem.onclick = () => selectCategory('all');
-  categoryNav.appendChild(allItem);
-
-  interviewData.forEach(sec => {
-    const item = document.createElement('button');
-    item.className = `seg-item ${activeCategory === sec.id ? 'active' : ''}`;
-    const shortTitle = sec.title.split('·')[0].trim();
-    item.innerHTML = `<span>${shortTitle}</span> <span class="seg-count">${sec.items.length}</span>`;
-    item.onclick = () => selectCategory(sec.id);
-    categoryNav.appendChild(item);
-  });
-}
-
-function selectCategory(id) {
-  activeCategory = id;
-  renderCategoryNav();
-  renderCards();
-}
-
-// UPDATE PROGRESS INDICATOR
-function updateProgress() {
-  const masteredCount = masteredChecks.size;
-  const pct = Math.round((masteredCount / totalQCount) * 100);
-  progressBar.style.width = `${pct}%`;
-  progressText.textContent = `${masteredCount} of ${totalQCount} Mastered`;
-  progressPct.textContent = `${pct}%`;
-  localStorage.setItem('bhavuk_mastered_checks_v2', JSON.stringify([...masteredChecks]));
-}
-
-// TOGGLE CHECKBOX
-function toggleCheck(qKey, cardEl, e) {
-  e.stopPropagation();
-  if (masteredChecks.has(qKey)) {
-    masteredChecks.delete(qKey);
-    cardEl.classList.remove('mastered');
-  } else {
-    masteredChecks.add(qKey);
-    cardEl.classList.add('mastered');
+// HAPTIC FEEDBACK (WHERE SUPPORTED)
+function triggerHaptic() {
+  if (navigator.vibrate) {
+    navigator.vibrate(10);
   }
-  updateProgress();
 }
 
-// RENDER QUESTION CARDS
-function renderCards() {
+// UPDATE PROGRESS
+function updateProgress() {
+  const count = masteredSet.size;
+  const pct = Math.round((count / totalQuestions) * 100);
+  progressFill.style.width = `${pct}%`;
+  progressCountLabel.textContent = `${count} / ${totalQuestions} (${pct}%)`;
+  localStorage.setItem('bhavuk_ios_checks', JSON.stringify([...masteredSet]));
+}
+
+// RENDER SECTIONS & CELLS
+function renderView() {
   const query = searchInput.value.toLowerCase().trim();
-  contentStream.innerHTML = '';
-  let matchCount = 0;
+  sectionsRoot.innerHTML = '';
+  let matchFound = 0;
 
-  interviewData.forEach((section, sIdx) => {
-    if (activeCategory !== 'all' && activeCategory !== section.id) return;
+  clearSearchBtn.style.display = query ? 'flex' : 'none';
 
+  sectionsData.forEach(section => {
+    // Filter by Tab
+    if (currentTab !== 'all') {
+      if (currentTab === 'enil' && section.id !== 'enil' && section.id !== 'companies') return;
+      if (currentTab === 'sew' && section.id !== 'sew' && section.id !== 'companies') return;
+      if (currentTab === 'resume' && section.id !== 'resume') return;
+      if (currentTab === 'tech' && section.id !== 'tech-core') return;
+    }
+
+    if (section.type === 'companies') {
+      // Filter company cards
+      const visibleCompanies = section.items.filter(comp => {
+        if (currentTab === 'enil' && !comp.name.includes('Entertainment')) return false;
+        if (currentTab === 'sew' && !comp.name.includes('Smart Energy')) return false;
+        if (query) {
+          const compText = (comp.name + ' ' + comp.bullets.join(' ')).toLowerCase();
+          return compText.includes(query);
+        }
+        return true;
+      });
+
+      if (visibleCompanies.length === 0) return;
+      matchFound += visibleCompanies.length;
+
+      const header = document.createElement('div');
+      header.className = 'ios-section-header';
+      header.innerHTML = `<span>${section.title}</span>`;
+      sectionsRoot.appendChild(header);
+
+      const groupContainer = document.createElement('div');
+      groupContainer.className = 'ios-grouped-container';
+
+      visibleCompanies.forEach(comp => {
+        const cell = document.createElement('div');
+        cell.className = 'company-card-cell';
+        cell.innerHTML = `
+          <div class="comp-header-flex">
+            <span class="comp-name">${comp.name}</span>
+            <span class="comp-badge ${comp.badgeClass}">${comp.badge}</span>
+          </div>
+          <div class="comp-location">${comp.location}</div>
+          <ul class="comp-bullets">
+            ${comp.bullets.map(b => `<li>${b}</li>`).join('')}
+          </ul>
+        `;
+        groupContainer.appendChild(cell);
+      });
+
+      sectionsRoot.appendChild(groupContainer);
+      return;
+    }
+
+    // Question Section
     const matchedItems = section.items.filter(item => {
       if (!query) return true;
       const corpus = `${item.q} ${item.a} ${item.tags.join(' ')}`.toLowerCase();
@@ -1761,125 +1458,126 @@ function renderCards() {
     });
 
     if (matchedItems.length === 0) return;
-    matchCount += matchedItems.length;
+    matchFound += matchedItems.length;
 
-    const groupDiv = document.createElement('div');
-    groupDiv.className = 'section-group';
+    const header = document.createElement('div');
+    header.className = 'ios-section-header';
+    header.innerHTML = `<span>${section.title}</span> <span>${matchedItems.length}</span>`;
+    sectionsRoot.appendChild(header);
 
-    groupDiv.innerHTML = `
-      <div class="section-title-wrap">
-        <div>
-          <h3 class="section-title">${section.title}</h3>
-          <p class="section-desc">${section.desc}</p>
-        </div>
-      </div>
-    `;
+    const groupContainer = document.createElement('div');
+    groupContainer.className = 'ios-grouped-container';
 
-    const stack = document.createElement('div');
-    stack.className = 'cards-stack';
+    matchedItems.forEach((item, idx) => {
+      const qKey = `${section.id}_${idx}`;
+      const isMastered = masteredSet.has(qKey);
 
-    matchedItems.forEach((item, iIdx) => {
-      const qKey = `${section.id}_${iIdx}`;
-      const isMastered = masteredChecks.has(qKey);
-
-      const card = document.createElement('div');
-      card.className = `q-card ${isMastered ? 'mastered' : ''}`;
+      const cell = document.createElement('div');
+      cell.className = `ios-question-cell ${isMastered ? 'mastered' : ''}`;
 
       const tagsHtml = item.tags.map(t => {
-        let cls = 'pill-tag';
+        let cls = 'ios-tag';
         if (t.toLowerCase().includes('star')) cls += ' star';
         else if (t.toLowerCase().includes('enil')) cls += ' enil';
         else if (t.toLowerCase().includes('sew')) cls += ' sew';
         return `<span class="${cls}">${t}</span>`;
       }).join('');
 
-      card.innerHTML = `
-        <div class="card-header-tap">
-          <div class="apple-checkbox" title="Mark as Mastered" aria-label="Mark Mastered">
+      cell.innerHTML = `
+        <div class="ios-cell-main">
+          <div class="sf-checkmark" title="Mark Mastered" aria-label="Mark Mastered">
             ${isMastered ? '✓' : ''}
           </div>
-          <div class="card-title-content">
-            <h4 class="card-question">${item.q}</h4>
-            <div class="pill-tags-list">${tagsHtml}</div>
+          <div class="ios-cell-content">
+            <div class="ios-cell-title">${item.q}</div>
+            <div class="ios-tag-row">${tagsHtml}</div>
           </div>
-          <div class="card-chevron-indicator">▼</div>
+          <svg class="sf-chevron" viewBox="0 0 24 24">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+          </svg>
         </div>
-        <div class="card-content-body">
+        <div class="ios-cell-detail">
           ${item.a}
         </div>
       `;
 
-      const headerTap = card.querySelector('.card-header-tap');
-      const checkbox = card.querySelector('.apple-checkbox');
+      const mainTap = cell.querySelector('.ios-cell-main');
+      const checkmark = cell.querySelector('.sf-checkmark');
 
-      headerTap.addEventListener('click', (e) => {
-        if (e.target === checkbox) return;
-        card.classList.toggle('open');
+      mainTap.addEventListener('click', (e) => {
+        if (e.target === checkmark) return;
+        cell.classList.toggle('open');
       });
 
-      checkbox.addEventListener('click', (e) => {
-        toggleCheck(qKey, card, e);
-        checkbox.textContent = masteredChecks.has(qKey) ? '✓' : '';
+      checkmark.addEventListener('click', (e) => {
+        e.stopPropagation();
+        triggerHaptic();
+        if (masteredSet.has(qKey)) {
+          masteredSet.delete(qKey);
+          cell.classList.remove('mastered');
+          checkmark.textContent = '';
+        } else {
+          masteredSet.add(qKey);
+          cell.classList.add('mastered');
+          checkmark.textContent = '✓';
+        }
+        updateProgress();
       });
 
-      stack.appendChild(card);
+      groupContainer.appendChild(cell);
     });
 
-    groupDiv.appendChild(stack);
-    contentStream.appendChild(groupDiv);
+    sectionsRoot.appendChild(groupContainer);
   });
 
-  emptyContainer.style.display = matchCount === 0 ? 'block' : 'none';
+  emptyState.style.display = matchFound === 0 ? 'block' : 'none';
 }
 
 // COPY CODE FUNCTION
-window.copyCode = function(button) {
-  const pre = button.closest('.mac-terminal').querySelector('pre');
+window.copySnippet = function(button) {
+  const pre = button.closest('.ios-code-snippet').querySelector('pre');
   navigator.clipboard.writeText(pre.innerText).then(() => {
-    const originalText = button.textContent;
-    button.textContent = '✓ Copied!';
-    setTimeout(() => { button.textContent = originalText; }, 2000);
+    const orig = button.textContent;
+    button.textContent = '✓ Copied';
+    setTimeout(() => { button.textContent = orig; }, 1800);
   });
 };
 
-// GLOBAL CONTROLS
-document.getElementById('expandAllBtn').addEventListener('click', () => {
-  document.querySelectorAll('.q-card').forEach(c => c.classList.add('open'));
+// TAB BAR NAVIGATION
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    triggerHaptic();
+    tabButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentTab = btn.getAttribute('data-tab');
+    renderView();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 });
 
-document.getElementById('collapseAllBtn').addEventListener('click', () => {
-  document.querySelectorAll('.q-card').forEach(c => c.classList.remove('open'));
+// SEARCH BAR EVENTS
+searchInput.addEventListener('input', () => {
+  renderView();
 });
 
-document.getElementById('resetChecksBtn').addEventListener('click', () => {
-  if (confirm("Reset all mastered question progress?")) {
-    masteredChecks.clear();
-    localStorage.removeItem('bhavuk_mastered_checks_v2');
-    renderCards();
+clearSearchBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  searchInput.focus();
+  renderView();
+});
+
+// RESET PROGRESS
+document.getElementById('resetProgressBtn').addEventListener('click', () => {
+  if (confirm("Reset all mastered question checkmarks?")) {
+    masteredSet.clear();
+    localStorage.removeItem('bhavuk_ios_checks');
+    renderView();
     updateProgress();
   }
 });
 
-searchInput.addEventListener('input', () => {
-  renderCards();
-});
-
-// KEYBOARD SHORTCUT: CMD+K OR / TO FOCUS SEARCH
-window.addEventListener('keydown', (e) => {
-  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-    e.preventDefault();
-    searchInput.focus();
-  } else if (e.key === '/' && document.activeElement !== searchInput) {
-    e.preventDefault();
-    searchInput.focus();
-  } else if (e.key === 'Escape' && document.activeElement === searchInput) {
-    searchInput.blur();
-  }
-});
-
 // INITIALIZE
-renderCategoryNav();
-renderCards();
+renderView();
 updateProgress();
 </script>
 

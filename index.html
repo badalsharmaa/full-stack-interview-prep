@@ -11,20 +11,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================================
-   NATIVE iOS 17/18 DESIGN SYSTEM (APPLE HIG STANDARD)
+   NATIVE iOS 17/18 DESIGN SYSTEM (APPLE HIG STANDARD + EMIL ANIMATIONS)
    ========================================================================== */
 :root {
   --ios-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", system-ui, sans-serif;
   --ios-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
 
-  /* iOS System Colors (Light) */
+  /* iOS System Colors (Light Mode) */
   --ios-bg: #f2f2f7;
   --ios-grouped-bg: #f2f2f7;
   --ios-cell-bg: #ffffff;
   --ios-cell-bg-active: #e5e5ea;
-  --ios-bar-bg: rgba(249, 249, 249, 0.82);
+  --ios-bar-bg: rgba(249, 249, 249, 0.85);
   --ios-bar-border: rgba(60, 60, 67, 0.22);
-  --ios-separator: rgba(60, 60, 67, 0.18);
+  --ios-separator: rgba(60, 60, 67, 0.16);
   
   --ios-label: #000000;
   --ios-secondary-label: #8e8e93;
@@ -44,19 +44,22 @@
   --ios-purple: #af52de;
   --ios-purple-tint: rgba(175, 82, 222, 0.12);
   --ios-teal: #30b0c7;
+  --ios-teal-tint: rgba(48, 176, 199, 0.14);
 
   --ios-search-bg: rgba(118, 118, 128, 0.12);
-  --ios-segmented-bg: rgba(118, 118, 128, 0.12);
-  --ios-segmented-pill: #ffffff;
-  --ios-segmented-shadow: 0 3px 8px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.06);
+  --ios-shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 0.5px 1px rgba(0,0,0,0.02);
+  --ios-shadow-floating: 0 10px 30px rgba(0,0,0,0.08);
 
-  --ios-shadow-card: 0 1px 3px rgba(0,0,0,0.04);
   --ios-radius-cell: 14px;
   --ios-radius-group: 16px;
 
-  /* Fluid iOS Spring Curves */
-  --ios-spring: cubic-bezier(0.32, 0.72, 0, 1);
-  --ios-touch-spring: cubic-bezier(0.25, 1, 0.5, 1);
+  /* Emil Kowalski & Apple WWDC Spring Curves */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 120ms;
+  --duration-base: 240ms;
+  --duration-smooth: 340ms;
 }
 
 [data-theme="dark"] {
@@ -64,9 +67,9 @@
   --ios-grouped-bg: #000000;
   --ios-cell-bg: #1c1c1e;
   --ios-cell-bg-active: #2c2c2e;
-  --ios-bar-bg: rgba(28, 28, 30, 0.82);
+  --ios-bar-bg: rgba(28, 28, 30, 0.85);
   --ios-bar-border: rgba(84, 84, 88, 0.36);
-  --ios-separator: rgba(84, 84, 88, 0.3);
+  --ios-separator: rgba(84, 84, 88, 0.28);
 
   --ios-label: #ffffff;
   --ios-secondary-label: #8e8e93;
@@ -86,15 +89,15 @@
   --ios-purple: #bf5af2;
   --ios-purple-tint: rgba(191, 90, 242, 0.2);
   --ios-teal: #40c8e0;
+  --ios-teal-tint: rgba(64, 200, 224, 0.2);
 
   --ios-search-bg: rgba(118, 118, 128, 0.24);
-  --ios-segmented-bg: rgba(118, 118, 128, 0.24);
-  --ios-segmented-pill: #636366;
-  --ios-segmented-shadow: 0 3px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.2);
+  --ios-shadow-card: 0 2px 6px rgba(0,0,0,0.5);
+  --ios-shadow-floating: 0 12px 36px rgba(0,0,0,0.7);
 }
 
 /* ==========================================================================
-   RESET & MOBILE-FIRST LAYOUT
+   RESET & GLOBAL TYPOGRAPHY
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -111,37 +114,40 @@ body {
   color: var(--ios-label);
   line-height: 1.45;
   letter-spacing: -0.015em;
-  padding-bottom: calc(76px + env(safe-area-inset-bottom, 20px));
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 24px));
   min-height: 100vh;
+  transition: background var(--duration-smooth) var(--ease-out), color var(--duration-smooth) var(--ease-out);
 }
 
-/* iOS Touch Response */
-button, .ios-cell, .tab-item {
-  cursor: pointer;
-  user-select: none;
+button, input {
+  font-family: inherit;
+  border: none;
+  background: none;
+  outline: none;
 }
 
-button:active, .tab-item:active {
+/* Direct Manipulation Touch Feedback */
+button:active {
   transform: scale(0.96);
-  transition: transform 90ms var(--ios-touch-spring);
+  transition: transform var(--duration-fast) var(--ease-drawer);
 }
 
 /* ==========================================================================
-   NATIVE iOS STATUS BAR & COMPACT TOP NAVIGATION BAR
+   NATIVE iOS STATUS & COLLAPSIBLE NAVIGATION BAR
    ========================================================================== */
 .ios-nav-bar {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: var(--ios-bar-bg);
-  backdrop-filter: blur(25px) saturate(190%);
-  -webkit-backdrop-filter: blur(25px) saturate(190%);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
   border-bottom: 0.5px solid var(--ios-bar-border);
-  transition: all 0.2s ease;
+  transition: all var(--duration-base) var(--ease-drawer);
 }
 
 .ios-nav-content {
-  max-width: 900px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 10px 16px;
   display: flex;
@@ -156,8 +162,8 @@ button:active, .tab-item:active {
 }
 
 .ios-avatar-badge {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--ios-blue) 0%, var(--ios-indigo) 100%);
   color: white;
@@ -166,13 +172,21 @@ button:active, .tab-item:active {
   justify-content: center;
   font-size: 13px;
   font-weight: 700;
-  box-shadow: 0 2px 6px rgba(0, 122, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.35);
 }
 
 .nav-title-compact {
   font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.02em;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+.nav-title-compact.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .nav-subtitle-compact {
@@ -198,7 +212,7 @@ button:active, .tab-item:active {
   display: flex;
   align-items: center;
   gap: 5px;
-  border: none;
+  transition: transform var(--duration-fast) var(--ease-drawer);
 }
 
 .ios-theme-btn {
@@ -210,16 +224,17 @@ button:active, .tab-item:active {
   justify-content: center;
   font-size: 15px;
   background: var(--ios-search-bg);
-  border: none;
+  transition: transform var(--duration-fast) var(--ease-drawer);
 }
 
 /* ==========================================================================
-   iOS LARGE TITLE & HEADER SECTION
+   iOS LARGE TITLE HEADER WITH SMOOTH COLLAPSE
    ========================================================================== */
 .ios-large-header {
-  max-width: 900px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 20px 16px 12px;
+  padding: 22px 16px 12px;
+  transition: opacity var(--duration-base) var(--ease-out);
 }
 
 .ios-eyebrow {
@@ -238,6 +253,7 @@ button:active, .tab-item:active {
   line-height: 1.12;
   color: var(--ios-label);
   margin-bottom: 6px;
+  transition: transform var(--duration-base) var(--ease-drawer);
 }
 
 .ios-header-desc {
@@ -248,10 +264,10 @@ button:active, .tab-item:active {
 }
 
 /* ==========================================================================
-   NATIVE iOS SEARCH BAR (UISearchController Look)
+   NATIVE iOS SEARCH CONTROLLER BAR
    ========================================================================== */
 .ios-search-container {
-  max-width: 900px;
+  max-width: 920px;
   margin: 0 auto 16px;
   padding: 0 16px;
 }
@@ -263,12 +279,13 @@ button:active, .tab-item:active {
   border-radius: 12px;
   padding: 8px 12px;
   gap: 8px;
-  transition: background 0.15s ease;
+  transition: all var(--duration-fast) var(--ease-out);
 }
 
 .ios-search-bar:focus-within {
   background: var(--ios-cell-bg);
-  box-shadow: 0 0 0 1px var(--ios-blue), 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 0 0 1.5px var(--ios-blue), 0 4px 12px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
 }
 
 .search-icon-svg {
@@ -283,9 +300,6 @@ button:active, .tab-item:active {
   font-family: inherit;
   font-size: 15px;
   color: var(--ios-label);
-  border: none;
-  background: transparent;
-  outline: none;
 }
 
 .ios-search-input::placeholder {
@@ -304,14 +318,14 @@ button:active, .tab-item:active {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: none;
+  transition: transform var(--duration-fast) var(--ease-drawer);
 }
 
 /* ==========================================================================
-   iOS NATIVE PROGRESS CAPSULE & ACTIVITY STATS
+   NATIVE ACTIVITY TRACKER CAPSULE
    ========================================================================== */
 .ios-stats-card {
-  max-width: 900px;
+  max-width: 920px;
   margin: 0 auto 20px;
   padding: 0 16px;
 }
@@ -325,6 +339,11 @@ button:active, .tab-item:active {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  transition: transform var(--duration-fast) var(--ease-drawer);
+}
+
+.activity-capsule:hover {
+  transform: translateY(-1px);
 }
 
 .activity-progress-col {
@@ -354,7 +373,7 @@ button:active, .tab-item:active {
   width: 0%;
   background: linear-gradient(90deg, var(--ios-blue) 0%, var(--ios-green) 100%);
   border-radius: 999px;
-  transition: width 0.35s var(--ios-spring);
+  transition: width var(--duration-smooth) var(--ease-drawer);
 }
 
 .activity-reset-btn {
@@ -362,7 +381,6 @@ button:active, .tab-item:active {
   font-weight: 600;
   color: var(--ios-blue);
   background: var(--ios-blue-tint);
-  border: none;
   border-radius: 12px;
   padding: 6px 12px;
 }
@@ -371,7 +389,7 @@ button:active, .tab-item:active {
    NATIVE iOS INSET GROUPED SECTIONS (UITableViewStyleInsetGrouped)
    ========================================================================== */
 .ios-viewport {
-  max-width: 900px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 0 16px;
 }
@@ -383,7 +401,7 @@ button:active, .tab-item:active {
   text-transform: uppercase;
   letter-spacing: -0.08px;
   padding: 0 14px 7px;
-  margin-top: 24px;
+  margin-top: 26px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -394,14 +412,17 @@ button:active, .tab-item:active {
   border-radius: var(--ios-radius-group);
   box-shadow: var(--ios-shadow-card);
   overflow: hidden;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  transition: opacity var(--duration-base) var(--ease-out);
 }
 
-/* COMPANY INTEL BENCH CELLS */
+/* COMPANY BENCH CELLS */
 .company-card-cell {
-  padding: 16px;
+  padding: 16px 18px;
   border-bottom: 0.5px solid var(--ios-separator);
+  transition: background var(--duration-fast);
 }
+
 .company-card-cell:last-child {
   border-bottom: none;
 }
@@ -411,6 +432,8 @@ button:active, .tab-item:active {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 6px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .comp-badge {
@@ -424,9 +447,10 @@ button:active, .tab-item:active {
 
 .badge-enil { background: var(--ios-red-tint); color: var(--ios-red); }
 .badge-sew { background: var(--ios-blue-tint); color: var(--ios-blue); }
+.badge-olx { background: var(--ios-teal-tint); color: var(--ios-teal); }
 
 .comp-name {
-  font-size: 16.5px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--ios-label);
   letter-spacing: -0.02em;
@@ -445,13 +469,13 @@ button:active, .tab-item:active {
   line-height: 1.5;
 }
 
-.comp-bullets li { margin-bottom: 4px; }
+.comp-bullets li { margin-bottom: 5px; }
 .comp-bullets strong { color: var(--ios-label); }
 
 /* QUESTION ITEM CELL */
 .ios-question-cell {
   border-bottom: 0.5px solid var(--ios-separator);
-  transition: background 0.15s ease;
+  transition: background var(--duration-fast) var(--ease-out);
 }
 
 .ios-question-cell:last-child {
@@ -464,13 +488,15 @@ button:active, .tab-item:active {
   align-items: flex-start;
   gap: 14px;
   cursor: pointer;
+  user-select: none;
+  transition: background var(--duration-fast);
 }
 
 .ios-cell-main:active {
   background: var(--ios-cell-bg-active);
 }
 
-/* Circular SF Symbol Checkmark */
+/* Circular SF Symbol Checkmark with Spring Pop */
 .sf-checkmark {
   width: 24px;
   height: 24px;
@@ -483,17 +509,24 @@ button:active, .tab-item:active {
   font-size: 13px;
   font-weight: 800;
   flex-shrink: 0;
-  margin-top: 1px;
-  transition: all 0.18s var(--ios-touch-spring);
+  margin-top: 2px;
+  transition: all var(--duration-fast) var(--ease-spring);
 }
 
 .sf-checkmark:active {
-  transform: scale(1.15);
+  transform: scale(1.2);
 }
 
 .ios-question-cell.mastered .sf-checkmark {
   background: var(--ios-green);
   border-color: var(--ios-green);
+  animation: springPop 0.35s var(--ease-spring);
+}
+
+@keyframes springPop {
+  0% { transform: scale(0.8); }
+  60% { transform: scale(1.25); }
+  100% { transform: scale(1); }
 }
 
 .ios-cell-content {
@@ -528,6 +561,7 @@ button:active, .tab-item:active {
 .ios-tag.star { background: var(--ios-orange-tint); color: var(--ios-orange); }
 .ios-tag.enil { background: var(--ios-red-tint); color: var(--ios-red); }
 .ios-tag.sew { background: var(--ios-blue-tint); color: var(--ios-blue); }
+.ios-tag.olx { background: var(--ios-teal-tint); color: var(--ios-teal); }
 
 .sf-chevron {
   width: 18px;
@@ -535,7 +569,7 @@ button:active, .tab-item:active {
   fill: var(--ios-tertiary-label);
   flex-shrink: 0;
   margin-top: 3px;
-  transition: transform 0.22s var(--ios-spring);
+  transition: transform var(--duration-base) var(--ease-spring), fill var(--duration-fast);
 }
 
 .ios-question-cell.open .sf-chevron {
@@ -543,25 +577,30 @@ button:active, .tab-item:active {
   fill: var(--ios-blue);
 }
 
-/* CELL EXPANDABLE DETAIL DRAWER */
+/* ==========================================================================
+   ZERO-JANK CSS GRID SPRING ACCORDION (EMIL DESIGN ENG)
+   ========================================================================== */
+.ios-accordion-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-smooth) var(--ease-drawer);
+}
+
+.ios-question-cell.open .ios-accordion-wrapper {
+  grid-template-rows: 1fr;
+}
+
+.ios-accordion-inner {
+  overflow: hidden;
+}
+
 .ios-cell-detail {
-  display: none;
   padding: 16px 20px 20px 54px;
   background: var(--ios-grouped-bg);
   border-top: 0.5px solid var(--ios-separator);
   font-size: 14px;
   line-height: 1.55;
   color: var(--ios-label);
-}
-
-.ios-question-cell.open .ios-cell-detail {
-  display: block;
-  animation: iosExpand 0.25s var(--ios-spring);
-}
-
-@keyframes iosExpand {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .ios-cell-detail p { margin-bottom: 10px; }
@@ -632,9 +671,9 @@ button:active, .tab-item:active {
   font-weight: 600;
   color: #ffffff;
   background: rgba(255, 255, 255, 0.12);
-  border: none;
   padding: 3px 8px;
   border-radius: 6px;
+  transition: all var(--duration-fast) var(--ease-drawer);
 }
 
 .ios-code-snippet pre {
@@ -678,14 +717,14 @@ code {
   right: 0;
   z-index: 1000;
   background: var(--ios-bar-bg);
-  backdrop-filter: blur(25px) saturate(190%);
-  -webkit-backdrop-filter: blur(25px) saturate(190%);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
   border-top: 0.5px solid var(--ios-bar-border);
-  padding: 6px 12px calc(6px + env(safe-area-inset-bottom, 14px));
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 16px));
 }
 
 .ios-tab-container {
-  max-width: 600px;
+  max-width: 680px;
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
@@ -698,13 +737,12 @@ code {
   align-items: center;
   gap: 3px;
   color: var(--ios-secondary-label);
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 500;
-  background: transparent;
-  border: none;
-  padding: 4px 10px;
-  border-radius: 8px;
-  transition: color 0.15s ease;
+  padding: 5px 8px;
+  border-radius: 10px;
+  transition: color var(--duration-fast) var(--ease-drawer);
+  flex: 1;
 }
 
 .tab-item.active {
@@ -716,6 +754,17 @@ code {
   width: 22px;
   height: 22px;
   fill: currentColor;
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.tab-item.active .tab-icon {
+  animation: tabSpring 0.35s var(--ease-spring);
+}
+
+@keyframes tabSpring {
+  0% { transform: scale(0.85); }
+  50% { transform: scale(1.22); }
+  100% { transform: scale(1); }
 }
 
 /* ==========================================================================
@@ -728,6 +777,7 @@ code {
   body { background: #fff !important; color: #000 !important; padding: 0 !important; }
   .ios-viewport { max-width: 100% !important; padding: 0 !important; }
   .ios-grouped-container { box-shadow: none !important; border: 1px solid #ccc !important; margin-bottom: 16px !important; }
+  .ios-accordion-wrapper { display: block !important; }
   .ios-cell-detail { display: block !important; padding-left: 20px !important; background: #fff !important; }
 }
 </style>
@@ -740,8 +790,8 @@ code {
     <div class="nav-left-profile">
       <div class="ios-avatar-badge">BR</div>
       <div>
-        <div class="nav-title-compact">Bhavuk Rajput</div>
-        <div class="nav-subtitle-compact">SDE-1 Android Master Prep</div>
+        <div class="nav-title-compact" id="compactTitle">Interview Prep</div>
+        <div class="nav-subtitle-compact">Bhavuk Rajput · SDE-1 Android</div>
       </div>
     </div>
     <div class="nav-actions">
@@ -754,11 +804,11 @@ code {
 </header>
 
 <!-- iOS LARGE TITLE -->
-<div class="ios-large-header">
+<div class="ios-large-header" id="largeHeader">
   <div class="ios-eyebrow">Technical Evaluation System</div>
   <h1 class="ios-large-title">Interview Prep</h1>
   <p class="ios-header-desc">
-    Targeted preparation for <strong>Entertainment Network India Limited (Mirchi)</strong> and <strong>Smart Energy Water (SEW.AI)</strong>. Focuses on candidate resume signatures, background media streaming, offline-first architectures, and SE1 evaluation rubrics.
+    Targeted preparation for <strong>Times Group / ENIL (Radio Mirchi)</strong>, <strong>Smart Energy Water (SEW.AI)</strong>, and <strong>OLX India</strong>. Includes candidate resume signatures, OTT media, offline architectures, and official SE1 evaluation rubrics.
   </p>
 </div>
 
@@ -795,7 +845,7 @@ code {
   <div class="ios-empty-state" id="emptyState">
     <div class="empty-state-icon">🔍</div>
     <h3>No Matching Questions</h3>
-    <p>Try searching for "Hilt", "R8", "Media3", "Offline", "Flow", "Compose", or "KYC".</p>
+    <p>Try searching for "Hilt", "R8", "Media3", "Offline", "OLX", "PiP", or "KYC".</p>
   </div>
 </main>
 
@@ -820,17 +870,17 @@ code {
       </svg>
       <span>SEW.AI</span>
     </button>
+    <button class="tab-item" data-tab="olx">
+      <svg class="tab-icon" viewBox="0 0 24 24">
+        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+      </svg>
+      <span>OLX India</span>
+    </button>
     <button class="tab-item" data-tab="resume">
       <svg class="tab-icon" viewBox="0 0 24 24">
         <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
       </svg>
       <span>Resume</span>
-    </button>
-    <button class="tab-item" data-tab="tech">
-      <svg class="tab-icon" viewBox="0 0 24 24">
-        <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
-      </svg>
-      <span>Tech Core</span>
     </button>
   </div>
 </nav>
@@ -841,31 +891,43 @@ const sectionsData = [
   {
     id: "companies",
     category: "all",
-    title: "Company Intelligence & Evaluation Rubrics",
+    title: "Tri-Company Intelligence & Evaluation Profiles",
     type: "companies",
     items: [
       {
-        name: "Entertainment Network India Ltd (ENIL / Radio Mirchi)",
-        badge: "Target 1 · Audio Streaming",
+        name: "Entertainment Network India Ltd (Times Group / Radio Mirchi)",
+        badge: "Target 1 · Audio/Video OTT & Media",
         badgeClass: "badge-enil",
-        location: "📍 Film City, Sector 16A, Noida",
+        location: "📍 Plot 6, FC-6, Film City, Sector 16A, Noida",
         bullets: [
-          "<strong>ExoPlayer & Media3 Architecture:</strong> Player state machine, continuous stream buffering over fluctuating cellular networks.",
-          "<strong>Background Playback:</strong> Android 14/15/16 <code>foregroundServiceType=\"mediaPlayback\"</code> with media notification handlers.",
-          "<strong>Audio Focus Transitions:</strong> Transient focus loss on incoming phone calls vs. ducking on GPS navigation voice prompts.",
-          "<strong>Offline Caching & DRM:</strong> Chunked caching (<code>CacheDataSource</code>) and Widevine DRM license acquisition."
+          "<strong>JD Requirements (Android.docx):</strong> Native Kotlin, Android Architecture Components, scaling for various screen sizes.",
+          "<strong>Video Streaming & Picture-in-Picture (PiP):</strong> Picture-in-picture mode handling, pay-per-use OTT billing, and ExoPlayer architecture.",
+          "<strong>Inter-Process Communication (IPC):</strong> AIDL, Messengers, ContentProviders, and app modularization.",
+          "<strong>Android App Vitals & Profiler:</strong> Keeping ANRs below bad threshold (0.47%), slow rendering, memory leak profiling."
         ]
       },
       {
         name: "Smart Energy Water (SEW.AI)",
-        badge: "Target 2 · Utility Cloud & AI",
+        badge: "Target 2 · Utility Cloud & AI Platform",
         badgeClass: "badge-sew",
-        location: "📍 NSL TechZone, Sector 144, Noida (Nr. Sector 143 Metro)",
+        location: "📍 NSL TechZone, Sector 144 / Sector 142, Noida (F2F 28th Oct 2:30 PM)",
         bullets: [
           "<strong>Offline-First Architecture:</strong> Field worker forms, local Room SSOT, and background sync queues.",
           "<strong>WorkManager Guarantees:</strong> SQLite persistence, OS JobScheduler delegation, network constraints & backoff policies.",
           "<strong>Device Optimization:</strong> Low-battery GPS tracking via Fused Location Provider and geofencing.",
           "<strong>OOM Prevention:</strong> Two-pass bitmap downsampling and streaming file uploads straight from disk."
+        ]
+      },
+      {
+        name: "OLX India (Classifieds Marketplace)",
+        badge: "Target 3 · E-Commerce Marketplace",
+        badgeClass: "badge-olx",
+        location: "📍 Gurugram / Noida (Source of the SE1 Preparation Guide)",
+        bullets: [
+          "<strong>Classifieds Infinite Scroll:</strong> Paging 3 library with local Room cache and RemoteMediator.",
+          "<strong>Buyer-Seller Real-time Chat:</strong> WebSockets / MQTT connection management, push notifications, offline message queuing.",
+          "<strong>Ad Posting Photo Optimization:</strong> Multi-image camera picker, EXIF orientation correction, WebP compression.",
+          "<strong>Deep Linking & App Indexing:</strong> Verified Android App Links via Digital Asset Links JSON."
         ]
       }
     ]
@@ -970,9 +1032,69 @@ const sectionsData = [
   {
     id: "enil",
     category: "enil",
-    title: "Entertainment Network India Ltd · Audio & Media3",
+    title: "Times Group / ENIL · OTT Media & Android.docx JD Requirements",
     type: "questions",
     items: [
+      {
+        q: "How do you implement Picture-in-Picture (PiP) mode in Android for video/audio OTT apps?",
+        tags: ["ENIL", "PiP", "Media", "JD Specified"],
+        a: `<p><strong>Implementation Protocol (Requested in Times Group JD):</strong></p>
+        <ol>
+          <li><strong>Manifest Configuration:</strong>
+            <div class="ios-code-snippet">
+              <div class="code-header-bar">
+                <span class="code-filename">AndroidManifest.xml</span>
+                <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
+              </div>
+              <pre><code>&lt;activity
+    android:name=".PlayerActivity"
+    android:supportsPictureInPicture="true"
+    android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation" /&gt;</code></pre>
+            </div>
+            Setting <code>configChanges</code> ensures the Activity is NOT destroyed and recreated when entering or leaving PiP mode.
+          </li>
+          <li><strong>Triggering PiP Mode:</strong> When the user leaves the app or taps the minimize button:
+            <div class="ios-code-snippet">
+              <div class="code-header-bar">
+                <span class="code-filename">PlayerActivity.kt</span>
+                <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
+              </div>
+              <pre><code>override fun onUserLeaveHint() {
+    super.onUserLeaveHint()
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val aspectRatio = Rational(16, 9)
+        val params = PictureInPictureParams.Builder()
+            .setAspectRatio(aspectRatio)
+            .build()
+        enterPictureInPictureMode(params)
+    }
+}</code></pre>
+            </div>
+          </li>
+          <li><strong>UI State Adjustment:</strong> Override <code>onPictureInPictureModeChanged(isInPictureInPictureMode: Boolean)</code>: hide all player overlays, controls, comments, and side drawers when in PiP mode, leaving only the video canvas.</li>
+        </ol>`
+      },
+      {
+        q: "What are the primary Inter-Process Communication (IPC) mechanisms in Android? (Explicit in ENIL JD)",
+        tags: ["ENIL", "IPC", "System", "JD Specified"],
+        a: `<p><strong>The 4 Core Android IPC Mechanisms:</strong></p>
+        <ul>
+          <li><strong>1. AIDL (Android Interface Definition Language):</strong> Generates Java/Kotlin code to execute client-server Remote Procedure Calls (RPC) across different process boundaries. Used when multiple apps or modular processes need to communicate concurrently with custom Parcelable models.</li>
+          <li><strong>2. Messenger:</strong> Built on top of AIDL and <code>Handler</code>. Rather than handling multi-threading manually, a Messenger handles incoming IPC messages sequentially on a single thread queue. Best for simple one-client to one-service IPC without concurrency concerns.</li>
+          <li><strong>3. BroadcastReceiver:</strong> One-to-many asynchronous event system. Ideal for global system state notifications (e.g. battery low, network switch) across processes.</li>
+          <li><strong>4. ContentProvider:</strong> High-performance structured data sharing across process boundaries backed by SQLite or files. Manages URI-based permissions (<code>content://</code>) securely.</li>
+        </ul>`
+      },
+      {
+        q: "How do you monitor and optimize Android App Vitals (Crash Rate, ANRs, Slow Rendering)?",
+        tags: ["ENIL", "Vitals", "Performance", "JD Specified"],
+        a: `<p><strong>Google Play Core Vitals Metrics:</strong></p>
+        <ul>
+          <li><strong>User-Perceived Crash Rate:</strong> Must remain under the Google Play threshold ($1.09\\%$ overall, $0.47\\%$ on core devices). Monitored via Firebase Crashlytics and Google Play Console.</li>
+          <li><strong>User-Perceived ANR Rate:</strong> Triggered when main thread is blocked $>5\\text{ seconds}$. Prevent by ensuring zero disk I/O, database access, or crypto on <code>Dispatchers.Main</code>. Use <code>StrictMode</code> during debug builds to throw on main thread violations.</li>
+          <li><strong>Slow Rendering & Frozen Frames:</strong> A frame is "slow" if it takes $>16.6\\text{ms}$ ($60\\text{fps}$) or $>8.3\\text{ms}$ ($120\\text{fps}$). A frame is "frozen" if it takes $>700\\text{ms}$. Optimize by flattening view hierarchies, eliminating unnecessary Jetpack Compose recomposition, and using Android Studio's <strong>Systrace / Perfetto</strong> to profile draw times.</li>
+        </ul>`
+      },
       {
         q: "How do you build a resilient background audio player in Android 14/15/16 that survives OS background kills?",
         tags: ["ENIL", "Audio", "Services", "Media3"],
@@ -1022,37 +1144,6 @@ const sectionsData = [
           <li><strong>Turn-by-turn GPS Navigation or Notification Ping:</strong> App receives <code>AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK</code>. <strong>Action:</strong> Lower the player volume to 20% (ducking) rather than pausing, restoring full volume when focus returns. (Note: ExoPlayer can handle ducking automatically when configured with <code>setAudioAttributes(..., handleAudioFocus = true)</code>).</li>
           <li><strong>User Opens YouTube or Spotify:</strong> App receives permanent <code>AUDIOFOCUS_LOSS</code>. <strong>Action:</strong> Stop playback, release audio focus, and tear down the notification.</li>
         </ul>`
-      },
-      {
-        q: "How do you implement offline audio caching and smooth playback over fluctuating networks in ExoPlayer?",
-        tags: ["ENIL", "ExoPlayer", "Caching", "Performance"],
-        a: `<p><strong>Implementation Strategy:</strong></p>
-        <ul>
-          <li><strong>ExoPlayer SimpleCache:</strong> Create a singleton <code>SimpleCache</code> backed by <code>LeastRecentlyUsedCacheEvictor</code> with a bounded disk quota (e.g. 500 MB):
-            <div class="ios-code-snippet">
-              <div class="code-header-bar">
-                <span class="code-filename">MediaCacheModule.kt</span>
-                <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
-              </div>
-              <pre><code>val cacheEvictor = LeastRecentlyUsedCacheEvictor(500 * 1024 * 1024)
-val databaseProvider = StandaloneDatabaseProvider(context)
-val simpleCache = SimpleCache(File(context.cacheDir, "media_cache"), cacheEvictor, databaseProvider)</code></pre>
-            </div>
-          </li>
-          <li><strong>CacheDataSourceFactory:</strong> Wrap upstream <code>DefaultHttpDataSource</code> with <code>CacheDataSource</code>. When streaming, ExoPlayer reads from disk cache first; cache misses stream from network while writing chunked data to disk concurrently.</li>
-          <li><strong>Adaptive Bitrate (ABR):</strong> Use HLS (m3u8) or DASH manifests. ExoPlayer's <code>DefaultTrackSelector</code> dynamically switches audio bitrates (e.g. 64 kbps to 320 kbps) based on observed network throughput to prevent playback stalling during network drops.</li>
-        </ul>`
-      },
-      {
-        q: "How do you optimize 60fps scrolling in high-density media feeds (song carousels, album art) in Jetpack Compose?",
-        tags: ["ENIL", "Compose", "Performance", "Optimization"],
-        a: `<p><strong>Performance Best Practices:</strong></p>
-        <ol>
-          <li><strong>Explicit Item Keys:</strong> Always supply unique, stable keys in <code>LazyRow</code> and <code>LazyColumn</code> (e.g. <code>items(songs, key = { it.trackId })</code>). This allows Compose to reposition items without recomposing the entire layout.</li>
-          <li><strong>Immutability & Stability:</strong> Annotate data models with <code>@Immutable</code> or <code>@Stable</code>. Avoid passing standard mutable lists (<code>List&lt;Song&gt;</code>) as unstable parameters; use Kotlinx <code>ImmutableList</code> to enable smart recomposition skipping.</li>
-          <li><strong>Image Pipeline Tuning:</strong> In Coil, configure an in-memory memory cache (e.g. 25% of app memory) and disk cache. Use <code>AsyncImage</code> with crossfade, downsampling target sizes to match the exact Composable dimensions (<code>size(Size.ORIGINAL)</code> is an anti-pattern for thumbnails).</li>
-          <li><strong>Defer State Reads:</strong> Avoid reading scroll offsets directly in the composition phase; wrap offset calculations in lambda modifiers like <code>Modifier.graphicsLayer { ... }</code>.</li>
-        </ol>`
       }
     ]
   },
@@ -1149,8 +1240,57 @@ val downsampledBitmap = BitmapFactory.decodeFile(photoPath, options)</code></pre
     ]
   },
   {
+    id: "olx",
+    category: "olx",
+    title: "OLX India · Marketplace System Design & Paging Architecture",
+    type: "questions",
+    items: [
+      {
+        q: "System Design: How would you architect the OLX Android Application?",
+        tags: ["OLX", "System Design", "Architecture", "Marketplace"],
+        a: `<p><strong>End-to-End Mobile Marketplace Architecture:</strong></p>
+        <ol>
+          <li><strong>Presentation Layer:</strong> Modular MVVM/MVI architecture. The product feed uses <strong>Paging 3</strong> with <code>LazyVerticalGrid</code> for memory-efficient multi-column browsing.</li>
+          <li><strong>Offline Caching & RemoteMediator:</strong> <code>RemoteMediator</code> seamlessly loads pages from the network when the user approaches the end of the list and stores them in local <strong>Room DB</strong> tables. The UI collects <code>Pager.flow</code> directly from Room, giving instant offline listing access.</li>
+          <li><strong>Image Pipeline:</strong> High-density classifieds require image downsampling in memory and disk caching via Coil/Glide with WebP encoding to minimize cellular data consumption.</li>
+          <li><strong>Real-time Buyer-Seller Chat:</strong> Persistent WebSocket / MQTT connection managed in a background Service. Messages are written to Room with <code>Status.SENDING</code>, updating to <code>DELIVERED</code> upon server ack.</li>
+          <li><strong>Deep Linking:</strong> Handled via Android App Links (<code>https://www.olx.in/item/{id}</code>) with custom <code>assetlinks.json</code> verification.</li>
+        </ol>`
+      },
+      {
+        q: "Explain Android Paging 3 Architecture: PagingSource vs RemoteMediator vs PagingData.",
+        tags: ["OLX", "Paging 3", "Room", "Feeds"],
+        a: `<p><strong>Core Paging 3 Building Blocks:</strong></p>
+        <ul>
+          <li><strong><code>PagingSource&lt;Key, Value&gt;</code>:</strong> Defines a single source of data (e.g. from network OR from Room). Room can generate a <code>PagingSource</code> directly from a SQL query (<code>@Query("SELECT * FROM items") fun getItems(): PagingSource&lt;Int, ItemEntity&gt;</code>).</li>
+          <li><strong><code>RemoteMediator&lt;Key, Value&gt;</code>:</strong> Used when implementing a <strong>network + database</strong> setup. Acts as the boundary callback: when Room runs out of cached pages, <code>RemoteMediator.load()</code> is triggered to fetch the next page from the API and insert it into Room. Room then emits updated data to the UI automatically.</li>
+          <li><strong><code>PagingData&lt;T&gt;</code>:</strong> The reactive container for paginated data emitted as a Flow. Collected in Jetpack Compose via <code>collectAsLazyPagingItems()</code>.</li>
+        </ul>`
+      },
+      {
+        q: "How do you optimize multi-image ad posting flow with camera EXIF rotation and compression?",
+        tags: ["OLX", "Ad Posting", "Images", "EXIF"],
+        a: `<p><strong>Technical Workflow:</strong></p>
+        <ol>
+          <li><strong>Camera EXIF Orientation Fix:</strong> Samsung and Xiaomi cameras frequently capture raw photos in landscape with an EXIF tag (e.g. <code>ORIENTATION_ROTATE_90</code>). Read the orientation using <code>ExifInterface(photoInputStream)</code> and apply a <code>Matrix.postRotate()</code> to ensure the preview and thumbnail don't appear rotated sideways!</li>
+          <li><strong>Asynchronous Image Compression:</strong> Compress images off the main thread using <code>Dispatchers.Default</code>. Scale the image down to $\\max 1920 \\times 1080$ and compress to WebP at $80\\%$ quality, reducing $\\sim 8\\text{ MB}$ photos to $\\sim 350\\text{ KB}$ without visible perceptual degradation.</li>
+          <li><strong>Bounded Parallel Uploads:</strong> When uploading 10 images, don't execute 10 concurrent HTTP requests. Use a Coroutine semaphore (<code>Semaphore(2)</code>) to upload at most 2 images in parallel, showing individual progress bars per photo.</li>
+        </ol>`
+      },
+      {
+        q: "What is the difference between standard Deep Links and Android App Links in an e-commerce app like OLX?",
+        tags: ["OLX", "Deep Links", "App Links", "Navigation"],
+        a: `<p><strong>Comparison:</strong></p>
+        <ul>
+          <li><strong>Standard Deep Links:</strong> Can use custom URI schemes (<code>olx://item/123</code>) or regular HTTP schemes. If multiple apps claim the same scheme or domain, Android displays an annoying "Open with..." disambiguation dialog. Vulnerable to scheme hijacking by competing apps!</li>
+          <li><strong>Android App Links:</strong> Verified HTTP/HTTPS URLs (<code>https://www.olx.in/item/123</code>). Requires hosting a <code>/.well-known/assetlinks.json</code> file on the domain with the app's package name and SHA-256 certificate fingerprint. The OS verifies the domain ownership during app install/update, automatically routing clicks directly into the app with zero disambiguation dialogs.</li>
+        </ul>`
+      }
+    ]
+  },
+  {
     id: "tech-core",
-    category: "tech",
+    category: "all",
     title: "Core Android & Kotlin Engineering Fundamentals",
     type: "questions",
     items: [
@@ -1211,22 +1351,6 @@ Box(modifier = Modifier.offset { IntOffset(scrollOffset.value, 0) })</code></pre
         </div>`
       },
       {
-        q: "What causes unnecessary recomposition, and how do you ensure parameter Stability?",
-        tags: ["Compose", "Stability", "Recomposition"],
-        a: `<p><strong>Stability Rules in Compose:</strong></p>
-        <ul>
-          <li><strong>Skippable Composables:</strong> Compose only skips recomposition of a Composable function if all its input arguments are <strong>Stable</strong> and have not changed according to <code>equals()</code>.</li>
-          <li><strong>The Unstable Pitfall:</strong> Standard library collections like <code>List&lt;T&gt;</code>, <code>Set&lt;T&gt;</code>, and <code>Map&lt;K,V&gt;</code> are treated by the Compose compiler as <strong>Unstable</strong> because their implementations could be mutable (e.g. <code>ArrayList</code>). Passing a <code>List&lt;Item&gt;</code> makes the composable unskippable!</li>
-          <li><strong>Solutions:</strong>
-            <ol>
-              <li>Use Kotlinx <code>ImmutableList&lt;Item&gt;</code> from <code>kotlinx.collections.immutable</code>.</li>
-              <li>Annotate your data holder class with <code>@Immutable</code> or <code>@Stable</code>.</li>
-              <li>Enable Strong Skipping Mode (enabled by default in modern Compose Compiler / Kotlin 2.0+), which treats unstable parameters with instance equality checks.</li>
-            </ol>
-          </li>
-        </ul>`
-      },
-      {
         q: "How does a ViewModel survive configuration changes under the hood in Android?",
         tags: ["Lifecycle", "ViewModel", "System"],
         a: `<p><strong>Under the Hood Mechanics:</strong></p>
@@ -1235,49 +1359,6 @@ Box(modifier = Modifier.offset { IntOffset(scrollOffset.value, 0) })</code></pre
           <li><strong>ViewModelStore Retention:</strong> The Activity packages its internal <code>ViewModelStore</code> (which holds a <code>Map&lt;String, ViewModel&gt;</code>) into an instance of <code>NonConfigurationInstances</code>.</li>
           <li><strong>Restoration in onCreate:</strong> When the new Activity instance is instantiated, its <code>onCreate()</code> calls <code>getLastNonConfigurationInstance()</code> to recover the exact same <code>ViewModelStore</code>.</li>
           <li><strong>When is onCleared() called?:</strong> <code>onCleared()</code> is ONLY invoked when the Activity is finishing permanently (<code>isFinishing == true</code>, e.g. user taps Back button or finishes the task), NOT during configuration change destructions!</li>
-        </ol>`
-      },
-      {
-        q: "Process Death vs Configuration Change — How do you test and defend against it?",
-        tags: ["Lifecycle", "Process Death", "SavedStateHandle"],
-        a: `<p><strong>Key Differences:</strong></p>
-        <ul>
-          <li><strong>Configuration Change:</strong> Process memory stays alive. ViewModels remain in RAM.</li>
-          <li><strong>System Process Death:</strong> Occurs when the app is in the background and Android terminates the entire process (Linux PID killed) to reclaim RAM for foreground apps. Process memory is wiped; all ViewModels, Singletons, and static variables are completely destroyed.</li>
-          <li><strong>Defending with SavedStateHandle:</strong> Inject <code>SavedStateHandle</code> into your ViewModel. Android automatically saves values put into <code>SavedStateHandle</code> into the system's serialized bundle:
-            <div class="ios-code-snippet">
-              <div class="code-header-bar">
-                <span class="code-filename">OrderDetailViewModel.kt</span>
-                <button class="code-copy-btn" onclick="copySnippet(this)">Copy</button>
-              </div>
-              <pre><code>@HiltViewModel
-class OrderDetailViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
-    private val repository: OrderRepository
-) : ViewModel() {
-    val orderId: String = checkNotNull(savedStateHandle["orderId"])
-}</code></pre>
-            </div>
-          </li>
-          <li><strong>Testing Process Death:</strong> In Android Studio terminal, run:
-            <code>adb shell am kill com.rapipay.nye</code> while the app is in background, then tap the app icon in the recents tray to verify recovery.</li>
-        </ul>`
-      },
-      {
-        q: "How do you diagnose and fix Memory Leaks in Android using LeakCanary and Memory Profiler?",
-        tags: ["Memory", "LeakCanary", "Debugging"],
-        a: `<p><strong>Diagnosis Workflow:</strong></p>
-        <ol>
-          <li><strong>The Nature of a Leak:</strong> A memory leak happens when an object that is no longer needed (e.g. destroyed Activity) cannot be garbage-collected because an active Garbage Collection (GC) Root holds a strong reference to it.</li>
-          <li><strong>Common Culprits:</strong>
-            <ul>
-              <li>Passing an <strong>Activity Context</strong> to a Singleton or long-lived repository (always pass <code>applicationContext</code>).</li>
-              <li>Registering broadcast receivers, location listeners, or event buses without unregistering them in <code>onStop()</code> / <code>onDestroy()</code>.</li>
-              <li>Launching coroutines on <code>GlobalScope</code> that reference View elements or Activity instances instead of <code>viewModelScope</code> or <code>lifecycleScope</code>.</li>
-              <li>Non-static inner classes or anonymous runnables holding an implicit reference to the outer Activity.</li>
-            </ul>
-          </li>
-          <li><strong>Resolution:</strong> LeakCanary monitors weak references to destroyed Activities and Fragments. If they aren't cleared within 5 seconds, it dumps the heap (Hprof), traverses the reference graph, and outputs the exact leak trace chain showing the offending GC root.</li>
         </ol>`
       },
       {
@@ -1336,7 +1417,7 @@ sealed interface SearchUiState {
 
 // STATE & STORAGE
 let currentTab = 'all';
-let masteredSet = new Set(JSON.parse(localStorage.getItem('bhavuk_ios_checks') || '[]'));
+let masteredSet = new Set(JSON.parse(localStorage.getItem('bhavuk_ios_checks_v3') || '[]'));
 let isDarkTheme = localStorage.getItem('bhavuk_theme') === 'dark' || 
   (!localStorage.getItem('bhavuk_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
@@ -1349,6 +1430,8 @@ const progressCountLabel = document.getElementById('progressCountLabel');
 const emptyState = document.getElementById('emptyState');
 const themeBtn = document.getElementById('themeBtn');
 const tabButtons = document.querySelectorAll('.tab-item');
+const compactTitle = document.getElementById('compactTitle');
+const largeHeader = document.getElementById('largeHeader');
 
 // THEME APPLY
 function applyTheme() {
@@ -1367,6 +1450,16 @@ themeBtn.addEventListener('click', () => {
   localStorage.setItem('bhavuk_theme', isDarkTheme ? 'dark' : 'light');
   applyTheme();
 });
+
+// SCROLL COLLAPSIBLE LARGE TITLE (NATIVE iOS BEHAVIOR)
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  if (scrollY > 70) {
+    compactTitle.classList.add('visible');
+  } else {
+    compactTitle.classList.remove('visible');
+  }
+}, { passive: true });
 
 // CALC TOTAL QUESTIONS
 let totalQuestions = 0;
@@ -1387,7 +1480,7 @@ function updateProgress() {
   const pct = Math.round((count / totalQuestions) * 100);
   progressFill.style.width = `${pct}%`;
   progressCountLabel.textContent = `${count} / ${totalQuestions} (${pct}%)`;
-  localStorage.setItem('bhavuk_ios_checks', JSON.stringify([...masteredSet]));
+  localStorage.setItem('bhavuk_ios_checks_v3', JSON.stringify([...masteredSet]));
 }
 
 // RENDER SECTIONS & CELLS
@@ -1403,15 +1496,15 @@ function renderView() {
     if (currentTab !== 'all') {
       if (currentTab === 'enil' && section.id !== 'enil' && section.id !== 'companies') return;
       if (currentTab === 'sew' && section.id !== 'sew' && section.id !== 'companies') return;
+      if (currentTab === 'olx' && section.id !== 'olx' && section.id !== 'companies') return;
       if (currentTab === 'resume' && section.id !== 'resume') return;
-      if (currentTab === 'tech' && section.id !== 'tech-core') return;
     }
 
     if (section.type === 'companies') {
-      // Filter company cards
       const visibleCompanies = section.items.filter(comp => {
         if (currentTab === 'enil' && !comp.name.includes('Entertainment')) return false;
         if (currentTab === 'sew' && !comp.name.includes('Smart Energy')) return false;
+        if (currentTab === 'olx' && !comp.name.includes('OLX')) return false;
         if (query) {
           const compText = (comp.name + ' ' + comp.bullets.join(' ')).toLowerCase();
           return compText.includes(query);
@@ -1480,6 +1573,7 @@ function renderView() {
         if (t.toLowerCase().includes('star')) cls += ' star';
         else if (t.toLowerCase().includes('enil')) cls += ' enil';
         else if (t.toLowerCase().includes('sew')) cls += ' sew';
+        else if (t.toLowerCase().includes('olx')) cls += ' olx';
         return `<span class="${cls}">${t}</span>`;
       }).join('');
 
@@ -1496,8 +1590,12 @@ function renderView() {
             <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
           </svg>
         </div>
-        <div class="ios-cell-detail">
-          ${item.a}
+        <div class="ios-accordion-wrapper">
+          <div class="ios-accordion-inner">
+            <div class="ios-cell-detail">
+              ${item.a}
+            </div>
+          </div>
         </div>
       `;
 
@@ -1543,7 +1641,7 @@ window.copySnippet = function(button) {
   });
 };
 
-// TAB BAR NAVIGATION
+// TAB BAR NAVIGATION WITH SPRING POP ANIMATION
 tabButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     triggerHaptic();
@@ -1570,7 +1668,7 @@ clearSearchBtn.addEventListener('click', () => {
 document.getElementById('resetProgressBtn').addEventListener('click', () => {
   if (confirm("Reset all mastered question checkmarks?")) {
     masteredSet.clear();
-    localStorage.removeItem('bhavuk_ios_checks');
+    localStorage.removeItem('bhavuk_ios_checks_v3');
     renderView();
     updateProgress();
   }

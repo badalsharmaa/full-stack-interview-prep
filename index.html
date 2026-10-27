@@ -3,221 +3,1253 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Full Stack Interview Prep — Badal Sharma</title>
+<title>SDE-1 Android Interview Master Portal — Bhavuk Rajput</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f7fb;--panel:#fff;--text:#172033;--muted:#68738a;--line:#e3e8f1;--accent:#3559e0;--accent2:#eaf0ff;--good:#16845b;--shadow:0 10px 30px rgba(28,42,80,.07)}
-[data-theme="dark"]{--bg:#101522;--panel:#171f30;--text:#eef2ff;--muted:#a5afc4;--line:#2a354a;--accent:#9cb0ff;--accent2:#263253;--good:#64d6a4;--shadow:0 10px 30px rgba(0,0,0,.2)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header{background:linear-gradient(125deg,#172554,#3559e0 65%,#7088ff);color:white;padding:42px 22px 32px}
-.hero,.layout{max-width:1180px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:12px;font-weight:800;opacity:.8}
-h1{font-size:clamp(30px,5vw,48px);line-height:1.08;margin:10px 0}header p{max-width:760px;color:#e3e9ff;margin:12px 0 22px}
-.stats{display:flex;flex-wrap:wrap;gap:10px}.stat{padding:8px 12px;background:#ffffff1c;border:1px solid #ffffff35;border-radius:12px;font-size:13px}
-.layout{padding:24px 18px 60px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:22px}
-aside{position:sticky;top:14px;align-self:start;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
-aside h2{font-size:15px;margin:0 0 12px}.nav{display:grid;gap:5px}.nav button{border:0;text-align:left;background:transparent;color:var(--muted);padding:9px 10px;border-radius:9px;cursor:pointer;font:inherit;font-size:13px}.nav button.active,.nav button:hover{background:var(--accent2);color:var(--accent);font-weight:700}
-.progress-wrap{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}.progress-line{height:7px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}.progress-line span{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
-main{min-width:0}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}.search{flex:1;min-width:190px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);font:inherit}.toolbtn{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:10px 13px;border-radius:11px;cursor:pointer;font-weight:650}
-.notice{background:var(--accent2);border:1px solid var(--line);padding:14px 16px;border-radius:13px;margin-bottom:20px;font-size:13px;color:var(--text)}
-.section{margin:25px 0 12px;scroll-margin-top:20px}.section h2{font-size:22px;margin:0}.section p{margin:4px 0;color:var(--muted);font-size:13px}
-.cards{display:grid;gap:10px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(25,35,65,.025)}.qrow{display:flex;gap:12px;align-items:flex-start;padding:15px 16px;cursor:pointer}.qrow:hover{background:color-mix(in srgb,var(--accent2) 35%,var(--panel))}.check{margin-top:4px;accent-color:var(--good);width:16px;height:16px;flex-shrink:0}.qtext{font-weight:750;flex:1}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);white-space:nowrap;border:1px solid var(--line);padding:3px 7px;border-radius:99px}.chevron{color:var(--muted);font-size:18px;transition:transform .2s}.answer{display:none;border-top:1px solid var(--line);padding:14px 20px 18px 45px;color:var(--text)}.card.open .answer{display:block}.card.open .chevron{transform:rotate(180deg)}.answer p{margin:0 0 8px}.answer ul{margin:7px 0 0;padding-left:20px}.answer li{margin:4px 0}.answer strong{color:var(--accent)}.template{font-size:12px;color:var(--muted);margin-top:10px;padding:8px 10px;border-left:3px solid var(--accent);background:var(--accent2);border-radius:0 8px 8px 0}
-.empty{display:none;padding:25px;text-align:center;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:12px;padding:25px}
-@media(max-width:800px){.layout{grid-template-columns:1fr}aside{position:static}.nav{grid-template-columns:repeat(2,minmax(0,1fr))}.progress-wrap{margin-top:12px}header{padding-top:30px}.tag{display:none}.answer{padding-left:20px}}
-@media print{body{background:#fff;color:#111;font-size:11pt}header{background:#fff;color:#111;padding:15px 0;border-bottom:2px solid #333}header p{color:#333}.layout{display:block;padding:10px 0}aside,.toolbar,.toolbtn,.check,.chevron{display:none!important}.card{break-inside:avoid;box-shadow:none;border:1px solid #bbb}.answer{display:block!important;border-top:1px solid #ddd}.qrow{padding:8px}.section{break-after:avoid}.section h2{font-size:16pt}.notice{background:#fff}.tag{display:none}footer{display:none}}
+:root {
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --accent-dark: #1d4ed8;
+  --good: #10b981;
+  --good-light: #ecfdf5;
+  --warn: #f59e0b;
+  --warn-light: #fffbeb;
+  --purple: #8b5cf6;
+  --purple-light: #f5f3ff;
+  --shadow-sm: 0 1px 3px rgba(15,23,42,0.06);
+  --shadow: 0 10px 25px -5px rgba(15,23,42,0.05), 0 8px 10px -6px rgba(15,23,42,0.03);
+  --shadow-lg: 0 20px 25px -5px rgba(15,23,42,0.08), 0 8px 10px -6px rgba(15,23,42,0.04);
+}
+[data-theme="dark"] {
+  --bg: #090d16;
+  --panel: #111827;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --line: #1f2937;
+  --accent: #60a5fa;
+  --accent-light: #1e293b;
+  --accent-dark: #3b82f6;
+  --good: #34d399;
+  --good-light: #064e3b;
+  --warn: #fbbf24;
+  --warn-light: #451a03;
+  --purple: #a78bfa;
+  --purple-light: #2e1065;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+  --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.6);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
+  color: white;
+  padding: 48px 24px 36px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.hero, .layout { max-width: 1240px; margin: auto; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.hero-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 4px 12px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+}
+h1 {
+  font-size: clamp(28px, 4.5vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+header p {
+  max-width: 820px;
+  color: #cbd5e1;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+.stats { display: flex; flex-wrap: wrap; gap: 12px; }
+.stat-chip {
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.companies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin: 24px auto 0;
+  max-width: 1240px;
+  padding: 0 24px;
+}
+.company-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.company-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.comp-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.comp-enil { background: #fee2e2; color: #991b1b; }
+[data-theme="dark"] .comp-enil { background: #450a0a; color: #fca5a5; }
+.comp-sew { background: #e0f2fe; color: #075985; }
+[data-theme="dark"] .comp-sew { background: #082f49; color: #7dd3fc; }
+.comp-eval { background: #fef3c7; color: #92400e; }
+[data-theme="dark"] .comp-eval { background: #451a03; color: #fcd34d; }
+.company-card h3 { font-size: 17px; margin-bottom: 4px; font-weight: 700; }
+.company-card .sub { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.company-card ul { padding-left: 18px; font-size: 13px; color: var(--text); }
+.company-card li { margin-bottom: 4px; }
+.layout {
+  padding: 28px 24px 80px;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 24px;
+}
+aside {
+  position: sticky;
+  top: 18px;
+  align-self: start;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+aside h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.nav { display: flex; flex-direction: column; gap: 4px; }
+.nav button {
+  border: 0;
+  text-align: left;
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.15s;
+}
+.nav button:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+.nav button.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 700;
+}
+.nav-count {
+  font-size: 11px;
+  background: rgba(0,0,0,0.06);
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+[data-theme="dark"] .nav-count { background: rgba(255,255,255,0.1); }
+.progress-card {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.progress-card strong { font-size: 13px; display: block; margin-bottom: 8px; }
+.progress-bar-bg {
+  height: 8px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--good);
+  transition: width 0.3s ease;
+}
+.progress-stats {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.search-input {
+  flex: 1;
+  min-width: 220px;
+  padding: 11px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+.btn {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 11px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.notice-box {
+  background: var(--accent-light);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font-size: 13.5px;
+  color: var(--text);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.notice-box strong { color: var(--accent-dark); }
+[data-theme="dark"] .notice-box strong { color: var(--accent); }
+.section-header {
+  margin: 32px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--line);
+}
+.section-header h2 {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-header p {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin-top: 4px;
+}
+.cards { display: grid; gap: 12px; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.card:hover {
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow);
+}
+[data-theme="dark"] .card:hover { border-color: #374151; }
+.card.completed {
+  border-color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.02);
+}
+[data-theme="dark"] .card.completed { border-color: #065f46; }
+.card-header {
+  display: flex;
+  gap: 12px;
+  padding: 16px 18px;
+  cursor: pointer;
+  align-items: flex-start;
+  user-select: none;
+}
+.card-checkbox {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--good);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.card-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+}
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+.tag {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.tag.star { background: #fef3c7; color: #b45309; border-color: #fde68a; }
+[data-theme="dark"] .tag.star { background: #78350f; color: #fde68a; border-color: #92400e; }
+.tag.enil { background: #fee2e2; color: #b91c1c; border-color: #fecaca; }
+[data-theme="dark"] .tag.enil { background: #7f1d1d; color: #fecaca; border-color: #991b1b; }
+.tag.sew { background: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
+[data-theme="dark"] .tag.sew { background: #0c4a6e; color: #bae6fd; border-color: #075985; }
+.card-chevron {
+  color: var(--muted);
+  font-size: 18px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.card.open .card-chevron {
+  transform: rotate(180deg);
+}
+.card-body {
+  display: none;
+  padding: 16px 22px 22px 48px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+}
+.card.open .card-body {
+  display: block;
+}
+.card-body p { margin-bottom: 12px; }
+.card-body ul, .card-body ol {
+  padding-left: 20px;
+  margin-bottom: 14px;
+}
+.card-body li { margin-bottom: 6px; }
+.card-body strong { color: var(--accent); }
+[data-theme="dark"] .card-body strong { color: #93c5fd; }
+pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  overflow-x: auto;
+  margin: 12px 0;
+  line-height: 1.5;
+  border: 1px solid #1e293b;
+}
+code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  background: rgba(0,0,0,0.06);
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+[data-theme="dark"] code { background: rgba(255,255,255,0.1); }
+pre code { background: transparent; padding: 0; border-radius: 0; }
+.star-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--warn);
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin: 12px 0;
+  font-size: 13px;
+}
+.star-box h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--warn);
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+.followup-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--purple);
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-top: 14px;
+  font-size: 13px;
+}
+.followup-box strong { color: var(--purple); }
+.empty-state {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+}
+.empty-state h3 { font-size: 18px; margin-bottom: 6px; color: var(--text); }
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  aside { position: static; }
+  .card-body { padding-left: 20px; }
+}
+@media print {
+  header { background: #fff; color: #000; border: none; padding: 10px 0; }
+  header p, .hero-badge, .stats { display: none; }
+  .companies-grid, aside, .toolbar, .card-checkbox, .card-chevron, footer { display: none !important; }
+  .layout { display: block; padding: 0; }
+  .card { break-inside: avoid; border: 1px solid #ccc; margin-bottom: 12px; box-shadow: none; }
+  .card-body { display: block !important; padding: 10px; background: #fff; }
+}
 </style>
 </head>
 <body>
-<header><div class="hero">
-<div class="eyebrow">Interview workbook · Resume-based</div>
-<h1>Full Stack Developer<br>Interview Prep</h1>
-<p>A practical question bank with short sample answers, project follow-ups, and a progress tracker. Tailored to your resume: MERN, TypeScript, PHP, Shopify, WordPress, databases, payments, and AI integrations.</p>
-<div class="stats"><span class="stat" id="totalStat">Questions</span><span class="stat">Short answers included</span><span class="stat">Search + topic filters</span><span class="stat">Print-friendly</span></div>
-</div></header>
+
+<header>
+  <div class="hero">
+    <div class="badge-row">
+      <span class="hero-badge">SDE-1 (Android) Master Preparation</span>
+      <span class="hero-badge">Bhavuk Rajput</span>
+      <span class="hero-badge">3+ Years Experience</span>
+      <span class="hero-badge">SE1 Guidelines Aligned</span>
+    </div>
+    <h1>Android Engineering Interview Master Guide</h1>
+    <p>Tailored for upcoming interviews at <strong>Entertainment Network India Limited (ENIL / Mirchi)</strong> and <strong>Smart Energy Water (SEW.AI)</strong>. Covers candidate resume signatures (RapiPay NYE, EPA KYC SDK, R8 Optimization & Lending Hilt fix, Android 16 Insets, VAPT hardening), media streaming, offline-first architectures, Kotlin internals, and Jetpack Compose.</p>
+    <div class="stats">
+      <div class="stat-chip">📚 <span id="totalQuestionsStat">0</span> Total Questions</div>
+      <div class="stat-chip">🏢 2 Company Dossiers</div>
+      <div class="stat-chip">⭐ STAR Project Decks</div>
+      <div class="stat-chip">🔍 Real-time Search & Filters</div>
+      <div class="stat-chip">💾 LocalStorage Progress Sync</div>
+    </div>
+  </div>
+</header>
+
+<div class="companies-grid">
+  <div class="company-card">
+    <span class="comp-badge comp-enil">Target 1 · Media & Audio</span>
+    <h3>Entertainment Network India Ltd (ENIL / Mirchi)</h3>
+    <div class="sub">Film City, Sector 16A, Noida · Radio Mirchi, Mirchi Plus, Podcasts</div>
+    <ul>
+      <li><strong>Media3 & ExoPlayer:</strong> Player state machine, audio focus ducking, buffer management.</li>
+      <li><strong>Foreground Services:</strong> Android 14/15/16 <code>mediaPlayback</code> service restrictions.</li>
+      <li><strong>Offline & DRM:</strong> Chunked caching (<code>CacheDataSource</code>) and Widevine licensing.</li>
+    </ul>
+  </div>
+  <div class="company-card">
+    <span class="comp-badge comp-sew">Target 2 · Utility Cloud & AI</span>
+    <h3>Smart Energy Water (SEW.AI)</h3>
+    <div class="sub">NSL TechZone, Sector 144, Noida · Smart Customer & Workforce Mobile</div>
+    <ul>
+      <li><strong>Offline-First Architecture:</strong> Field worker forms, local Room SSOT, and background sync.</li>
+      <li><strong>WorkManager:</strong> Guaranteed delivery across reboots, constraints & backoff policies.</li>
+      <li><strong>Device Optimization:</strong> Low-battery GPS tracking and preventing image OOM crashes.</li>
+    </ul>
+  </div>
+  <div class="company-card">
+    <span class="comp-badge comp-eval">SE1 Guide Rubric</span>
+    <h3>Interview Evaluation Focus</h3>
+    <div class="sub">Based on Official SDE-1 Preparation Guide (13).pdf</div>
+    <ul>
+      <li><strong>Think Out Loud:</strong> Walk through reasoning before writing code.</li>
+      <li><strong>Edge Cases:</strong> Process death, nullability, configuration changes, concurrency races.</li>
+      <li><strong>Deep Fundamentals:</strong> Coroutines, memory leak detection, Android runtime awareness.</li>
+    </ul>
+  </div>
+</div>
+
 <div class="layout">
-<aside><h2>Topics</h2><nav class="nav" id="nav"></nav>
-<div class="progress-wrap"><strong>Preparation progress</strong><div class="progress-line"><span id="progressBar"></span></div><small id="progressText">0 of 0 reviewed</small><div style="display:flex;gap:7px;margin-top:12px"><button class="toolbtn" id="resetChecks">Reset checks</button></div></div></aside>
-<main>
-<div class="toolbar"><input class="search" id="search" placeholder="Search questions or answers…"><button class="toolbtn" id="expand">Expand all</button><button class="toolbtn" id="collapse">Collapse all</button><button class="toolbtn" id="theme">Dark mode</button><button class="toolbtn" onclick="window.print()">Print / Save PDF</button></div>
-<div class="notice"><strong>Use this wisely:</strong> answers are concise starting points, not scripts to memorize. For project-specific questions, replace generic wording with what you personally implemented. Do not claim a tool, metric, or architecture you cannot explain.</div>
-<div id="content"></div><div class="empty" id="empty">No questions match your search. Try another keyword or topic.</div>
-</main></div><footer>Built for interview practice · Check a question after you can answer it confidently without reading.</footer>
+  <aside>
+    <h2>Curriculum Sections</h2>
+    <nav class="nav" id="nav"></nav>
+    <div class="progress-card">
+      <strong>Your Preparation Progress</strong>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+      <div class="progress-stats">
+        <span id="progressText">0 of 0 mastered</span>
+        <span id="progressPct">0%</span>
+      </div>
+      <div style="margin-top:12px;">
+        <button class="btn" style="width:100%; justify-content:center;" id="resetProgressBtn">Reset Mastered Checks</button>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="toolbar">
+      <input type="text" class="search-input" id="search" placeholder="Search questions, STAR answers, code, or keywords…">
+      <button class="btn" id="expandAllBtn">Expand All</button>
+      <button class="btn" id="collapseAllBtn">Collapse All</button>
+      <button class="btn" id="themeBtn">Dark Mode</button>
+      <button class="btn" onclick="window.print()">Print / PDF</button>
+    </div>
+
+    <div class="notice-box">
+      <span style="font-size:20px;">💡</span>
+      <div>
+        <strong>Strategic Interview Tip:</strong> For project questions, apply the <strong>STAR method</strong> (Situation, Task, Action, Result). State concrete technical decisions and quantitative impact (e.g. <em>282.9 KB DEX reduction, R8 Full Mode keep rules, EPA KYC SDK journey resumption</em>). Do not just state definitions; explain the runtime memory/lifecycle trade-offs!
+      </div>
+    </div>
+
+    <div id="content"></div>
+    <div class="empty-state" id="emptyState">
+      <h3>No matching questions found</h3>
+      <p>Try searching for terms like "Hilt", "R8", "Media3", "Offline", "Flow", "Compose", or "KYC".</p>
+    </div>
+  </main>
+</div>
+
+<footer>
+  Crafted for Bhavuk Rajput's SDE-1 Android Interview Series · Built with modern responsive web standards · Good luck tomorrow!
+</footer>
+
 <script>
 const sections = [
-{title:"JavaScript & TypeScript",desc:"Core language concepts and common coding-round discussion points.",items:[
-["What is the difference between var, let, and const?","var is function-scoped and can be redeclared; let and const are block-scoped. let can be reassigned, while const cannot be reassigned. A const object’s contents can still be changed."],
-["What is a closure?","A closure is a function bundled with access to variables from its lexical scope, even after the outer function has finished. It is useful for private state, callbacks, and function factories."],
-["What is the difference between == and ===?","== allows type coercion before comparison; === compares both type and value. Prefer === unless coercion is intentional."],
-["Explain promises, async, and await.","A Promise represents a future success or failure. async makes a function return a Promise; await pauses that async function until the Promise settles, making asynchronous code easier to read. Handle failures with try/catch."],
-["What is the event loop?","JavaScript runs synchronous work on the call stack. The event loop coordinates queued callbacks after the stack is clear; Promise callbacks run as microtasks, generally before timer/task callbacks."],
-["map vs filter vs reduce?","map transforms every item; filter keeps items that pass a condition; reduce combines items into one result, such as a sum or grouped object."],
-["What is callback hell?","It is deeply nested callbacks that make asynchronous code difficult to read and maintain. Named functions, Promises, async/await, and clear error handling help avoid it."],
-["Shallow copy vs deep copy?","A shallow copy duplicates only the top level, so nested objects remain shared references. A deep copy duplicates nested structures too; choose a method appropriate for the data, such as structuredClone for supported values."],
-["What are debouncing and throttling?","Debouncing waits until events stop for a period, useful for search input. Throttling limits how often a function runs, useful for scroll or resize handlers."],
-["What is the difference between interface and type in TypeScript?","Both describe types. Interfaces are commonly used for object shapes and can be declaration-merged; type aliases can express unions, intersections, primitives, and other type compositions."],
-["What are generics?","Generics let code work with different types while preserving type information, for example a reusable function that accepts and returns a value of type T."],
-["any vs unknown?","any disables most type checking. unknown accepts any value but requires type narrowing before it can safely be used. Prefer unknown when the type is not yet known."],
-["What is type narrowing?","TypeScript narrows a broad type to a more specific type using checks such as typeof, instanceof, discriminant properties, or custom type guards."],
-["How do you reverse a string in JavaScript?","A simple approach is [...str].reverse().join(''). In an interview, discuss Unicode caveats: code points and grapheme clusters are not always the same."],
-["How would you remove duplicates from an array?","For primitive values, [...new Set(items)] is concise. For objects, define what makes two objects duplicates, such as a shared id, and use a Map or Set keyed by that property."],
-["What is the difference between null and undefined?","undefined often means a value has not been assigned or is absent; null is an explicitly assigned empty value. Check both deliberately when designing APIs."],
-["What is destructuring?","Destructuring extracts values from arrays or properties from objects into variables, improving readability and supporting defaults."],
-["What is the spread operator used for?","Spread expands iterable elements or object properties. It is commonly used for shallow copies and immutable state updates, but it does not deep-copy nested objects."]
-]},
-{title:"React",desc:"Hooks, component design, state, and frontend performance.",items:[
-["What is React?","React is a JavaScript library for building user interfaces from reusable components. It updates the UI based on state and props."],
-["What is the Virtual DOM?","It is a representation of the UI that React uses to calculate changes between renders. React reconciles those changes with the real DOM; it is not automatically faster in every situation."],
-["Props vs state?","Props are inputs passed from a parent and should be treated as read-only. State is data managed by a component or state system that can trigger a re-render when updated."],
-["What are React Hooks?","Hooks let function components use React features such as state, effects, refs, and context. They must be called at the top level of React components or custom Hooks."],
-["Explain useState.","useState adds component state. Its setter schedules an update; reading the variable immediately after calling the setter still returns the value from the current render."],
-["Explain useEffect and its dependency array.","useEffect synchronizes a component with an external system. No dependency array runs after every render; [] runs after mount (with development Strict Mode behavior to consider); a dependency list reruns when listed values change. Clean up subscriptions or timers."],
-["Why might useEffect run twice in development?","React Strict Mode may perform an extra setup-and-cleanup cycle in development to reveal effects that are not correctly cleaned up. It does not mean every production effect always runs twice."],
-["useMemo vs useCallback?","useMemo caches a calculated value; useCallback caches a function reference. Use them when there is a measured or clear reason, not automatically everywhere."],
-["What is React.memo?","It can skip re-rendering a component when its props compare equal. It is an optimization, not a guarantee, and new object/function references can defeat the default comparison."],
-["Controlled vs uncontrolled inputs?","A controlled input gets its value from React state and updates through handlers. An uncontrolled input keeps its value in the DOM and is often accessed through a ref."],
-["Why are keys important in lists?","Keys help React identify items between renders so it can preserve the correct component state and update the list efficiently. Use stable unique IDs rather than array indexes when items can move or be removed."],
-["What is prop drilling?","Prop drilling passes data through intermediate components that do not need it. Context, composition, or a state-management library can help when appropriate."],
-["Context API vs Redux?","Context makes values available through a component tree. Redux provides a structured centralized state model, tooling, and predictable updates. Choose based on complexity rather than assuming one is always better."],
-["How do you handle loading and error states for API calls?","Track loading, data, and error state; show clear UI for each; handle rejected requests; and consider cancellation or stale-response protection when components or query parameters change."],
-["How do you prevent unnecessary re-renders?","Keep state close to where it is needed, avoid needless state, use stable keys, split components sensibly, and profile first. Memoization can help when it addresses a measured bottleneck."],
-["What is code splitting?","It divides JavaScript into smaller chunks loaded when needed, often using dynamic imports and React.lazy with Suspense. It can reduce the initial bundle but may add later network requests."],
-["How would you build protected routes?","Check authentication state and, where relevant, user permissions before rendering protected UI. The backend must independently enforce authorization; frontend route guards alone do not secure data."],
-["How do you handle forms?","Use controlled state or a form library, validate inputs on client and server, provide accessible error messages, and prevent duplicate submissions where appropriate."],
-["What causes a stale closure in React?","A callback can capture values from an earlier render. Use correct effect dependencies, functional state updates, or refs when appropriate rather than suppressing dependency warnings blindly."]
-]},
-{title:"Node.js, Express & APIs",desc:"Backend fundamentals, architecture, reliability, and HTTP.",items:[
-["What is Node.js?","Node.js is a JavaScript runtime built on the V8 engine. It is well suited to I/O-heavy applications because asynchronous I/O lets it handle many concurrent connections without a thread per request."],
-["Is Node.js single-threaded?","JavaScript execution in a typical Node process runs on one main thread, but Node also uses operating-system facilities and a libuv thread pool for some work. Worker threads can run CPU-intensive JavaScript."],
-["What is Express middleware?","Middleware is a function that can inspect or modify the request and response, end the request, or call next(). Middleware order matters; error-handling middleware has a special signature."],
-["What is REST?","REST is an architectural style for resource-oriented APIs. Common conventions use HTTP methods and status codes consistently, with stateless requests and clear resource URLs."],
-["PUT vs PATCH?","PUT generally replaces a resource representation and is intended to be idempotent. PATCH applies a partial modification; its idempotency depends on the operation."],
-["What are req, res, and next in Express?","req contains request information, res is used to send a response, and next passes control to the next middleware or error handler."],
-["How do you handle errors in Express?","Use centralized error-handling middleware, pass errors to it, log useful diagnostic context without leaking secrets, and return safe, consistent status codes and messages."],
-["What is CORS?","Cross-Origin Resource Sharing is a browser mechanism controlled by response headers that determines whether frontend code from another origin can read a response. It is not a replacement for authentication."],
-["How do you validate API requests?","Validate parameters, query strings, and bodies against a schema; reject invalid input early; normalize expected formats; and never rely solely on client-side validation."],
-["How would you structure a backend application?","A common structure separates routes, controllers, business/service logic, data-access models, validation, middleware, and configuration. Keep boundaries understandable rather than adding layers without a reason."],
-["How do you implement pagination?","For small datasets, limit/offset pagination is simple. For large or frequently changing datasets, cursor pagination can be more efficient and stable. Always validate limits and sort deterministically."],
-["What is idempotency?","An operation is idempotent when repeating the same request has the same intended effect as performing it once. Idempotency keys and unique constraints can protect order or payment creation from retries."],
-["How would you debug a slow API?","Measure first: inspect request timings, logs, database query plans, external API latency, CPU and memory. Reproduce the issue, isolate the bottleneck, fix it, and compare measurements afterward."],
-["How do you handle a slow third-party API?","Set timeouts, handle errors and retries carefully, use exponential backoff for transient failures, limit concurrency, and consider caching or queues where appropriate. Avoid retrying non-idempotent operations blindly."],
-["What is API versioning?","Versioning lets an API evolve without unexpectedly breaking clients, often through a URL prefix or headers. Keep changes backward-compatible where practical and document deprecations."],
-["What is the difference between 401 and 403?","401 means valid authentication credentials are missing or unacceptable; 403 means the server understood the request but refuses authorization. Exact API conventions should be consistent."],
-["How do you secure an API?","Use authentication and server-side authorization, validate input, parameterize database queries, enforce HTTPS, rate-limit sensitive endpoints, protect secrets, configure CORS carefully, and log security-relevant events safely."]
-]},
-{title:"MongoDB & MySQL",desc:"Data modelling, query performance, transactions, and SQL.",items:[
-["SQL vs NoSQL?","Relational SQL databases use structured tables and relationships with powerful joins and constraints. MongoDB stores document-oriented data. Choose based on data shape, consistency needs, queries, and operational requirements."],
-["What are MongoDB documents and collections?","A document is a BSON record of fields and values; a collection groups documents, similar in broad purpose to a table but with a flexible document structure."],
-["What is Mongoose?","Mongoose is an ODM for MongoDB in Node.js. It provides schemas, models, validation, middleware, and convenient querying, though database-level constraints and behavior still matter."],
-["Embedding vs referencing in MongoDB?","Embedding stores related data together for convenient reads when size and update patterns fit. Referencing stores IDs separately and can reduce duplication for shared or large related records."],
-["What is a database index?","An index helps the database locate records without scanning every row or document, but it costs storage and can slow writes. Index fields should follow real query patterns."],
-["What is an aggregation pipeline?","It processes documents through stages such as match, group, project, sort, and lookup to filter, transform, and summarize data on the database server."],
-["What are primary and foreign keys?","A primary key uniquely identifies a row. A foreign key references a key in another table and can enforce referential integrity."],
-["Explain INNER JOIN and LEFT JOIN.","INNER JOIN returns matching rows from both sides. LEFT JOIN returns every left-side row plus matching right-side data, with NULL values where no match exists."],
-["What is normalization?","Normalization structures relational data to reduce unnecessary duplication and update anomalies. Denormalization can still be appropriate for measured performance or reporting needs."],
-["WHERE vs HAVING?","WHERE filters rows before grouping; HAVING filters grouped results, often using aggregate conditions."],
-["What does ACID mean?","Atomicity, Consistency, Isolation, and Durability describe key transaction properties. They help ensure operations behave reliably, subject to the database's configured guarantees."],
-["How do you prevent SQL injection in PHP?","Use parameterized prepared statements with PDO or MySQLi. Do not concatenate untrusted values into SQL; validate input and use least-privilege database credentials."],
-["How would you model restaurant orders?","Use customers, menu_items, orders, and order_items. Each order_item references an order and item but should usually store the price and item description at purchase time so historical receipts do not change when the menu changes."],
-["How would you find the second-highest salary in SQL?","One approach is SELECT MAX(salary) FROM employees WHERE salary < (SELECT MAX(salary) FROM employees). Clarify whether the question asks for the second distinct salary or the second row."],
-["How do transactions help in checkout?","A transaction can ensure related database changes commit together or roll back together. External payment calls cannot usually be part of the same database transaction, so order states and reconciliation are also needed."]
-]},
-{title:"Authentication, Security & Payments",desc:"JWT, common web risks, payment lifecycle, and safe retries.",items:[
-["Authentication vs authorization?","Authentication establishes who the user is; authorization decides what that user is allowed to do."],
-["What is JWT?","A JSON Web Token carries claims in a signed token. The server verifies its signature and relevant claims such as expiry. A signed JWT is not automatically encrypted."],
-["Where should tokens be stored?","There is no universal answer. HttpOnly, Secure, appropriately configured SameSite cookies reduce JavaScript access but require CSRF considerations. Browser storage is accessible to injected scripts, so XSS risk matters. Follow the application's threat model."],
-["What is XSS?","Cross-site scripting occurs when untrusted content is executed as script in a user's browser. Use context-appropriate output encoding, safe rendering, careful HTML sanitization, and a suitable Content Security Policy."],
-["What is CSRF?","Cross-site request forgery tricks a browser into sending an authenticated request. Defenses can include SameSite cookies, anti-CSRF tokens, origin checks, and avoiding state changes via GET."],
-["What is password hashing?","Hash passwords with a password-specific algorithm such as Argon2id or bcrypt using appropriate settings and salts. Do not store plaintext passwords or use a fast general-purpose hash alone."],
-["How do you manage secrets?","Keep API keys and database credentials out of source control and frontend bundles. Use environment configuration or a secret manager, restrict access, rotate exposed secrets, and avoid logging them."],
-["Why verify payments on the server?","Browser redirects can be forged or interrupted. The backend should verify payment status through trusted provider APIs or validated webhooks before marking an order paid."],
-["What is a payment webhook?","A provider sends a server-to-server event about a payment or refund. Verify its signature, handle retries idempotently, and update order state safely."],
-["What if a webhook arrives twice?","Persist provider event IDs or use unique constraints and idempotent state transitions so the same event does not create duplicate fulfillment or charges."],
-["What if payment succeeds but the server fails before updating the order?","Use durable order/payment states, provider webhooks, safe retries, and reconciliation. A pending order can be updated after independently verifying the provider's payment status."],
-["How do you avoid charging twice?","Use provider-supported idempotency keys where available, maintain a unique payment/order reference, and make retry behavior explicit. Do not blindly create a new payment on every retry."],
-["How should card details be handled?","Prefer provider-hosted checkout or tokenized payment components so the application does not handle raw card data. Follow the provider's security requirements and applicable PCI obligations."],
-["How do you handle refunds?","Request the refund through the provider, record its identifier and status, process webhook updates idempotently, and keep order and accounting records consistent."]
-]},
-{title:"PHP, WordPress & Shopify",desc:"Resume-specific questions for your PHP, plugin, and Liquid experience.",items:[
-["Why choose PHP/MySQL instead of MERN for a project?","The choice depends on existing hosting, team skills, project requirements, integrations, and maintenance costs. PHP/MySQL can be a practical fit for shared hosting and established PHP websites; MERN can suit JavaScript-heavy applications."],
-["What is the difference between include and require in PHP?","Both include another file. If an included file is missing, include typically raises a warning and continues; require raises an error that stops normal execution."],
-["What are sessions and cookies?","Cookies are stored by the browser and sent with matching requests. Sessions store server-side state, usually linked to a session identifier held by a cookie."],
-["What are prepared statements?","They separate SQL structure from parameter values, reducing SQL injection risk when used correctly."],
-["What are WordPress actions and filters?","Actions let code run at particular points; filters let code modify and return a value. Both are part of WordPress's hook system."],
-["What is a WordPress nonce?","A nonce helps protect against certain CSRF-style request attacks. It is not authentication or authorization; capability checks are still required."],
-["How do you secure a WordPress plugin?","Check user capabilities, verify nonces where appropriate, sanitize input, validate data, escape output for its context, use prepared SQL, and protect REST endpoints with permission callbacks."],
-["What is a custom post type?","It defines a content type beyond standard posts and pages, useful for structured content such as locations or events. Register it with suitable labels, capabilities, and visibility settings."],
-["What is Shopify Liquid?","Liquid is Shopify's template language for rendering store data and theme markup. It includes objects, tags, and filters."],
-["What are Liquid objects, tags, and filters?","Objects output data, tags control logic or template flow, and filters transform values before output."],
-["What are Shopify sections and blocks?","Sections are reusable theme components that merchants can often configure in the theme editor. Blocks are configurable subcomponents inside sections, depending on the section's schema."],
-["What are Shopify metafields?","Metafields store additional structured data on supported Shopify resources, allowing a theme or app to expose custom attributes beyond standard fields."],
-["How would you improve a Shopify storefront?","Measure first, optimize image size and formats, reduce unnecessary scripts and app overhead, limit render-blocking assets, lazy-load below-the-fold media, and test the result on representative devices."],
-["How do you debug a WordPress plugin conflict?","Reproduce the issue, check logs and browser/network errors, test in staging, disable plugins or switch themes systematically, inspect hooks and dependency versions, then verify the fix without exposing production data."]
-]},
-{title:"Project Deep-Dives: Kristoper",desc:"Use these to explain the import-export platform and AI chatbot from your resume.",items:[
-["Walk me through the Kristoper architecture.","Template answer: Explain the frontend, backend/API, database, authentication, CMS, external integrations, and deployment. Describe the actual request flow for one important feature, and identify which parts you personally built.","template"],
-["Why did you choose MERN and TypeScript?","A defensible answer might mention shared JavaScript skills across frontend and backend, React's component model, MongoDB's document model where it fits the data, and TypeScript's static checks. Tie each reason to the actual project constraints.","template"],
-["How did the Gemini chatbot work?","Explain how the frontend sent a question to your backend, how the backend called the Gemini API, how responses and failures were handled, and what data the model was allowed to access. Only describe the flow you implemented.","template"],
-["How would you prevent hallucinated shipment status?","The model should not invent authoritative tracking facts. The backend should fetch the real shipment/order data, enforce that the user is authorized to see it, and supply the relevant result to the model. State clearly what safeguards your implementation actually had.","template"],
-["How did you implement item tracking?","Describe the source of tracking data, its schema, update mechanism, authorization rules, and how the UI shows current status. If tracking was manual or mocked, be transparent about that limitation.","template"],
-["How did you integrate payment gateways?","Explain the provider, checkout/session creation, server-side verification, order states, failure handling, and webhook/idempotency approach that you actually used. Do not claim a webhook or safeguard you did not implement.","template"],
-["What was the hardest technical issue in Kristoper?","Use STAR: situation, task, action, result. Pick a real issue, explain the diagnosis and trade-offs, and include measurable impact only if you have evidence.","template"],
-["What would you improve if rebuilding it?","Choose a real improvement such as stronger automated tests, observability, clearer service boundaries, more robust retries, or improved accessibility. Explain the trade-off and why it matters."]
-]},
-{title:"Project Deep-Dives: Restaurant Ordering",desc:"PHP/MySQL, custom CMS, menus, checkout, bookings, and multi-location considerations.",items:[
-["Explain the restaurant ordering system end to end.","Walk through menu browsing, item selection, cart, checkout, payment verification, order confirmation, and admin order/menu management. Describe the actual implementation and data flow.","template"],
-["How did you design the menu database?","A typical design separates menu categories and items, with fields for names, descriptions, prices, availability, and location where needed. Explain your real schema and how relationships were enforced.","template"],
-["How did the custom CMS work?","Explain admin authentication and permissions, CRUD operations, input validation, image handling, database writes, and how menu changes appear on the public site.","template"],
-["How do you preserve historical order prices?","Store the purchased unit price and a useful item-name snapshot in each order item. Otherwise, changing the menu price could alter old order totals or receipts."],
-["How would you support multiple locations?","Model locations explicitly and associate menus, availability, operating hours, taxes, and orders with a location where requirements demand it. Confirm the selected location server-side throughout checkout."],
-["How would the AI booking chatbot work?","Describe the intent flow, availability source, required booking fields, confirmation step, and backend validation. The chatbot should not claim a booking is confirmed until the booking system confirms it.","template"],
-["What if payment succeeds but order creation fails?","Use durable order/payment records, provider verification, webhook-driven recovery, idempotent processing, and reconciliation. Explain which of these mechanisms your actual system used.","template"],
-["How would you test checkout?","Test successful, declined, cancelled, delayed, duplicated, and interrupted payments; invalid cart prices; unavailable items; webhook retries; and order confirmation. Use provider test mode rather than real payments."]
-]},
-{title:"Performance, Git & Deployment",desc:"Your resume includes FCP/storefront improvements and multiple concurrent projects.",items:[
-["What are FCP, LCP, and TTFB?","FCP measures when the first content is rendered; LCP measures when the largest relevant content element is rendered; TTFB measures the time until the first byte of a response. They diagnose different parts of perceived performance."],
-["How does code splitting improve performance?","It can reduce the JavaScript loaded for the initial route by splitting bundles and loading some chunks on demand. Measure the trade-off because extra chunks can add requests and delays."],
-["How would you investigate a slow page?","Use browser performance tools and real-user or lab metrics, inspect network waterfalls, bundle sizes, images, render-blocking resources, server timing, and third-party scripts. Change one bottleneck at a time and measure again."],
-["How did you measure a 40% FCP reduction?","Explain the tool, baseline and after values, test conditions, sample size if available, and changes made. If you cannot verify the exact figure, clarify how it was estimated rather than inventing evidence.","template"],
-["How did you achieve a 35% storefront speed improvement?","Describe the actual before/after metric, test conditions, and specific changes. Be clear whether it was page load time, a performance score, or another metric; these are not interchangeable.","template"],
-["How do you handle Git merge conflicts?","Fetch and inspect the latest changes, understand both edits, resolve conflicts deliberately, run tests and review the diff, then commit and communicate any behavior changes."],
-["What is CI/CD?","Continuous integration automatically builds and tests changes. Continuous delivery/deployment automates the path to release, with deployment automation depending on the team's approval and risk model."],
-["How would you roll back a failed deployment?","Use a known-good release or commit, restore service safely, verify health and data integrity, communicate impact, and investigate the cause. Database migrations need a compatible rollback or forward-fix strategy."],
-["How do you manage many concurrent projects?","Explain your real prioritization method: agreed scope, task tracking, milestones, risk/dependency visibility, regular client updates, and realistic estimates. Support claims such as on-time delivery with concrete examples.","template"],
-["How do you keep secrets out of Git?","Use environment variables or a secret manager, keep local secret files out of version control, restrict permissions, and rotate any key that was accidentally committed."]
-]},
-{title:"Coding & SQL Practice",desc:"Practice explaining the approach, complexity, edge cases, and tests.",items:[
-["Find the largest and second-largest number in an array.","Track the largest and second-largest distinct values in one pass, updating them as each value is examined. Clarify behavior for duplicates, empty arrays, and arrays with fewer than two distinct values."],
-["Count character frequency in a string.","Iterate through the string and increment a Map/object count for each character. Clarify whether spaces, case, and Unicode grapheme clusters should be treated specially."],
-["Flatten a nested array.","For arbitrary nesting, recursion or flat(Infinity) can work in JavaScript. Discuss whether the interviewer permits built-ins and how you would handle deeply nested input."],
-["Sort objects by a property.","Use array.sort with a comparator based on the property. Handle missing values and strings/numbers explicitly; sort mutates the array, so copy first if immutability matters."],
-["Implement debounce.","Return a wrapper that clears the previous timer and schedules the function after the wait interval. Preserve arguments and `this` if the use case requires it."],
-["Print numbers 1 to 10 one second apart.","Use a timer or an async loop that awaits a Promise-based delay. Avoid using a synchronous busy-wait, which blocks the event loop."],
-["How do you explain time complexity?","Describe how runtime grows with input size: O(1), O(log n), O(n), O(n log n), or O(n²). State assumptions and distinguish time from space complexity."],
-["How do you test a function?","Cover normal cases, edge cases, invalid inputs, and relevant boundaries. Keep tests deterministic and make assertions about behavior rather than implementation details."]
-]},
-{title:"Behavioral & HR",desc:"Short answers should sound natural and be supported by real examples.",items:[
-["Tell me about yourself.","Sample: “I’m a full-stack developer with over two years of experience building web applications using React, TypeScript, Node.js, and PHP. My work has included e-commerce platforms, custom CMS solutions, Shopify themes, WordPress plugins, and API integrations. I enjoy solving practical business problems through software and want to contribute to reliable production systems.” Adapt this to the role and your actual contribution."],
-["Why are you looking for a new opportunity?","Focus on what you want to grow toward—such as deeper engineering ownership, stronger collaboration, or more challenging projects. Stay factual and avoid criticizing former colleagues or clients."],
-["What is your strongest technical skill?","Choose a skill you can demonstrate under follow-up questions. Give a concrete example, your contribution, and the result; avoid claiming expert-level ability across every listed technology."],
-["What is one area you are improving?","Choose a genuine, manageable development area and explain the action you are taking—for example, deeper automated testing, system design, or performance profiling. Avoid a fake weakness."],
-["Tell me about a difficult bug you fixed.","Use STAR: situation, task, action, result. Explain how you reproduced it, found the root cause, evaluated options, verified the fix, and prevented recurrence if applicable."],
-["How do you handle a tight deadline?","Clarify scope and must-haves, break work into small deliverables, surface risks early, communicate trade-offs, and protect critical testing. Do not promise a deadline you know is unrealistic."],
-["How do you handle disagreement with another developer?","Discuss evidence and requirements, compare trade-offs, use code review or a small experiment where useful, and align on the team's decision rather than making it personal."],
-["Why should we hire you?","Connect your relevant stack and practical delivery experience to the role's needs. Support your value with one or two real examples instead of broad claims."],
-["What are your salary expectations?","Give a researched range appropriate to the role, location, and total compensation when you have enough information. You can ask about the budgeted range first and consider responsibilities, benefits, and growth as well."],
-["Do you have questions for us?","Ask what success looks like in the first 90 days, how the team reviews and deploys code, what the current technical challenges are, and how responsibilities are divided."]
-]}
+  {
+    id: "resume-rapipay",
+    title: "Bhavuk Resume · RapiPay Fintech (NYE App)",
+    desc: "Detailed technical interrogation of your current production achievements on RapiPay's NYE wallet.",
+    items: [
+      {
+        q: "Walk me through the architecture of the EPA Employee-Assisted Full-KYC SDK you owned.",
+        tags: ["Resume", "RapiPay", "Fintech", "STAR"],
+        a: `<p><strong>Core Concept:</strong> Employee-Assisted Full-KYC (EPA) is an agent-assisted onboarding journey requiring multi-stage document scanning, CAF processing, biometric verification, OTP validation, and wallet activation, with high resilience against network drops.</p>
+        <div class="star-box">
+          <h4>STAR Project Narrative</h4>
+          <p><strong>Situation:</strong> Users and field agents in tier-2/3 cities suffered severe drop-offs when unstable network connections dropped mid-way through multi-step KYC verification, forcing them to restart and re-enter data.</p>
+          <p><strong>Task:</strong> Design and own the client Android SDK integration for the EPA Full-KYC journey, providing deterministic state progression, journey resumption across app restarts, and automatic validation fallbacks.</p>
+          <p><strong>Action:</strong> Implemented a unidirectional MVI state machine using Kotlin <code>StateFlow</code> and sealed interfaces representing KYC stages (<code>DocumentCaptured</code>, <code>BiometricPending</code>, <code>OtpVerifying</code>, <code>FallbackRequired</code>). Each step emitted an immutable state snapshot persisted into <code>DataStore</code> with a unique <code>journeyId</code>. If an OCR or biometric API timed out, the state machine transitioned cleanly to a secondary document upload fallback without resetting validated fields. Upon app restart, the SDK called the resumption endpoint, reconciled local state with server state, and restored the user directly to the incomplete step.</p>
+          <p><strong>Result:</strong> Drastically lowered onboarding drop-offs, eliminated redundant user data entry, and ensured 100% RBI compliance on wallet activation.</p>
+        </div>
+        <div class="followup-box">
+          <strong>Likely Follow-up:</strong> <em>"How did you prevent duplicate submissions if a user clicked the Submit button twice during poor network connectivity?"</em><br>
+          <strong>Answer:</strong> Used an idempotency token generated per KYC stage combined with coroutine debounce and disabling the UI submit button immediately upon invocation via state hoisting (<code>isSubmitting = true</code>).
+        </div>`
+      },
+      {
+        q: "Explain how you resolved the Lending SDK Hilt ClassCastException under R8 Full Mode and saved 282.9 KB of DEX.",
+        tags: ["Resume", "R8 / ProGuard", "Hilt", "Optimization"],
+        a: `<p><strong>The Problem:</strong> When enabling R8 Full Mode (<code>android.enableR8.fullMode=true</code>) with modern AGP, release builds crashed at runtime in the Lending SDK module with <code>java.lang.ClassCastException</code> when resolving Hilt dependency injection entry points.</p>
+        <p><strong>Root Cause Analysis:</strong></p>
+        <ul>
+          <li><strong>R8 Full Mode Aggressive Optimizations:</strong> Unlike compatibility mode, R8 Full Mode strips generic type signatures (<code>Signature</code> attribute), inlines single-implementation interfaces (interface merging), and removes unused synthetic wrappers and metadata.</li>
+          <li><strong>Hilt EntryPoint Mechanics:</strong> In a multi-module architecture, dynamic sub-modules or standalone SDKs often cannot use standard <code>@AndroidEntryPoint</code> activity injection. Instead, they access dependencies using Hilt EntryPoints: <code>EntryPoints.get(applicationContext, LendingEntryPoint::class.java)</code>.</li>
+          <li>Because <code>LendingEntryPoint</code> was only referenced dynamically through Hilt's entry point reflection and had a single generated component implementer, R8 Full Mode merged or stripped the interface from the generated Dagger component class hierarchy. At runtime, when casting the generated application component to <code>LendingEntryPoint</code>, a <code>ClassCastException</code> occurred.</li>
+        </ul>
+        <p><strong>Resolution:</strong> Diagnosed the removal chain using <code>-whyareyoukeeping class com.rapipay.lending.di.LendingEntryPoint</code>. Added exact keep rules to preserve entry point interfaces, generated components, and type signatures:</p>
+        <pre><code># Keep generic signatures and annotations required by Dagger/Hilt
+-keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod
+
+# Prevent R8 Full Mode from merging Hilt generated component interfaces
+-keep,allowobfuscation interface * extends dagger.hilt.internal.GeneratedComponent
+-keep,allowobfuscation @dagger.hilt.EntryPoint interface * { *; }
+
+# Keep Lending SDK DI package entry points
+-keep class com.rapipay.lending.di.** { *; }</code></pre>
+        <p><strong>Impact:</strong> Fixed the crash permanently in release builds while allowing R8 Full Mode to aggressively strip dead code elsewhere, yielding <strong>~282.9 KB DEX reduction</strong> and shrinking the production APK from <strong>44.4 MB to 44.1 MB</strong>.</p>`
+      },
+      {
+        q: "How did you implement Android 16 / SDK 36 edge-to-edge compatibility and handle WindowInsets?",
+        tags: ["Resume", "Android 16", "WindowInsets", "UI"],
+        a: `<p><strong>Background:</strong> Starting in Android 15 (API 35) and locked down in Android 16 (API 36), the system enforces edge-to-edge drawing for all apps targeting these SDKs. The legacy opt-out flag <code>windowOptOutEdgeToEdgeEnforcement</code> is deprecated and ignored.</p>
+        <p><strong>Key Implementations:</strong></p>
+        <ul>
+          <li><strong>Activity Initialization:</strong> Called <code>enableEdgeToEdge()</code> in <code>onCreate()</code> to configure transparent system status and navigation bars.</li>
+          <li><strong>Jetpack Compose Insets:</strong> Replaced hardcoded status-bar spacers with <code>WindowInsets.safeDrawing</code>, <code>WindowInsets.systemBars</code>, and <code>WindowInsets.ime</code>. Applied <code>Modifier.windowInsetsPadding(WindowInsets.safeDrawing)</code> to TopAppBars and floating action elements.</li>
+          <li><strong>XML & RecyclerViews:</strong> Used <code>ViewCompat.setOnApplyWindowInsetsListener</code>. Set <code>clipToPadding="false"</code> on RecyclerViews with dynamic bottom inset padding so scrollable content scrolls behind the transparent navigation bar without getting obscured at the bottom.</li>
+          <li><strong>Foldables & Large Screens:</strong> Implemented <code>calculateWindowSizeClass()</code> from <code>androidx.compose.material3.adaptive</code> to dynamically switch from single-column bottom-sheet layouts on Compact devices to dual-pane side-by-side layouts on Expanded foldables and tablets.</li>
+        </ul>`
+      },
+      {
+        q: "What mobile security (VAPT) hardening measures did you implement on NYE?",
+        tags: ["Resume", "Security", "VAPT", "Fintech"],
+        a: `<p><strong>Core Remediations:</strong></p>
+        <ol>
+          <li><strong>SSL Pinning with Public Key Hashes:</strong> Used OkHttp <code>CertificatePinner</code> with SHA-256 hashes of the Subject Public Key Info (SPKI). Pinned both primary and backup CA certificates to allow seamless certificate rotation without bricking app networking:
+            <pre><code>val certPinner = CertificatePinner.Builder()
+    .add("api.rapipay.com", "sha256/WoiWRyIOVNa9ihaBciRSCNSJCT+LVfAjTScmrkqYio0=")
+    .add("api.rapipay.com", "sha256/k2v657xBsOVe1PQR/JU7tVu5prsSLU7+ywNUFl8H6QU=") // Backup
+    .build()</code></pre>
+          </li>
+          <li><strong>Root & Jailbreak Detection:</strong> Multi-tiered heuristic checks: verified test-keys build tags, checked for presence of <code>su</code> and <code>busybox</code> binaries across <code>/system/xbin</code>, <code>/system/bin</code>, <code>/sbin</code>, checked write permissions on system directories, and attested device integrity via Google Play Integrity API.</li>
+          <li><strong>Anti-Hooking & Frida Detection:</strong> Inspected <code>/proc/self/maps</code> to detect loaded <code>frida-agent.so</code> or <code>substrate.so</code>; checked default Frida TCP port <code>27042</code>; and checked for debugger attachment by monitoring <code>TracerPid > 0</code> in <code>/proc/self/status</code> and <code>Debug.isDebuggerConnected()</code>.</li>
+          <li><strong>Secure Local Storage:</strong> Zero sensitive tokens in standard SharedPreferences. Migrated all wallet auth credentials to <code>EncryptedSharedPreferences</code> backed by Android Keystore using AES-256 GCM master key encryption.</li>
+        </ol>`
+      },
+      {
+        q: "How did you achieve WCAG 2.2 AA accessibility compliance with TalkBack in Jetpack Compose?",
+        tags: ["Resume", "Accessibility", "Compose", "WCAG"],
+        a: `<p><strong>Strategy & Execution:</strong></p>
+        <ul>
+          <li><strong>Semantics Merging:</strong> In custom wallet balance cards with separate text elements (currency symbol, amount, updated time), TalkBack defaulted to reading each chunk in isolated taps. Used <code>Modifier.semantics(mergeDescendants = true) { ... }</code> so the entire card is read as a single contextual sentence: <em>"Wallet balance: 14,250 Rupees, Last updated 2 minutes ago"</em>.</li>
+          <li><strong>Touch Target Sizing:</strong> Enforced minimum interactive component sizing of $48 \\times 48\\text{ dp}$ across all custom buttons using <code>Modifier.minimumInteractiveComponentSize()</code>.</li>
+          <li><strong>Explicit Content Descriptions:</strong> Ensured all interactive icons have meaningful localizable content descriptions, while marking decorative vectors with <code>contentDescription = null</code> to prevent screen reader noise.</li>
+          <li><strong>Custom Actions:</strong> For swipeable transaction cards, added <code>customActions</code> to Semantics so visually impaired users can trigger "Delete" or "Repeat Payment" directly from TalkBack's accessibility actions menu without having to perform multi-finger swipe gestures.</li>
+        </ul>`
+      }
+    ]
+  },
+  {
+    id: "company-enil",
+    title: "Company 1 · Entertainment Network India Ltd (ENIL / Mirchi)",
+    desc: "Domain-specific questions on audio streaming, Media3/ExoPlayer, background services, audio focus, and low-latency buffering.",
+    items: [
+      {
+        q: "How do you build a resilient background audio player in Android 14/15/16 that survives OS background kills?",
+        tags: ["ENIL", "Audio", "Services", "Media3"],
+        a: `<p><strong>Architecture Pattern:</strong> Use <strong>AndroidX Media3</strong> with <code>MediaSessionService</code> (or <code>MediaLibraryService</code>). Never rely on a standard started Service or an in-memory Singleton.</p>
+        <p><strong>Key Requirements:</strong></p>
+        <ol>
+          <li><strong>Manifest Declaration:</strong> Declare the service with <code>android:foregroundServiceType="mediaPlayback"</code> and request <code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code> and <code>POST_NOTIFICATIONS</code> permissions.</li>
+          <li><strong>MediaSession Integration:</strong> Instantiate an <code>ExoPlayer</code> instance and wrap it with a <code>MediaSession</code> inside <code>onCreate()</code> of the <code>MediaSessionService</code>:
+            <pre><code>class AudioPlaybackService : MediaSessionService() {
+    private var mediaSession: MediaSession? = null
+
+    override fun onCreate() {
+        super.onCreate()
+        val player = ExoPlayer.Builder(this).build()
+        mediaSession = MediaSession.Builder(this, player).build()
+    }
+
+    override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaSession? = mediaSession
+
+    override fun onDestroy() {
+        mediaSession?.run {
+            player.release()
+            release()
+            mediaSession = null
+        }
+        super.onDestroy()
+    }
+}</code></pre>
+          </li>
+          <li><strong>Notification Management:</strong> Media3 automatically binds playback state to the system Media Notification with seekbars, album art, play/pause, and skip controls.</li>
+          <li><strong>Doze Mode & Battery Whitelisting:</strong> Foreground playback services with active <code>mediaPlayback</code> type are exempt from Doze mode CPU suspension while actively playing.</li>
+        </ol>`
+      },
+      {
+        q: "How do you handle Audio Focus in an audio streaming application like Mirchi?",
+        tags: ["ENIL", "Audio Focus", "Android OS"],
+        a: `<p><strong>Concept:</strong> Android uses Audio Focus to ensure multiple apps don't play audio simultaneously. An app must request focus before playing and respect focus changes.</p>
+        <p><strong>Managing Transitions:</strong></p>
+        <ul>
+          <li><strong>Incoming Call:</strong> System grants temporary focus to Phone app. Your app receives <code>AUDIOFOCUS_LOSS_TRANSIENT</code>. <strong>Action:</strong> Pause playback, retain player state. When the call ends, you receive <code>AUDIOFOCUS_GAIN</code>: automatically resume playback.</li>
+          <li><strong>Turn-by-turn GPS Navigation or Notification Ping:</strong> App receives <code>AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK</code>. <strong>Action:</strong> Lower the player volume to 20% (ducking) rather than pausing, restoring full volume when focus returns. (Note: ExoPlayer can handle ducking automatically when configured with <code>setAudioAttributes(..., handleAudioFocus = true)</code>).</li>
+          <li><strong>User Opens YouTube or Spotify:</strong> App receives permanent <code>AUDIOFOCUS_LOSS</code>. <strong>Action:</strong> Stop playback, release audio focus, and tear down the notification.</li>
+        </ul>`
+      },
+      {
+        q: "How do you implement offline audio caching and smooth playback over fluctuating networks in ExoPlayer?",
+        tags: ["ENIL", "ExoPlayer", "Caching", "Performance"],
+        a: `<p><strong>Implementation Strategy:</strong></p>
+        <ul>
+          <li><strong>ExoPlayer SimpleCache:</strong> Create a singleton <code>SimpleCache</code> backed by <code>LeastRecentlyUsedCacheEvictor</code> with a bounded disk quota (e.g. 500 MB):
+            <pre><code>val cacheEvictor = LeastRecentlyUsedCacheEvictor(500 * 1024 * 1024)
+val databaseProvider = StandaloneDatabaseProvider(context)
+val simpleCache = SimpleCache(File(context.cacheDir, "media_cache"), cacheEvictor, databaseProvider)</code></pre>
+          </li>
+          <li><strong>CacheDataSourceFactory:</strong> Wrap upstream <code>DefaultHttpDataSource</code> with <code>CacheDataSource</code>. When streaming, ExoPlayer reads from disk cache first; cache misses stream from network while writing chunked data to disk concurrently.</li>
+          <li><strong>Adaptive Bitrate (ABR):</strong> Use HLS (m3u8) or DASH manifests. ExoPlayer's <code>DefaultTrackSelector</code> dynamically switches audio bitrates (e.g. 64 kbps to 320 kbps) based on observed network throughput to prevent playback stalling during network drops.</li>
+        </ul>`
+      },
+      {
+        q: "How do you optimize 60fps scrolling in high-density media feeds (song carousels, album art) in Jetpack Compose?",
+        tags: ["ENIL", "Compose", "Performance", "Optimization"],
+        a: `<p><strong>Performance Best Practices:</strong></p>
+        <ol>
+          <li><strong>Explicit Item Keys:</strong> Always supply unique, stable keys in <code>LazyRow</code> and <code>LazyColumn</code> (e.g. <code>items(songs, key = { it.trackId })</code>). This allows Compose to reposition items without recomposing the entire layout.</li>
+          <li><strong>Immutability & Stability:</strong> Annotate data models with <code>@Immutable</code> or <code>@Stable</code>. Avoid passing standard mutable lists (<code>List&lt;Song&gt;</code>) as unstable parameters; use Kotlinx <code>ImmutableList</code> to enable smart recomposition skipping.</li>
+          <li><strong>Image Pipeline Tuning:</strong> In Coil, configure an in-memory memory cache (e.g. 25% of app memory) and disk cache. Use <code>AsyncImage</code> with crossfade, downsampling target sizes to match the exact Composable dimensions (<code>size(Size.ORIGINAL)</code> is an anti-pattern for thumbnails).</li>
+          <li><strong>Defer State Reads:</strong> Avoid reading scroll offsets directly in the composition phase; wrap offset calculations in lambda modifiers like <code>Modifier.graphicsLayer { ... }</code>.</li>
+        </ol>`
+      }
+    ]
+  },
+  {
+    id: "company-sew",
+    title: "Company 2 · Smart Energy Water (SEW.AI)",
+    desc: "Domain-specific questions on offline-first mobile architecture, field-service work orders, Room sync, WorkManager, and battery-efficient GPS.",
+    items: [
+      {
+        q: "How do you architect an Offline-First Android application for field technicians operating in zero-network areas?",
+        tags: ["SEW.AI", "Offline-First", "Room", "Architecture"],
+        a: `<p><strong>Single Source of Truth (SSOT) Architecture:</strong></p>
+        <ul>
+          <li><strong>Principle:</strong> The UI never communicates directly with network APIs. The UI observes local database tables (via Room <code>Flow&lt;List&lt;WorkOrder&gt;&gt;</code>). All user actions (filling inspection forms, updating meter status) write synchronously to Room.</li>
+          <li><strong>Data Schema:</strong> Each entity contains sync metadata columns:
+            <pre><code>@Entity(tableName = "work_orders")
+data class WorkOrderEntity(
+    @PrimaryKey val id: String,
+    val customerName: String,
+    val meterReading: Double,
+    val syncStatus: SyncStatus, // PENDING, SYNCING, SYNCED, FAILED
+    val lastModifiedTimestamp: Long,
+    val version: Int
+)</code></pre>
+          </li>
+          <li><strong>Optimistic Updates:</strong> When the technician marks an order complete, Room updates immediately with <code>syncStatus = PENDING</code>, instantly reflecting in the UI.</li>
+          <li><strong>Background Sync Engine:</strong> A <code>WorkManager</code> periodic or constraint-triggered worker reads all <code>PENDING</code> rows, posts them in batch to the server, and on <code>200 OK</code> flips <code>syncStatus = SYNCED</code>.</li>
+        </ul>`
+      },
+      {
+        q: "How do you handle bi-directional data synchronization and resolve merge conflicts in offline mobile databases?",
+        tags: ["SEW.AI", "Sync", "Database", "Conflicts"],
+        a: `<p><strong>Conflict Resolution Strategies:</strong></p>
+        <ol>
+          <li><strong>Last-Write-Wins (Timestamp-based):</strong> Simple but dangerous. If the device clock is skewed, newer data can be overwritten.</li>
+          <li><strong>Version Vector / Optimistic Concurrency Control (Recommended):</strong> Each entity maintains a <code>version</code> integer. When syncing an update, the mobile client sends <code>{ id, data, baseVersion: 3 }</code>. If the server is still at version 3, it applies changes and increments to version 4. If the server is already at version 4 (updated by a dispatcher), the server rejects the write with <code>409 Conflict</code>.</li>
+          <li><strong>Three-Way Merge or Field-Level Resolution:</strong> The server inspects which exact fields were modified. If the dispatcher updated the customer phone number and the mobile tech updated the meter reading, both changes are merged cleanly. If the same field was modified, the server flags the conflict for manual reconciliation or applies business priority (e.g. Server Wins for scheduling, Client Wins for field observations).</li>
+        </ol>`
+      },
+      {
+        q: "How does WorkManager guarantee execution across device restarts and battery saver restrictions?",
+        tags: ["SEW.AI", "WorkManager", "Background", "Android OS"],
+        a: `<p><strong>Internal Mechanics:</strong></p>
+        <ul>
+          <li><strong>SQLite Backing:</strong> WorkManager stores all WorkRequests, constraints, and dependencies in an internal SQLite database managed by Room. Even if the device runs out of battery, reboots, or the app process is killed, work specifications remain intact.</li>
+          <li><strong>OS Scheduler Delegation:</strong> On API 23+, WorkManager delegates execution to Android's <code>JobScheduler</code>. On older APIs or customized ROMs, it uses <code>AlarmManager</code> + <code>BroadcastReceiver</code>.</li>
+          <li><strong>Execution Constraints:</strong> You can enforce constraints such as <code>NetworkType.UNMETERED</code>, <code>setRequiresBatteryNotLow(true)</code>, or <code>setRequiresCharging(true)</code>. The OS awakens the worker only when all criteria are met.</li>
+          <li><strong>Exponential Backoff:</strong> If a network request fails, return <code>Result.retry()</code>. WorkManager will automatically retry using an exponential backoff curve (e.g. 10s, 20s, 40s...) to avoid hammering servers.</li>
+          <li><strong>Expedited Work:</strong> For urgent work order uploads, use <code>setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)</code> which executes immediately using Android foreground service delegations.</li>
+        </ul>`
+      },
+      {
+        q: "How do you capture high-resolution meter damage photos without causing OutOfMemory (OOM) crashes?",
+        tags: ["SEW.AI", "Memory", "Bitmaps", "OOM"],
+        a: `<p><strong>Image Handling Best Practices:</strong></p>
+        <ul>
+          <li><strong>Never decode full-res bitmaps directly into memory:</strong> A 12MP camera photo decoded as <code>ARGB_8888</code> requires $4000 \\times 3000 \\times 4 = 48\\text{ MB}$ of contiguous heap memory, quickly triggering OOM on low-end devices.</li>
+          <li><strong>Two-Pass Downsampling with inSampleSize:</strong>
+            <pre><code>val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+BitmapFactory.decodeFile(photoPath, options) // Reads width/height without allocating pixels
+
+options.inSampleSize = calculateInSampleSize(options, reqWidth = 1080, reqHeight = 1080)
+options.inJustDecodeBounds = false
+options.inPreferredConfig = Bitmap.Config.RGB_565 // Uses 2 bytes per pixel instead of 4
+
+val downsampledBitmap = BitmapFactory.decodeFile(photoPath, options)</code></pre>
+          </li>
+          <li><strong>Stream Direct to Server:</strong> When uploading photos, never read the file into a <code>ByteArray</code>. Use OkHttp's <code>RequestBody.asRequestBody("image/jpeg".toMediaType())</code> with the <code>File</code> directly to stream bytes straight from disk to the network socket.</li>
+        </ul>`
+      },
+      {
+        q: "How do you balance battery efficiency with real-time location tracking for field technician dispatch?",
+        tags: ["SEW.AI", "Location", "Battery", "GPS"],
+        a: `<p><strong>Optimization Techniques:</strong></p>
+        <ul>
+          <li><strong>Fused Location Provider (FLP):</strong> Use FLP with priority <code>PRIORITY_BALANCED_POWER_ACCURACY</code> (uses Wi-Fi & cellular tower triangulation) while in transit, switching to <code>PRIORITY_HIGH_ACCURACY</code> (GPS) only when within 200m of a customer job site.</li>
+          <li><strong>Batching & Displacement:</strong> Set <code>setIntervalMillis(60000)</code>, <code>setMinUpdateDistanceMeters(25f)</code>, and <code>setMaxUpdateDelayMillis(300000)</code> (5 minutes). This lets the GPS hardware batch location fixes in the sensor hub and wake the CPU only once every 5 minutes.</li>
+          <li><strong>Geofencing API:</strong> Instead of continuously running background location tracking to detect when a technician arrives at a job site, register a <code>Geofence</code> with the hardware geofencing engine. The OS wakes up your app via a <code>BroadcastReceiver</code> only when the device enters the perimeter, using almost zero battery.</li>
+        </ul>`
+      }
+    ]
+  },
+  {
+    id: "core-kotlin",
+    title: "Kotlin & Coroutines/Flow Deep Dive",
+    desc: "Low-level language mechanics, structured concurrency, dispatchers, flow operators, and language internals.",
+    items: [
+      {
+        q: "What happens under the hood when a function is marked suspend in Kotlin?",
+        tags: ["Kotlin", "Coroutines", "Internals"],
+        a: `<p><strong>Continuation Passing Style (CPS) & State Machine:</strong></p>
+        <ul>
+          <li><strong>Signature Transformation:</strong> The Kotlin compiler adds a hidden parameter to every suspend function: <code>Continuation&lt;T&gt;</code>. For example, <code>suspend fun fetchUser(): User</code> compiles down to:
+            <pre><code>Object fetchUser(Continuation&lt;? super User&gt; continuation);</code></pre>
+          </li>
+          <li><strong>State Machine Generation:</strong> The compiler generates an internal subclass of <code>ContinuationImpl</code> with an integer state field (<code>label</code>). Every suspension point (call to another suspend function) corresponds to a state transition (0, 1, 2...).</li>
+          <li><strong>Yielding & Resumption:</strong> When the function reaches a suspension point, it saves its local variables to fields in the continuation and returns a special marker: <code>COROUTINE_SUSPENDED</code>. The calling thread is immediately freed to perform other tasks. When the background operation completes, it calls <code>continuation.resumeWith(result)</code>, re-entering the state machine at the saved label.</li>
+        </ul>`
+      },
+      {
+        q: "Explain launch vs async, Job vs SupervisorJob, and CoroutineExceptionHandler.",
+        tags: ["Kotlin", "Coroutines", "Concurrency"],
+        a: `<p><strong>Core Differences:</strong></p>
+        <ul>
+          <li><strong><code>launch</code>:</strong> Fire-and-forget. Returns a <code>Job</code>. Exceptions are treated as unhandled and immediately propagate up the job hierarchy to the parent, canceling parent and siblings unless caught.</li>
+          <li><strong><code>async</code>:</strong> Computes a deferred result. Returns <code>Deferred&lt;T&gt;</code>. Exceptions are encapsulated inside the <code>Deferred</code> and re-thrown when <code>await()</code> is called. However, inside a standard <code>coroutineScope</code>, a failing <code>async</code> child will still cancel the scope immediately.</li>
+          <li><strong><code>Job</code> vs <code>SupervisorJob</code>:</strong> In a regular <code>Job</code>, failure of any child cancels the parent and all sibling coroutines. In a <code>SupervisorJob</code>, a child's failure does not propagate upward to cancel siblings. (<code>viewModelScope</code> uses a <code>SupervisorJob</code> by default).</li>
+          <li><strong><code>CoroutineExceptionHandler</code>:</strong> Acts as the top-level catch block for uncaught exceptions in root coroutines launched with <code>launch</code>. It does not catch exceptions thrown by <code>async</code>, nor does it prevent child coroutine cancellation.</li>
+        </ul>`
+      },
+      {
+        q: "StateFlow vs SharedFlow vs LiveData — When should you use which?",
+        tags: ["Kotlin", "Flow", "Architecture"],
+        a: `<p><strong>Comparison Matrix:</strong></p>
+        <ul>
+          <li><strong><code>LiveData</code>:</strong> Android-specific, lifecycle-aware, dispatches only on the main thread. Conflates values and lacks rich functional operators. (Legacy; preferred to replace with StateFlow in modern Compose apps).</li>
+          <li><strong><code>SharedFlow</code>:</strong> Highly configurable hot stream. Can emit to multiple subscribers. Supports custom replay buffer (<code>replay = 0</code> for one-off events) and buffer overflow policies (<code>DROP_OLDEST</code>). Ideal for <strong>one-off side effects</strong> like navigation events, showing snackbars, or analytics triggers.</li>
+          <li><strong><code>StateFlow</code>:</strong> Specialized hot <code>SharedFlow</code> with <code>replay = 1</code> that always holds a current value (accessible via <code>stateFlow.value</code>). It conflates identical consecutive values. Ideal for <strong>UI State management</strong> (e.g. <code>UiState(val isLoading, val data)</code>).</li>
+          <li><strong>Lifecycle Collection:</strong> Always collect Flows in Android UI using <code>collectAsStateWithLifecycle()</code> in Compose or <code>repeatOnLifecycle(Lifecycle.State.STARTED)</code> in Views to avoid wasting CPU/battery when the app is in background.</li>
+        </ul>`
+      },
+      {
+        q: "What are inline, noinline, crossinline, and reified in Kotlin?",
+        tags: ["Kotlin", "Language", "Internals"],
+        a: `<p><strong>Deep Explanations:</strong></p>
+        <ul>
+          <li><strong><code>inline</code>:</strong> Instructs the compiler to inline the function body and lambda code directly into the caller's call site. Eliminates function object allocation and invocation overhead for high-frequency operations.</li>
+          <li><strong><code>noinline</code>:</strong> When an inline function takes multiple lambdas, annotating a lambda with <code>noinline</code> tells the compiler not to inline that specific lambda, allowing it to be stored in a variable or passed to a non-inlined function.</li>
+          <li><strong><code>crossinline</code>:</strong> Inline lambdas normally permit non-local returns (e.g. <code>return</code> exiting the outer enclosing function). Annotating with <code>crossinline</code> forbids non-local returns, which is necessary when the lambda is executed inside an asynchronous context, runnable, or nested lambda.</li>
+          <li><strong><code>reified</code>:</strong> Due to JVM type erasure, generic type <code>T</code> is erased at runtime. With <code>inline fun &lt;reified T&gt;</code>, the compiler substitutes the actual concrete type into the inlined bytecode, enabling runtime type checks like <code>if (item is T)</code> or <code>T::class.java</code>.</li>
+        </ul>`
+      }
+    ]
+  },
+  {
+    id: "compose-arch",
+    title: "Jetpack Compose & Modern Architecture",
+    desc: "Recomposition, phases of Compose, stability, side effects, and MVI vs MVVM.",
+    items: [
+      {
+        q: "Explain the 3 phases of Jetpack Compose and how deferring state reads optimizes performance.",
+        tags: ["Compose", "Phases", "Performance"],
+        a: `<p><strong>The 3 Phases:</strong></p>
+        <ol>
+          <li><strong>1. Composition (What to show):</strong> Executes composable functions, evaluates logic, and constructs or updates the UI tree (SlotTable).</li>
+          <li><strong>2. Layout (Where to place it):</strong> Measures every node and determines 2D screen coordinates ($x, y$). Includes measurement and placement sub-phases.</li>
+          <li><strong>3. Draw (How to render):</strong> Renders nodes to the screen canvas (pixels).</li>
+        </ol>
+        <p><strong>Optimization Rule:</strong> Defer reading state to the latest possible phase! If an animated scroll offset is read directly during Composition, the composable must recompose on every frame ($60-120\\text{ times/sec}$). Instead, pass a lambda to the layout or draw modifier:</p>
+        <pre><code>// ❌ BAD: Triggers full recomposition on every pixel scroll
+Box(modifier = Modifier.offset(x = scrollOffset.value.dp, y = 0.dp))
+
+// ✅ OPTIMIZED: Skips composition completely; executes in layout phase only!
+Box(modifier = Modifier.offset { IntOffset(scrollOffset.value, 0) })</code></pre>`
+      },
+      {
+        q: "What causes unnecessary recomposition, and how do you ensure parameter Stability?",
+        tags: ["Compose", "Stability", "Recomposition"],
+        a: `<p><strong>Stability Rules in Compose:</strong></p>
+        <ul>
+          <li><strong>Skippable Composables:</strong> Compose only skips recomposition of a Composable function if all its input arguments are <strong>Stable</strong> and have not changed according to <code>equals()</code>.</li>
+          <li><strong>The Unstable Pitfall:</strong> Standard library collections like <code>List&lt;T&gt;</code>, <code>Set&lt;T&gt;</code>, and <code>Map&lt;K,V&gt;</code> are treated by the Compose compiler as <strong>Unstable</strong> because their implementations could be mutable (e.g. <code>ArrayList</code>). Passing a <code>List&lt;Item&gt;</code> makes the composable unskippable!</li>
+          <li><strong>Solutions:</strong>
+            <ol>
+              <li>Use Kotlinx <code>ImmutableList&lt;Item&gt;</code> from <code>kotlinx.collections.immutable</code>.</li>
+              <li>Annotate your data holder class with <code>@Immutable</code> or <code>@Stable</code>.</li>
+              <li>Enable Strong Skipping Mode (enabled by default in modern Compose Compiler / Kotlin 2.0+), which treats unstable parameters with instance equality checks.</li>
+            </ol>
+          </li>
+        </ul>`
+      },
+      {
+        q: "Explain Compose Side Effects: LaunchedEffect, rememberCoroutineScope, DisposableEffect, and SideEffect.",
+        tags: ["Compose", "Side Effects", "Lifecycle"],
+        a: `<p><strong>The 4 Key Side-Effect APIs:</strong></p>
+        <ul>
+          <li><strong><code>LaunchedEffect(key1, key2)</code>:</strong> Launches a coroutine in the composition scope. Useful for triggering suspend operations (e.g. fetching API data on first load or when a search query changes). If a key changes, the running coroutine is cancelled and restarted; cancelled when leaving composition.</li>
+          <li><strong><code>rememberCoroutineScope()</code>:</strong> Returns a <code>CoroutineScope</code> bound to the composable's lifecycle. Used to launch coroutines in response to user callbacks (e.g. inside an <code>onClick = { scope.launch { ... } }</code>).</li>
+          <li><strong><code>DisposableEffect(key)</code>:</strong> Used for side effects that require cleanup (registering/unregistering listeners, observers, or sensors). Must contain an <code>onDispose { ... }</code> block that runs when the key changes or the composable leaves the tree.</li>
+          <li><strong><code>SideEffect</code>:</strong> Runs on every successful recomposition. Used to publish Compose state to external non-Compose objects (e.g. updating an external analytics tracker or system view).</li>
+        </ul>`
+      },
+      {
+        q: "MVVM vs MVI in Android — How do you handle UI events cleanly without duplicate triggers?",
+        tags: ["Architecture", "MVI", "MVVM", "State"],
+        a: `<p><strong>Architectural Comparison:</strong></p>
+        <ul>
+          <li><strong>MVVM:</strong> Exposes multiple state holders (LiveData/StateFlow) from ViewModel to View. Can lead to fragmented state where properties mutate out of sync.</li>
+          <li><strong>MVI (Model-View-Intent):</strong> Enforces Unidirectional Data Flow (UDF). The UI emits an <code>Intent</code> (User Action); the ViewModel processes it and emits a single, immutable <code>UiState</code> data class.</li>
+          <li><strong>Handling One-Off UI Side Effects (Navigation, Toast, Snackbar):</strong>
+            <ul>
+              <li><em>Anti-Pattern:</em> Placing events inside <code>UiState</code> (e.g. <code>isError = true</code>). When the screen rotates, the state is re-collected and the error snackbar shows a second time!</li>
+              <li><em>Best Practice:</em> Use a dedicated <code>Channel&lt;UiEffect&gt;</code> in ViewModel exposed as a <code>SharedFlow</code> (via <code>channel.receiveAsFlow()</code>). Channels guarantee that each event is delivered exactly once to one collector.</li>
+            </ul>
+          </li>
+        </ul>`
+      }
+    ]
+  },
+  {
+    id: "system-lifecycle",
+    title: "System Runtime, Memory & Lifecycle",
+    desc: "ViewModel survival mechanics, Process Death vs Configuration changes, and Memory Leak hunting.",
+    items: [
+      {
+        q: "How does a ViewModel survive configuration changes under the hood in Android?",
+        tags: ["Lifecycle", "ViewModel", "System"],
+        a: `<p><strong>Under the Hood Mechanics:</strong></p>
+        <ol>
+          <li><strong>NonConfigurationInstances:</strong> When an Activity undergoes a configuration change (e.g. screen rotation), Android's <code>ComponentActivity</code> intercepts the destruction in <code>onRetainNonConfigurationInstance()</code>.</li>
+          <li><strong>ViewModelStore Retention:</strong> The Activity packages its internal <code>ViewModelStore</code> (which holds a <code>Map&lt;String, ViewModel&gt;</code>) into an instance of <code>NonConfigurationInstances</code>.</li>
+          <li><strong>Restoration in onCreate:</strong> When the new Activity instance is instantiated, its <code>onCreate()</code> calls <code>getLastNonConfigurationInstance()</code> to recover the exact same <code>ViewModelStore</code>.</li>
+          <li><strong>When is onCleared() called?:</strong> <code>onCleared()</code> is ONLY invoked when the Activity is finishing permanently (<code>isFinishing == true</code>, e.g. user taps Back button or finishes the task), NOT during configuration change destructions!</li>
+        </ol>`
+      },
+      {
+        q: "Process Death vs Configuration Change — How do you test and defend against it?",
+        tags: ["Lifecycle", "Process Death", "SavedStateHandle"],
+        a: `<p><strong>Key Differences:</strong></p>
+        <ul>
+          <li><strong>Configuration Change:</strong> Process memory stays alive. ViewModels remain in RAM.</li>
+          <li><strong>System Process Death:</strong> Occurs when the app is in the background and Android terminates the entire process (Linux PID killed) to reclaim RAM for foreground apps. Process memory is wiped; all ViewModels, Singletons, and static variables are completely destroyed.</li>
+          <li><strong>Defending with SavedStateHandle:</strong> Inject <code>SavedStateHandle</code> into your ViewModel. Android automatically saves values put into <code>SavedStateHandle</code> into the system's serialized bundle:
+            <pre><code>@HiltViewModel
+class OrderDetailViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
+    private val repository: OrderRepository
+) : ViewModel() {
+    val orderId: String = checkNotNull(savedStateHandle["orderId"])
+}</code></pre>
+          </li>
+          <li><strong>Testing Process Death:</strong> In Android Studio terminal, run:
+            <code>adb shell am kill com.rapipay.nye</code> while the app is in background, then tap the app icon in the recents tray to verify recovery.</li>
+        </ul>`
+      },
+      {
+        q: "How do you diagnose and fix Memory Leaks in Android using LeakCanary and Memory Profiler?",
+        tags: ["Memory", "LeakCanary", "Debugging"],
+        a: `<p><strong>Diagnosis Workflow:</strong></p>
+        <ol>
+          <li><strong>The Nature of a Leak:</strong> A memory leak happens when an object that is no longer needed (e.g. destroyed Activity) cannot be garbage-collected because an active Garbage Collection (GC) Root holds a strong reference to it.</li>
+          <li><strong>Common Culprits:</strong>
+            <ul>
+              <li>Passing an <strong>Activity Context</strong> to a Singleton or long-lived repository (always pass <code>applicationContext</code>).</li>
+              <li>Registering broadcast receivers, location listeners, or event buses without unregistering them in <code>onStop()</code> / <code>onDestroy()</code>.</li>
+              <li>Launching coroutines on <code>GlobalScope</code> that reference View elements or Activity instances instead of <code>viewModelScope</code> or <code>lifecycleScope</code>.</li>
+              <li>Non-static inner classes or anonymous runnables holding an implicit reference to the outer Activity.</li>
+            </ul>
+          </li>
+          <li><strong>Resolution:</strong> LeakCanary monitors weak references to destroyed Activities and Fragments. If they aren't cleared within 5 seconds, it dumps the heap (Hprof), traverses the reference graph, and outputs the exact leak trace chain showing the offending GC root.</li>
+        </ol>`
+      }
+    ]
+  },
+  {
+    id: "coding-scenarios",
+    title: "Problem Solving & Practical Coding Scenarios",
+    desc: "Direct implementations of live coding and architectural tasks evaluated in the SE1 round.",
+    items: [
+      {
+        q: "Write a debounced search bar implementation using Kotlin Flow with cancellation of in-flight requests.",
+        tags: ["Coding", "Coroutines", "Flow", "Live Coding"],
+        a: `<p><strong>Production Implementation:</strong></p>
+        <pre><code>class SearchViewModel(
+    private val repository: MediaSearchRepository
+) : ViewModel() {
+
+    private val _searchQuery = MutableStateFlow("")
+    val searchQuery: StateFlow&lt;String&gt; = _searchQuery.asStateFlow()
+
+    @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
+    val searchResults: StateFlow&lt;SearchUiState&gt; = _searchQuery
+        .debounce(300L) // Wait for 300ms of user inactivity
+        .map { it.trim() }
+        .distinctUntilChanged() // Skip if identical query
+        .flatMapLatest { query ->
+            if (query.length < 2) {
+                flowOf(SearchUiState.Idle)
+            } else {
+                repository.searchMedia(query)
+                    .map { SearchUiState.Success(it) }
+                    .catch { emit(SearchUiState.Error(it.message ?: "Search failed")) }
+                    .onStart { emit(SearchUiState.Loading) }
+            }
+        }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000L),
+            initialValue = SearchUiState.Idle
+        )
+
+    fun onQueryChanged(query: String) {
+        _searchQuery.value = query
+    }
+}
+
+sealed interface SearchUiState {
+    data object Idle : SearchUiState
+    data object Loading : SearchUiState
+    data class Success(val items: List&lt;MediaItem&gt;) : SearchUiState
+    data class Error(val message: String) : SearchUiState
+}</code></pre>
+        <div class="followup-box">
+          <strong>Why flatMapLatest?:</strong> If the user types "radio" (dispatches request 1) and then immediately types "radio mirchi" (dispatches request 2), <code>flatMapLatest</code> automatically cancels request 1's ongoing coroutine and collects only request 2, preventing out-of-order race conditions!
+        </div>`
+      },
+      {
+        q: "Execute two parallel network requests in Kotlin Coroutines and combine results safely.",
+        tags: ["Coding", "Coroutines", "Concurrency"],
+        a: `<p><strong>Safe Parallel Execution Pattern:</strong></p>
+        <pre><code>suspend fun loadUserProfileAndTransactions(userId: String): Result&lt;DashboardData&gt; = 
+    withContext(Dispatchers.IO) {
+        // Use supervisorScope so if one request fails, you can handle it or return partial data
+        supervisorScope {
+            val profileDeferred = async { apiService.getUserProfile(userId) }
+            val transactionsDeferred = async { apiService.getUserTransactions(userId) }
+
+            try {
+                val profile = profileDeferred.await()
+                val transactions = transactionsDeferred.await()
+                Result.success(DashboardData(profile, transactions))
+            } catch (e: Exception) {
+                Result.failure(e)
+            }
+        }
+    }</code></pre>`
+      }
+    ]
+  }
 ];
-const nav=document.getElementById('nav'), content=document.getElementById('content');
-let total=0;
-sections.forEach((s,si)=>{total+=s.items.length;const b=document.createElement('button');b.textContent=s.title;b.onclick=()=>{document.getElementById('sec-'+si).scrollIntoView({behavior:'smooth'});document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active')};nav.appendChild(b);
-const section=document.createElement('section');section.className='section';section.id='sec-'+si;section.innerHTML=`<h2>${s.title}</h2><p>${s.desc}</p><div class="cards"></div>`;const cards=section.querySelector('.cards');
-s.items.forEach((it,ii)=>{const card=document.createElement('article');card.className='card';card.dataset.search=(it[0]+' '+it[1]+' '+s.title).toLowerCase();const tag=it[2]==='template'?'Personalize this answer':s.title;card.innerHTML=`<div class="qrow" role="button" tabindex="0" aria-expanded="false"><input class="check" type="checkbox" aria-label="Mark reviewed"><span class="qtext">${it[0]}</span><span class="tag">${tag}</span><span class="chevron">⌄</span></div><div class="answer"><p>${it[1]}</p>${it[2]==='template'?'<div class="template">Resume-specific prompt: use your actual project details. This sample is guidance, not a claim about what you implemented.</div>':''}</div>`;
-const row=card.querySelector('.qrow');const toggle=(e)=>{if(e.target.classList.contains('check'))return;card.classList.toggle('open');row.setAttribute('aria-expanded',card.classList.contains('open'))};row.addEventListener('click',toggle);row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(e)}});card.querySelector('.check').addEventListener('change',updateProgress);cards.appendChild(card)});content.appendChild(section)});
-document.getElementById('totalStat').textContent=total+' questions · '+sections.length+' topics';
-function updateProgress(){const checks=[...document.querySelectorAll('.check')],done=checks.filter(c=>c.checked).length;document.getElementById('progressBar').style.width=(done/checks.length*100)+'%';document.getElementById('progressText').textContent=`${done} of ${checks.length} reviewed`}
-document.getElementById('search').addEventListener('input',function(){const q=this.value.toLowerCase().trim();let shown=0;document.querySelectorAll('.card').forEach(c=>{const match=c.dataset.search.includes(q);c.style.display=match?'':'none';if(match)shown++});document.querySelectorAll('.section').forEach(s=>{s.style.display=[...s.querySelectorAll('.card')].some(c=>c.style.display!=='none')?'':'none'});document.getElementById('empty').style.display=shown?'none':'block'});
-document.getElementById('expand').onclick=()=>document.querySelectorAll('.card').forEach(c=>{if(c.style.display!=='none'){c.classList.add('open');c.querySelector('.qrow').setAttribute('aria-expanded','true')}});
-document.getElementById('collapse').onclick=()=>document.querySelectorAll('.card').forEach(c=>{c.classList.remove('open');c.querySelector('.qrow').setAttribute('aria-expanded','false')});
-document.getElementById('resetChecks').onclick=()=>{document.querySelectorAll('.check').forEach(c=>c.checked=false);updateProgress()};
-document.getElementById('theme').onclick=()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';document.getElementById('theme').textContent=dark?'Light mode':'Dark mode'};
+
+// App State Management
+let currentFilter = 'all';
+let checkedSet = new Set(JSON.parse(localStorage.getItem('bhavuk_mastered_checks') || '[]'));
+let darkMode = localStorage.getItem('bhavuk_theme') === 'dark';
+
+// DOM Elements
+const contentEl = document.getElementById('content');
+const navEl = document.getElementById('nav');
+const searchInput = document.getElementById('search');
+const progressBar = document.getElementById('progressBar');
+const progressText = document.getElementById('progressText');
+const progressPct = document.getElementById('progressPct');
+const totalQuestionsStat = document.getElementById('totalQuestionsStat');
+const emptyStateEl = document.getElementById('emptyState');
+const themeBtn = document.getElementById('themeBtn');
+
+function applyTheme() {
+  if (darkMode) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeBtn.textContent = '☀️ Light Mode';
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    themeBtn.textContent = '🌙 Dark Mode';
+  }
+}
+
+themeBtn.addEventListener('click', () => {
+  darkMode = !darkMode;
+  localStorage.setItem('bhavuk_theme', darkMode ? 'dark' : 'light');
+  applyTheme();
+});
+
+// Calculate total questions
+let totalQuestions = 0;
+sections.forEach(s => totalQuestions += s.items.length);
+totalQuestionsStat.textContent = totalQuestions;
+
+// Build Nav
+function buildNav() {
+  navEl.innerHTML = '';
+  
+  const allBtn = document.createElement('button');
+  allBtn.className = currentFilter === 'all' ? 'active' : '';
+  allBtn.innerHTML = `<span>All Questions</span> <span class="nav-count">${totalQuestions}</span>`;
+  allBtn.onclick = () => setFilter('all');
+  navEl.appendChild(allBtn);
+
+  sections.forEach(sec => {
+    const btn = document.createElement('button');
+    btn.className = currentFilter === sec.id ? 'active' : '';
+    btn.innerHTML = `<span>${sec.title.split('·')[0].trim()}</span> <span class="nav-count">${sec.items.length}</span>`;
+    btn.onclick = () => setFilter(sec.id);
+    navEl.appendChild(btn);
+  });
+}
+
+function setFilter(filterId) {
+  currentFilter = filterId;
+  buildNav();
+  renderContent();
+  window.scrollTo({ top: 380, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const masteredCount = checkedSet.size;
+  const pct = Math.round((masteredCount / totalQuestions) * 100);
+  progressBar.style.width = pct + '%';
+  progressText.textContent = `${masteredCount} of ${totalQuestions} mastered`;
+  progressPct.textContent = `${pct}%`;
+  localStorage.setItem('bhavuk_mastered_checks', JSON.stringify([...checkedSet]));
+}
+
+function toggleCheck(qKey, cardEl, e) {
+  e.stopPropagation();
+  if (checkedSet.has(qKey)) {
+    checkedSet.delete(qKey);
+    cardEl.classList.remove('completed');
+  } else {
+    checkedSet.add(qKey);
+    cardEl.classList.add('completed');
+  }
+  updateProgress();
+}
+
+function renderContent() {
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  contentEl.innerHTML = '';
+  let visibleCount = 0;
+
+  sections.forEach((sec, sIdx) => {
+    if (currentFilter !== 'all' && currentFilter !== sec.id) return;
+
+    const filteredItems = sec.items.filter(item => {
+      if (!searchTerm) return true;
+      const haystack = (item.q + ' ' + item.a + ' ' + item.tags.join(' ')).toLowerCase();
+      return haystack.includes(searchTerm);
+    });
+
+    if (filteredItems.length === 0) return;
+
+    visibleCount += filteredItems.length;
+
+    const secHeader = document.createElement('div');
+    secHeader.className = 'section-header';
+    secHeader.innerHTML = `<h2>${sec.title}</h2><p>${sec.desc}</p>`;
+    contentEl.appendChild(secHeader);
+
+    const cardsContainer = document.createElement('div');
+    cardsContainer.className = 'cards';
+
+    filteredItems.forEach((item, iIdx) => {
+      const qKey = `q_${sIdx}_${iIdx}`;
+      const isChecked = checkedSet.has(qKey);
+
+      const card = document.createElement('div');
+      card.className = `card ${isChecked ? 'completed' : ''}`;
+
+      const tagsHtml = item.tags.map(t => {
+        let tagClass = 'tag';
+        if (t.toLowerCase().includes('star')) tagClass += ' star';
+        else if (t.toLowerCase().includes('enil')) tagClass += ' enil';
+        else if (t.toLowerCase().includes('sew')) tagClass += ' sew';
+        return `<span class="${tagClass}">${t}</span>`;
+      }).join('');
+
+      card.innerHTML = `
+        <div class="card-header">
+          <input type="checkbox" class="card-checkbox" ${isChecked ? 'checked' : ''} aria-label="Mark mastered">
+          <div class="card-title-wrap">
+            <div class="card-title">${item.q}</div>
+            <div class="card-tags">${tagsHtml}</div>
+          </div>
+          <span class="card-chevron">▼</span>
+        </div>
+        <div class="card-body">
+          ${item.a}
+        </div>
+      `;
+
+      const header = card.querySelector('.card-header');
+      const checkbox = card.querySelector('.card-checkbox');
+
+      header.addEventListener('click', (e) => {
+        if (e.target === checkbox) return;
+        card.classList.toggle('open');
+      });
+
+      checkbox.addEventListener('click', (e) => toggleCheck(qKey, card, e));
+
+      cardsContainer.appendChild(card);
+    });
+
+    contentEl.appendChild(cardsContainer);
+  });
+
+  if (visibleCount === 0) {
+    emptyStateEl.style.display = 'block';
+  } else {
+    emptyStateEl.style.display = 'none';
+  }
+}
+
+// Global Controls
+document.getElementById('expandAllBtn').addEventListener('click', () => {
+  document.querySelectorAll('.card').forEach(c => c.classList.add('open'));
+});
+
+document.getElementById('collapseAllBtn').addEventListener('click', () => {
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
+});
+
+document.getElementById('resetProgressBtn').addEventListener('click', () => {
+  if (confirm("Reset all mastered checkboxes?")) {
+    checkedSet.clear();
+    localStorage.removeItem('bhavuk_mastered_checks');
+    renderContent();
+    updateProgress();
+  }
+});
+
+searchInput.addEventListener('input', () => {
+  renderContent();
+});
+
+// Initialize
+applyTheme();
+buildNav();
+renderContent();
 updateProgress();
-</script></body></html>
+</script>
+
+</body>
+</html>
